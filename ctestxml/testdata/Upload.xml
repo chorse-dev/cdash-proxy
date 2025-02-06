@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="Dart/Source/Server/XSL/Build.xsl <file:///Dart/Source/Server/XSL/Build.xsl> "?>
+<Site BuildName="linux-ninja" BuildStamp="20240923-2024-Experimental" Name="localhost" Generator="ctest-3.30.20240915-gb346afc-dirty">
+	<Upload>
+		<Time>1727123051</Time>
+		<File filename="/home/dpfeifer/Projects/hello.txt">
+			<Content encoding="base64">aGVsbG8sIHdvcmxkCg==</Content>
+		</File>
+	</Upload>
+</Site>

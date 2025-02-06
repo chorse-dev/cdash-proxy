@@ -1,0 +1,273 @@
+# SPDX-FileCopyrightText: 2025 Daniel Pfeifer <daniel@pfeifer-mail.de>
+# SPDX-License-Identifier: ISC
+
+start = (done | update | site)
+
+done =
+  element Done {
+    element buildId { xsd:string },
+    element time { xsd:integer }
+  }
+
+update =
+  element Update {
+    element Site { xsd:string },
+    element BuildName { xsd:string },
+    element BuildStamp { xsd:string },
+    element StartDateTime { xsd:string },
+    element StartTime { xsd:integer },
+    element UpdateCommand { xsd:string },
+    element UpdateType { xsd:string },
+    element Revision { xsd:string },
+    element Directory {
+      element Name { xsd:string },
+      element Updated {
+        element File { xsd:string },
+        element Directory { xsd:string },
+        element FullName { xsd:string },
+        element CheckinDate { xsd:string },
+        element Author { xsd:string },
+        element Email { xsd:string },
+        element Committer { xsd:string },
+        element CommitterEmail { xsd:string },
+        element CommitDate { xsd:string },
+        element Log { xsd:string },
+        element Revision { xsd:string },
+        element PriorRevision { xsd:string }
+      }*
+    }*,
+    element EndDateTime { xsd:string },
+    element EndTime { xsd:integer },
+    element ElapsedMinutes { xsd:integer },
+    element UpdateReturnStatus { xsd:string },
+    attribute mode { xsd:string },
+    attribute Generator { xsd:string }
+  }
+
+site =
+  element Site {
+    element Subproject {
+      element Label { xsd:string },
+      attribute name { xsd:string }
+    }?,
+    (configure | build | testing | coverage | coverage_log | dynamic_analysis |
+      notes | upload),
+    attribute BuildName { xsd:string }?,
+    attribute BuildStamp { xsd:string }?,
+    attribute ChangeID { xsd:string }?,
+    attribute Name { xsd:string }?,
+    attribute Generator { xsd:string }?,
+    attribute CompilerName { xsd:string }?,
+    attribute CompilerVersion { xsd:string }?,
+    attribute OSName { xsd:string }?,
+    attribute Hostname { xsd:string }?,
+    attribute OSRelease { xsd:string }?,
+    attribute OSVersion { xsd:string }?,
+    attribute OSPlatform { xsd:string }?,
+    attribute Is64Bits { xsd:boolean }?,
+    attribute VendorString { xsd:string }?,
+    attribute VendorID { xsd:string }?,
+    attribute FamilyID { xsd:integer }?,
+    attribute ModelID { xsd:integer }?,
+    attribute ModelName { xsd:string }?,
+    attribute ProcessorCacheSize { xsd:integer }?,
+    attribute NumberOfLogicalCPU { xsd:integer }?,
+    attribute NumberOfPhysicalCPU { xsd:integer }?,
+    attribute TotalVirtualMemory { xsd:integer }?,
+    attribute TotalPhysicalMemory { xsd:integer }?,
+    attribute LogicalProcessorsPerPhysical { xsd:integer }?,
+    attribute ProcessorClockFrequency { xsd:integer }?
+  }
+
+configure =
+  element Configure {
+    element StartDateTime { xsd:string },
+    element StartConfigureTime { xsd:integer }?,
+    element ConfigureCommand { xsd:string }?,
+    element Log { xsd:string }?,
+    element ConfigureStatus { xsd:integer },
+    element EndDateTime { xsd:string },
+    element EndConfigureTime { xsd:integer }?,
+    element ElapsedMinutes { xsd:float }
+  }
+
+build =
+  element Build {
+    element StartDateTime { xsd:string }?,
+    element StartBuildTime { xsd:integer }?,
+    element BuildCommand { xsd:string }?,
+    element Error { diagnostic }*,
+    element Warning { diagnostic }*,
+    element Failure { failure }*,
+    # hardcoded to be empty
+    element Log {
+      attribute Encoding { xsd:string }?,
+      attribute Compression { xsd:string }?
+    }*,
+    element EndDateTime { xsd:string }?,
+    element EndBuildTime { xsd:integer }?,
+    element ElapsedMinutes { xsd:float }?
+  }
+
+testing =
+  element Testing {
+    element StartDateTime { xsd:string }?,
+    element StartTestTime { xsd:string }?,
+    element TestList {
+      element Test { xsd:string }*
+    }*,
+    element Test {
+      element Name { xsd:string }?,
+      element Path { xsd:string }?,
+      element FullName { xsd:string }?,
+      element FullCommandLine { xsd:string }?,
+      element Results {
+        element NamedMeasurement {
+          element Value { xsd:string }?,
+          attribute type { xsd:string }?,
+          attribute name { xsd:string }?,
+          attribute filename { xsd:string }?,
+          attribute encoding { xsd:string }?,
+          attribute compression { xsd:string }?
+        }*,
+        element Measurement {
+          element Value { xsd:string }?
+        }*
+      }?,
+      element Labels {
+        element Label { xsd:string }*
+      }?,
+      attribute Status { xsd:string }?
+    }*,
+    element EndDateTime { xsd:string }?,
+    element EndTestTime { xsd:string }?,
+    element ElapsedMinutes { xsd:string }?
+  }
+
+coverage =
+  element Coverage {
+    element StartDateTime { xsd:string }?,
+    element StartTime { xsd:string }?,
+    element File {
+      element BranchesTested { xsd:integer }?,
+      element BranchesUnTested { xsd:integer }?,
+      element FunctionsTested { xsd:integer }?,
+      element FunctionsUnTested { xsd:integer }?,
+      element LOCTested { xsd:integer }?,
+      element LOCUnTested { xsd:integer }?,
+      element PercentCoverage { xsd:float }?,
+      element CoverageMetric { xsd:float }?,
+      element Labels {
+        element Label { xsd:string }*
+      }?,
+      attribute Name { xsd:string }?,
+      attribute FullPath { xsd:string }?,
+      attribute Covered { xsd:string }?
+    }*,
+    element LOCTested { xsd:integer }?,
+    element LOCUntested { xsd:integer }?,
+    element LOC { xsd:integer }?,
+    element PercentCoverage { xsd:float }?,
+    element EndDateTime { xsd:string }?,
+    element EndTime { xsd:string },
+    element ElapsedMinutes { xsd:float }
+  }
+
+coverage_log =
+  element CoverageLog {
+    element StartDateTime { xsd:string }?,
+    element StartTime { xsd:string }?,
+    element EndDateTime { xsd:string }?,
+    element EndTime { xsd:string }?,
+    element File {
+      element Report {
+        element Line {
+          attribute Number { xsd:integer },
+          attribute Count { xsd:integer }
+        }*
+      }*,
+      attribute Name { xsd:string }?,
+      attribute FullPath { xsd:string }?
+    }*
+  }
+
+dynamic_analysis =
+  element DynamicAnalysis {
+    element StartDateTime { xsd:string }?,
+    element TestList {
+      element Test { xsd:string }*
+    }*,
+    element Test {
+      element Name { xsd:string }?,
+      element Path { xsd:string }?,
+      element FullName { xsd:string }?,
+      element FullCommandLine { xsd:string }?,
+      element Results {
+        element Defect {
+          xsd:integer,
+          attribute type { xsd:string },
+        }*,
+      },
+      element Log { xsd:string }?,
+      attribute Status { xsd:string }?
+    }*,
+    element DefectList {
+      element Defect {
+        attribute Type { xsd:string },
+      }*,
+    }?,
+    element EndDateTime { xsd:string }?,
+    element ElapsedMinutes { xsd:float }?,
+    attribute Checker { xsd:string }?
+  }
+
+notes =
+  element Notes {
+    element Note {
+      element Time { xsd:string }?,
+      element DateTime { xsd:string }?,
+      element Text { xsd:string }?,
+      attribute Name { xsd:string }?
+    }*
+  }
+
+upload =
+  element Upload {
+    element File {
+      element Content {
+        xsd:string,
+        attribute encoding { xsd:string } # always base64
+      },
+      attribute filename { xsd:string }?
+    }*
+  }
+
+diagnostic =
+  element BuildLogLine { xsd:integer }?,
+  element Text { xsd:string }?,
+  element PreContext { xsd:string }?,
+  element PostContext { xsd:string }?,
+  # hardcoded to 0
+  element RepeatCount { xsd:integer }
+
+failure =
+  element Action {
+    element TargetName { xsd:string },
+    element Language { xsd:string },
+    element SourceFile { xsd:string },
+    element OutputFile { xsd:string },
+    element OutputType { xsd:string }
+  },
+  element Command {
+    element WorkingDirectory { xsd:string },
+    element Argument { xsd:string }*
+  },
+  element Result {
+    element StdOut { xsd:string },
+    element StdErr { xsd:string },
+    element ExitCondition { xsd:integer }
+  },
+  element Labels {
+    element Label { xsd:string }*
+  }?,
+  attribute type { xsd:string }
