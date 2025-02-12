@@ -20,7 +20,7 @@ func parseValgrind(log string) []model.Diagnostic {
 				FilePath: ".",
 				Line:     0,
 				Column:   0,
-				Type:     model.Warning, // TODO: model.Defect,
+				Type:     "Warning", // TODO: "Defect",
 				Message:  line,
 				Option:   match[1],
 			})

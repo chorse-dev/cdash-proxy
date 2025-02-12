@@ -70,14 +70,14 @@ const (
 	lineTypeNote
 )
 
-func (i lineType) DiagnosticType() model.DiagnosticType {
+func (i lineType) DiagnosticType() string {
 	switch i {
 	default:
-		return model.Error
+		return "Error"
 	case lineTypeWarning:
-		return model.Warning
+		return "Warning"
 	case lineTypeNote:
-		return model.Note
+		return "Note"
 	}
 }
 
@@ -146,13 +146,13 @@ func parseDiagnostic(file string, kind lineType, line string) model.Diagnostic {
 	return diag
 }
 
-func parseDiagnosticType(s string) model.DiagnosticType {
+func parseDiagnosticType(s string) string {
 	switch s {
 	default:
-		return model.Error
+		return "Error"
 	case "warning":
-		return model.Warning
+		return "Warning"
 	case "note":
-		return model.Note
+		return "Note"
 	}
 }

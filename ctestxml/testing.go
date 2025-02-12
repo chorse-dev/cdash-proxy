@@ -21,7 +21,7 @@ func parseTesting(tst *Testing, sub []Subproject) TimedCommands {
 	for _, t := range tst.Tests {
 		cmd := model.Command{
 			Name:         t.Name,
-			Type:         model.Test,
+			Type:         "Test",
 			Status:       testStatus(t.Status, t.Measurements),
 			CommandLine:  t.Command,
 			Output:       t.Output.string,
@@ -61,19 +61,19 @@ func parseTesting(tst *Testing, sub []Subproject) TimedCommands {
 //   COMPLETED
 // };
 
-func testStatus(s string, measurements []Measurement) model.CommandStatus {
+func testStatus(s string, measurements []Measurement) string {
 	switch s {
 	case "passed":
-		return model.Passed
+		return "Passed"
 
 	case "notrun":
 		if algorithm.AnyOf(measurements, isDisabled) {
-			return model.Disabled
+			return "Disabled"
 		}
-		return model.NotRun
+		return "NotRun"
 
 	default:
-		return model.Failed
+		return "Failed"
 	}
 }
 

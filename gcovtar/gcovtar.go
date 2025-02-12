@@ -218,7 +218,7 @@ func (h *gcovTarHandler) ParseGcovFile(r io.Reader) {
 					FilePath: path,
 					Line:     lineNumber - 1,
 					Column:   -1,
-					Type:     model.Warning,
+					Type:     "Warning",
 					Message:  branchText,
 					Option:   "Branch Coverage",
 				})

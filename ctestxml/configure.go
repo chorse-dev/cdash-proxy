@@ -23,7 +23,7 @@ func parseConfigure(cfg *Configure, generator string) TimedCommands {
 	}
 	ret.Commands = append(ret.Commands, model.Command{
 		Name:        configName(cfg.Command),
-		Type:        model.Configure,
+		Type:        "Configure",
 		Status:      configureStatus(cfg.Status),
 		CommandLine: cfg.Command,
 		Output:      cfg.Log,
@@ -48,11 +48,11 @@ func configName(cmd string) string {
 	return "Configure"
 }
 
-func configureStatus(s int) model.CommandStatus {
+func configureStatus(s int) string {
 	if s == 0 {
-		return model.Passed
+		return "Passed"
 	}
-	return model.Failed
+	return "Failed"
 }
 
 func splitCMakeOutput(log string) []model.Diagnostic {

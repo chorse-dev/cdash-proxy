@@ -15,7 +15,7 @@ func parseDynamicAnalysis(da *DynamicAnalysis) TimedCommands {
 	for _, t := range da.Tests {
 		ret.Commands = append(ret.Commands, model.Command{
 			Name:         t.Name,
-			Type:         model.Test,
+			Type:         "Test",
 			Status:       testStatus(t.Status, nil),
 			CommandLine:  t.CommandLine,
 			Output:       t.Log.string,

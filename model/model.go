@@ -3,10 +3,7 @@
 
 package model
 
-import (
-	"encoding/json"
-	"time"
-)
+import "time"
 
 type Job struct {
 	JobID              string         `json:"job_id"`
@@ -54,8 +51,8 @@ type Site struct {
 
 type Command struct {
 	Name          string             `json:"name"`
-	Type          CommandType        `json:"type"`
-	Status        CommandStatus      `json:"status"`
+	Type          string             `json:"type"`
+	Status        string             `json:"status"`
 	CommandLine   string             `json:"command_line"`
 	Output        string             `json:"output"`
 	Labels        []string           `json:"labels,omitempty"`
@@ -72,32 +69,6 @@ type AttachedFile struct {
 	Content  []byte `json:"content"`
 }
 
-type CommandStatus int
-
-func (t CommandStatus) MarshalJSON() ([]byte, error) {
-	return json.Marshal(t.String())
-}
-
-const (
-	Passed CommandStatus = iota
-	Disabled
-	Failed
-	NotRun
-)
-
-type CommandType int
-
-func (t CommandType) MarshalJSON() ([]byte, error) {
-	return json.Marshal(t.String())
-}
-
-const (
-	Configure CommandType = iota
-	Build
-	Test
-	Valgrind
-)
-
 type Coverage struct {
 	FilePath          string   `json:"file_path"`
 	Lines             []int    `json:"lines,omitempty"`
@@ -111,25 +82,10 @@ type Coverage struct {
 }
 
 type Diagnostic struct {
-	FilePath string         `json:"file_path"`
-	Line     int            `json:"line"`
-	Column   int            `json:"column"`
-	Type     DiagnosticType `json:"type"`
-	Message  string         `json:"message"`
-	Option   string         `json:"option"`
+	FilePath string `json:"file_path"`
+	Line     int    `json:"line"`
+	Column   int    `json:"column"`
+	Type     string `json:"type"`
+	Message  string `json:"message"`
+	Option   string `json:"option"`
 }
-
-type DiagnosticType int
-
-func (t DiagnosticType) MarshalJSON() ([]byte, error) {
-	return json.Marshal(t.String())
-}
-
-const (
-	Error DiagnosticType = iota
-	Warning
-	Note
-	// TODO: add Defect (for static analysis)
-)
-
-//go:generate stringer -type=CommandStatus,CommandType,DiagnosticType -output=model_strings.go

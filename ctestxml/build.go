@@ -25,8 +25,8 @@ func parseBuild(build *Build) TimedCommands {
 	configuration := buildConfig(build.Command)
 	ret.Commands = append(ret.Commands, model.Command{
 		Name:        buildName("Build", configuration),
-		Type:        model.Build,
-		Status:      model.Passed, // TODO: model.Failed if there are 'Error's
+		Type:        "Build",
+		Status:      "Passed", // TODO: "Failed" if there are 'Error's
 		CommandLine: build.Command,
 		Output:      combineOutput(build.Diagnostics),
 		Diagnostics: mapDiagnostics(build.Diagnostics),
@@ -37,7 +37,7 @@ func parseBuild(build *Build) TimedCommands {
 	for _, failure := range build.Failures {
 		ret.Commands = append(ret.Commands, model.Command{
 			Name:        buildName(failure.Name(), configuration),
-			Type:        model.Build,
+			Type:        "Build",
 			Status:      failure.Status(),
 			CommandLine: strings.Join(failure.Argv, " "),
 			Output:      buildparser.CleanOutput(failure.StdErr),
@@ -69,11 +69,11 @@ func (f *Failure) Name() string {
 		f.Type, f.Language, f.OutputType, f.OutputFile, f.Target)
 }
 
-func (f *Failure) Status() model.CommandStatus {
+func (f *Failure) Status() string {
 	if f.Type == "Error" {
-		return model.Failed
+		return "Failed"
 	}
-	return model.Passed
+	return "Passed"
 }
 
 func failureVariables(failure *Failure) map[string]string {
@@ -107,9 +107,9 @@ func mapDiagnostics(messages []Diagnostic) []model.Diagnostic {
 	})
 }
 
-func parseDiagnosticType(s string) model.DiagnosticType {
+func parseDiagnosticType(s string) string {
 	if s == "Error" {
-		return model.Error
+		return "Error"
 	}
-	return model.Warning
+	return "Warning"
 }
