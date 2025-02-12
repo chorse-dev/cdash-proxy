@@ -28,7 +28,6 @@ func parseBuild(build *Build) TimedCommands {
 		Type:        model.Build,
 		Status:      model.Passed, // TODO: model.Failed if there are 'Error's
 		CommandLine: build.Command,
-		Duration:    ret.EndTime.Sub(ret.StartTime),
 		Output:      combineOutput(build.Diagnostics),
 		Diagnostics: mapDiagnostics(build.Diagnostics),
 		Measurements: map[string]float64{

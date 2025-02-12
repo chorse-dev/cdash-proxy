@@ -246,7 +246,7 @@ func (h *gcovTarHandler) ParseGcovFile(r io.Reader) {
 				*covFile.LinesTested++
 			}
 
-			covFile.LineCoverage = append(covFile.LineCoverage, line_coverage)
+			covFile.Lines = append(covFile.Lines, line_coverage)
 
 		} else if strings.HasPrefix(line, "branch") {
 			branchText += line + "\n"

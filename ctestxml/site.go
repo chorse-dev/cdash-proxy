@@ -34,12 +34,15 @@ func parseSite(dec *xml.Decoder, elem *xml.StartElement, project string) (*model
 		site.ModelName = fmt.Sprintf("%s %d %d", site.VendorID, site.FamilyID, site.ModelID)
 	}
 
-	s := &model.Job{
+	job := &model.Job{
 		JobID:     GenerateJobID(project, site.Name, site.BuildStamp, site.BuildName),
 		Project:   project,
 		BuildName: site.BuildName,
 		ChangeID:  site.ChangeID,
-		Site: &model.Site{
+	}
+
+	if site.VendorString != "" {
+		job.Site = &model.Site{
 			Name: site.Name,
 			CPU: model.CPU{
 				Vendor:         site.VendorString,
@@ -61,50 +64,50 @@ func parseSite(dec *xml.Decoder, elem *xml.StartElement, project string) (*model
 			Hostname:       site.Hostname,
 			PhysicalMemory: site.TotalPhysicalMemory,
 			VirtualMemory:  site.TotalVirtualMemory,
-		},
+		}
 	}
 
 	if site.Configure != nil {
 		ret := parseConfigure(site.Configure, site.Generator)
-		s.Commands = ret.Commands
-		s.StartConfigureTime = &ret.StartTime
-		s.EndConfigureTime = &ret.EndTime
+		job.Commands = ret.Commands
+		job.StartConfigureTime = &ret.StartTime
+		job.EndConfigureTime = &ret.EndTime
 	}
 	if site.Build != nil {
 		ret := parseBuild(site.Build)
-		s.Commands = ret.Commands
-		s.StartBuildTime = &ret.StartTime
-		s.EndBuildTime = &ret.EndTime
+		job.Commands = ret.Commands
+		job.StartBuildTime = &ret.StartTime
+		job.EndBuildTime = &ret.EndTime
 	}
 	if site.Testing != nil {
 		ret := parseTesting(site.Testing, site.Subprojects)
-		s.Commands = ret.Commands
-		s.StartTestTime = &ret.StartTime
-		s.EndTestTime = &ret.EndTime
+		job.Commands = ret.Commands
+		job.StartTestTime = &ret.StartTime
+		job.EndTestTime = &ret.EndTime
 	}
 	if site.Coverage != nil {
 		ret := parseCoverage(site.Coverage)
-		s.Coverage = ret.Files
-		s.StartCoverageTime = &ret.StartTime
-		s.EndCoverageTime = &ret.EndTime
+		job.Coverage = ret.Files
+		job.StartCoverageTime = &ret.StartTime
+		job.EndCoverageTime = &ret.EndTime
 	}
 	if site.CoverageLog != nil {
 		ret := parseCoverageLog(site.CoverageLog)
-		s.Coverage = ret.Files
-		s.StartCoverageTime = &ret.StartTime
-		s.EndCoverageTime = &ret.EndTime
+		job.Coverage = ret.Files
+		job.StartCoverageTime = &ret.StartTime
+		job.EndCoverageTime = &ret.EndTime
 	}
 	if site.DynamicAnalysis != nil {
 		ret := parseDynamicAnalysis(site.DynamicAnalysis)
-		s.Commands = ret.Commands
-		s.StartMemcheckTime = &ret.StartTime
-		s.EndMemcheckTime = &ret.EndTime
+		job.Commands = ret.Commands
+		job.StartMemcheckTime = &ret.StartTime
+		job.EndMemcheckTime = &ret.EndTime
 	}
 	if len(site.Notes) != 0 {
-		s.AttachedFiles = parseNotes(site.Notes)
+		job.AttachedFiles = parseNotes(site.Notes)
 	}
 	if len(site.Uploads) != 0 {
-		s.AttachedFiles = parseUploads(site.Uploads)
+		job.AttachedFiles = parseUploads(site.Uploads)
 	}
-	return s, nil
+	return job, nil
 }

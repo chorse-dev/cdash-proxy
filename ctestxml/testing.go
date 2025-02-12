@@ -88,11 +88,6 @@ func transformMeasurement(m Measurement, cmd *model.Command) {
 		return // should already be in CommandLine
 	}
 
-	if m.Name == "Execution Time" {
-		cmd.Duration, _ = time.ParseDuration(string(m.Value) + "s")
-		// no return. We still want the measurement!
-	}
-
 	if m.Type == "file" {
 		cmd.AttachedFiles = append(cmd.AttachedFiles, model.AttachedFile{
 			Name:     m.Name,

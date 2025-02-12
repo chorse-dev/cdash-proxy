@@ -1,0 +1,218 @@
+{
+  "job_id": "4e5a4b59fc4badd8ec47227aa4514ba1",
+  "project": "Example",
+  "build_name": "Linux-cc",
+  "site": {
+    "name": "NUC",
+    "hostname": "NUC",
+    "cpu": {
+      "vendor": "GenuineIntel",
+      "vendor_id": "Intel Corporation",
+      "family_id": 6,
+      "model_id": 170,
+      "model_name": "Intel(R) Core(TM) Ultra 7 155H",
+      "logical_cpus": 22,
+      "physical_cpus": 16,
+      "cache_size": 24576,
+      "clock_frequency": 3475
+    },
+    "kernel": {
+      "name": "Linux",
+      "release": "6.13.2-arch1-1",
+      "version": "#1 SMP PREEMPT_DYNAMIC Sat, 08 Feb 2025 18:54:55 +0000",
+      "platform": "x86_64"
+    },
+    "physical_memory": 63787,
+    "virtual_memory": 131071
+  },
+  "start_test_time": "2025-02-11T12:37:49+01:00",
+  "end_test_time": "2025-02-11T12:37:50+01:00",
+  "commands": [
+    {
+      "name": "Failures.FPE",
+      "type": "Test",
+      "status": "Failed",
+      "command_line": "/home/daniel/Projects/Example/build/Failures/fpe",
+      "output": "",
+      "attributes": {
+        "Completion Status": "Completed",
+        "Environment": "#CTEST_RESOURCE_GROUP_COUNT=",
+        "Exit Code": "NUMERICAL",
+        "Exit Value": "0",
+        "WorkingDirectory": "./Failures"
+      },
+      "measurements": {
+        "Execution Time": 0.0557437,
+        "Processors": 1
+      }
+    },
+    {
+      "name": "Failures.DIS",
+      "type": "Test",
+      "status": "Disabled",
+      "command_line": "",
+      "output": "Disabled",
+      "attributes": {
+        "Completion Status": "Disabled",
+        "Environment": "",
+        "WorkingDirectory": "./Failures"
+      },
+      "measurements": {
+        "Processors": 1
+      }
+    },
+    {
+      "name": "numeric_measurement",
+      "type": "Test",
+      "status": "Passed",
+      "command_line": "/home/daniel/.local/bin/cmake \"-E\" \"echo\" \"    test output\n    \u003cCTestMeasurement type=\"numeric/double\" name=\"MyCustomValue\"\u003e1.4847\u003c/CTestMeasurement\u003e\n    more output\n    \"",
+      "output": "    test output\n    \n    more output\n    \n",
+      "attributes": {
+        "Completion Status": "Completed",
+        "Environment": "#CTEST_RESOURCE_GROUP_COUNT=",
+        "WorkingDirectory": "./Measurements"
+      },
+      "measurements": {
+        "Execution Time": 0.00391,
+        "MyCustomValue": 1.4847,
+        "Processors": 1
+      }
+    },
+    {
+      "name": "image_measurement",
+      "type": "Test",
+      "status": "Passed",
+      "command_line": "/home/daniel/.local/bin/cmake \"-E\" \"echo\" \"    test output\n    \u003cCTestMeasurementFile name=\"TestImage\" type=\"image/png\"\u003e\" \"/home/daniel/Projects/Example/Measurements/TestImage.png\" \"\u003c/CTestMeasurementFile\u003e\n    \u003cCTestMeasurementFile name=\"ValidImage\" type=\"image/png\"\u003e\" \"/home/daniel/Projects/Example/Measurements/ValidImage.png\" \"\u003c/CTestMeasurementFile\u003e\n    \u003cCTestMeasurementFile name=\"DifferenceImage\" type=\"image/png\"\u003e\" \"/home/daniel/Projects/Example/Measurements/DifferenceImage.png\" \"\u003c/CTestMeasurementFile\u003e\n    more output\n    \"",
+      "output": "    test output\n    \n    \n    \n    more output\n    \n",
+      "attached_files": [
+        {
+          "name": "TestImage",
+          "filename": "TestImage.png",
+          "type": "image/png",
+          "content": "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"
+        },
+        {
+          "name": "ValidImage",
+          "filename": "ValidImage.png",
+          "type": "image/png",
+          "content": "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"
+        },
+        {
+          "name": "DifferenceImage",
+          "filename": "DifferenceImage.png",
+          "type": "image/png",
+          "content": "iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAIAAACzY+a1AAABYElEQVR4Xu3RIW4bURSG0b9R0OCALiDAqyjIWgqi4qIsIMg46kIKggqyjqDBD19oFdjTxsAaqamj3uYcMHqad/1mxt+HnM2P27sv15/Wpt6Fh+enm2/3a1P/ns32cW3kvfBXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM1NawP8BRdrA69wJeFbOGdC3oSE7UnYnoTtSdiehO1J2J6E7UnYnoTtSdiehO1J2J6E7UnYnoTtSdiehO1J2J6E7UnYnoTtSdiehO1JyGnfd7u1kf/WNkffvtk+npp8vcu1gT/3cbf7VbGOryOZknF8Z7+o5eZ4sTjszSNjTlVSqaQqNZLK2K+XAw5by3pKqjKW59fykDEdzq7lJ1Mtb1CpypSM5ZBUqjKPw1ZVRiVzRpKRURmVec6Y9y/7dXOx+fw728Pz003O5SfW8G5M586lmQAAAABJRU5ErkJggg=="
+        }
+      ],
+      "attributes": {
+        "Completion Status": "Completed",
+        "Environment": "#CTEST_RESOURCE_GROUP_COUNT=",
+        "WorkingDirectory": "./Measurements"
+      },
+      "measurements": {
+        "Execution Time": 0.00422663,
+        "Processors": 1
+      }
+    },
+    {
+      "name": "file_measurement",
+      "type": "Test",
+      "status": "Passed",
+      "command_line": "/home/daniel/.local/bin/cmake \"-E\" \"echo\" \"    test output\n    \u003cCTestMeasurementFile name=\"CurrentListFile\" type=\"file\"\u003e\" \"/home/daniel/Projects/Example/Measurements/CMakeLists.txt\" \"\u003c/CTestMeasurementFile\u003e\n    more output\n    \"",
+      "output": "    test output\n    \n    more output\n    \n",
+      "attached_files": [
+        {
+          "name": "CurrentListFile",
+          "filename": "CMakeLists.txt",
+          "type": "application/octet-stream",
+          "content": "IyBDb3B5cmlnaHQgwqkgMjAyNCBEYW5pZWwgUGZlaWZlciA8ZGFuaWVsQHBmZWlmZXItbWFpbC5kZT4KIwojIFRoaXMgd29yayBpcyBmcmVlLiAgWW91IGNhbiByZWRpc3RyaWJ1dGUgaXQgYW5kL29yIG1vZGlmeSBpdCB1bmRlciB0aGUKIyB0ZXJtcyBvZiB0aGUgRG8gV2hhdCBUaGUgRnVjayBZb3UgV2FudCBUbyBQdWJsaWMgTGljZW5zZSwgVmVyc2lvbiAyLAojIGFzIHB1Ymxpc2hlZCBieSBTYW0gSG9jZXZhci4gIFNlZSBodHRwOi8vd3d3Lnd0ZnBsLm5ldC8gZm9yIG1vcmUgZGV0YWlscy4KCnNldChJTUFHRV9ESVIgIiR7Q01BS0VfQ1VSUkVOVF9TT1VSQ0VfRElSfSIpCgphZGRfdGVzdChOQU1FIG51bWVyaWNfbWVhc3VyZW1lbnQKICBDT01NQU5EICR7Q01BS0VfQ09NTUFORH0gLUUgZWNobyBbWwogICAgdGVzdCBvdXRwdXQKICAgIDxDVGVzdE1lYXN1cmVtZW50IHR5cGU9Im51bWVyaWMvZG91YmxlIiBuYW1lPSJNeUN1c3RvbVZhbHVlIj4xLjQ4NDc8L0NUZXN0TWVhc3VyZW1lbnQ+CiAgICBtb3JlIG91dHB1dAogICAgXV0KICApCgphZGRfdGVzdChOQU1FIGltYWdlX21lYXN1cmVtZW50CiAgQ09NTUFORCAke0NNQUtFX0NPTU1BTkR9IC1FIGVjaG8gW1sKICAgIHRlc3Qgb3V0cHV0CiAgICA8Q1Rlc3RNZWFzdXJlbWVudEZpbGUgbmFtZT0iVGVzdEltYWdlIiB0eXBlPSJpbWFnZS9wbmciPl1dICIke0lNQUdFX0RJUn0vVGVzdEltYWdlLnBuZyIgW1s8L0NUZXN0TWVhc3VyZW1lbnRGaWxlPgogICAgPENUZXN0TWVhc3VyZW1lbnRGaWxlIG5hbWU9IlZhbGlkSW1hZ2UiIHR5cGU9ImltYWdlL3BuZyI+XV0gIiR7SU1BR0VfRElSfS9WYWxpZEltYWdlLnBuZyIgW1s8L0NUZXN0TWVhc3VyZW1lbnRGaWxlPgogICAgPENUZXN0TWVhc3VyZW1lbnRGaWxlIG5hbWU9IkRpZmZlcmVuY2VJbWFnZSIgdHlwZT0iaW1hZ2UvcG5nIj5dXSAiJHtJTUFHRV9ESVJ9L0RpZmZlcmVuY2VJbWFnZS5wbmciIFtbPC9DVGVzdE1lYXN1cmVtZW50RmlsZT4KICAgIG1vcmUgb3V0cHV0CiAgICBdXQogICkKCmFkZF90ZXN0KE5BTUUgZmlsZV9tZWFzdXJlbWVudAogIENPTU1BTkQgJHtDTUFLRV9DT01NQU5EfSAtRSBlY2hvIFtbCiAgICB0ZXN0IG91dHB1dAogICAgPENUZXN0TWVhc3VyZW1lbnRGaWxlIG5hbWU9IkN1cnJlbnRMaXN0RmlsZSIgdHlwZT0iZmlsZSI+XV0gIiR7Q01BS0VfQ1VSUkVOVF9MSVNUX0ZJTEV9IiBbWzwvQ1Rlc3RNZWFzdXJlbWVudEZpbGU+CiAgICBtb3JlIG91dHB1dAogICAgXV0KICApCnNldF9wcm9wZXJ0eShURVNUIGZpbGVfbWVhc3VyZW1lbnQgUFJPUEVSVFkgQVRUQUNIRURfRklMRVMgIiR7SU1BR0VfRElSfS9WYWxpZEltYWdlLnBuZyIpCgphZGRfdGVzdChOQU1FIGN1c3RvbV9kZXRhaWxzCiAgQ09NTUFORCAke0NNQUtFX0NPTU1BTkR9IC1FIGVjaG8gW1sKICAgIHRlc3Qgb3V0cHV0CiAgICA8Q1Rlc3REZXRhaWxzPkN1c3RvbURldGFpbHM8L0NUZXN0RGV0YWlscz4KICAgIG1vcmUgb3V0cHV0CiAgICBdXQogICkK"
+        }
+      ],
+      "attributes": {
+        "Completion Status": "Completed",
+        "Environment": "#CTEST_RESOURCE_GROUP_COUNT=",
+        "WorkingDirectory": "./Measurements"
+      },
+      "measurements": {
+        "Execution Time": 0.00505991,
+        "Processors": 1
+      }
+    },
+    {
+      "name": "custom_details",
+      "type": "Test",
+      "status": "Passed",
+      "command_line": "/home/daniel/.local/bin/cmake \"-E\" \"echo\" \"    test output\n    \u003cCTestDetails\u003eCustomDetails\u003c/CTestDetails\u003e\n    more output\n    \"",
+      "output": "    test output\n    more output\n    \n",
+      "attributes": {
+        "Completion Status": "CustomDetails",
+        "Environment": "#CTEST_RESOURCE_GROUP_COUNT=",
+        "WorkingDirectory": "./Measurements"
+      },
+      "measurements": {
+        "Execution Time": 0.00312224,
+        "Processors": 1
+      }
+    },
+    {
+      "name": "Sanitize.Address",
+      "type": "Test",
+      "status": "Passed",
+      "command_line": "/home/daniel/Projects/Example/build/Sanitizers/sanitizers \"asan\"",
+      "output": "",
+      "labels": [
+        "Sanitizers"
+      ],
+      "attributes": {
+        "Completion Status": "Completed",
+        "Environment": "#CTEST_RESOURCE_GROUP_COUNT=",
+        "Subproject": "Sanitizers",
+        "WorkingDirectory": "./Sanitizers"
+      },
+      "measurements": {
+        "Execution Time": 0.000801011,
+        "Processors": 1
+      }
+    },
+    {
+      "name": "Sanitize.Memory",
+      "type": "Test",
+      "status": "Passed",
+      "command_line": "/home/daniel/Projects/Example/build/Sanitizers/sanitizers \"msan\"",
+      "output": "",
+      "labels": [
+        "Sanitizers"
+      ],
+      "attributes": {
+        "Completion Status": "Completed",
+        "Environment": "#CTEST_RESOURCE_GROUP_COUNT=",
+        "Subproject": "Sanitizers",
+        "WorkingDirectory": "./Sanitizers"
+      },
+      "measurements": {
+        "Execution Time": 0.000519287,
+        "Processors": 1
+      }
+    },
+    {
+      "name": "Sanitize.Thread",
+      "type": "Test",
+      "status": "Passed",
+      "command_line": "/home/daniel/Projects/Example/build/Sanitizers/sanitizers \"tsan\"",
+      "output": "",
+      "labels": [
+        "Sanitizers"
+      ],
+      "attributes": {
+        "Completion Status": "Completed",
+        "Environment": "#CTEST_RESOURCE_GROUP_COUNT=",
+        "Subproject": "Sanitizers",
+        "WorkingDirectory": "./Sanitizers"
+      },
+      "measurements": {
+        "Execution Time": 0.000894397,
+        "Processors": 1
+      }
+    }
+  ]
+}

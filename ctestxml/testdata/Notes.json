@@ -1,0 +1,13 @@
+{
+  "job_id": "c070445b9d2eb9f1c147fa80814ef15b",
+  "project": "Example",
+  "build_name": "linux-ninja",
+  "attached_files": [
+    {
+      "name": "hello.txt",
+      "filename": "hello.txt",
+      "type": "text/plain",
+      "content": "aGVsbG8sIHdvcmxkCg=="
+    }
+  ]
+}

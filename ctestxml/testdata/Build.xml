@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Linux-cc"
+	BuildStamp="20250211-1137-Experimental"
+	Name="NUC"
+	Generator="ctest-3.31.20250131-gf0cc688"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="Linux"
+	Hostname="NUC"
+	OSRelease="6.13.2-arch1-1"
+	OSVersion="#1 SMP PREEMPT_DYNAMIC Sat, 08 Feb 2025 18:54:55 +0000"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="170"
+	ModelName="Intel(R) Core(TM) Ultra 7 155H"
+	ProcessorCacheSize="24576"
+	NumberOfLogicalCPU="22"
+	NumberOfPhysicalCPU="16"
+	TotalVirtualMemory="131071"
+	TotalPhysicalMemory="63787"
+	LogicalProcessorsPerPhysical="1"
+	ProcessorClockFrequency="4290.31"
+	>
+	<Subproject name="Sanitizers">
+		<Label>Sanitizers</Label>
+	</Subproject>
+	<Build>
+		<StartDateTime>Feb 11 12:37 CET</StartDateTime>
+		<StartBuildTime>1739273869</StartBuildTime>
+		<BuildCommand>/home/daniel/.local/bin/cmake --build . --config "Release"</BuildCommand>
+		<Warning>
+			<BuildLogLine>3</BuildLogLine>
+			<Text>/.../Example/Failures/fpe.c:10:20: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘double’ [-Wformat=]</Text>
+			<SourceFile>Failures/fpe.c</SourceFile>
+			<SourceLineNumber>10</SourceLineNumber>
+			<PreContext>[1/9] Building C object Failures/CMakeFiles/fpe.dir/fpe.c.o
+/.../Example/Failures/fpe.c: In function ‘main’:
+</PreContext>
+			<PostContext>   10 |   printf("Result: %d\n", result);
+      |                   ~^     ~~~~~~
+      |                    |     |
+      |                    int   double
+      |                   %f
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>9</BuildLogLine>
+			<Text>/.../Example/Failures/fpe.c:14:29: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘double’ [-Wformat=]</Text>
+			<SourceFile>Failures/fpe.c</SourceFile>
+			<SourceLineNumber>14</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>   14 |     printf("Safe division: %d\n", result);
+      |                            ~^     ~~~~~~
+      |                             |     |
+      |                             int   double
+      |                            %f
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>15</BuildLogLine>
+			<Text>/.../Example/Failures/fpe.c:7:7: warning: unused variable ‘unusedVar’ [-Wunused-variable]</Text>
+			<SourceFile>Failures/fpe.c</SourceFile>
+			<SourceLineNumber>7</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>    7 |   int unusedVar = 10;
+      |       ^~~~~~~~~
+[2/9] Building C object Hello/CMakeFiles/hello.dir/hello.c.o
+[3/9] Building C object Sanitizers/CMakeFiles/sanitizers.dir/main.c.o
+[4/9] Building C object Sanitizers/CMakeFiles/sanitizers.dir/asan.c.o
+[5/9] Linking C executable Hello/hello
+[6/9] Linking C executable Failures/fpe
+[7/9] Building C object Sanitizers/CMakeFiles/sanitizers.dir/msan.c.o
+[8/9] Building C object Sanitizers/CMakeFiles/sanitizers.dir/tsan.c.o
+[9/9] Linking C executable Sanitizers/sanitizers</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Log Encoding="base64" Compression="bin/gzip"/>
+		<EndDateTime>Feb 11 12:37 CET</EndDateTime>
+		<EndBuildTime>1739273869</EndBuildTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Build>
+</Site>

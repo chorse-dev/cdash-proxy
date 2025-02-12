@@ -35,7 +35,7 @@ func parseCoverageLog(cov *CoverageLog) (ret TimedCovarage) {
 	ret.Files = algorithm.Map(cov.Files, func(f CoverageLogFile) model.Coverage {
 		return model.Coverage{
 			FilePath: strings.TrimPrefix(f.Path, "./"),
-			LineCoverage: algorithm.Map(f.Lines, func(l CoverageLogLine) int {
+			Lines: algorithm.Map(f.Lines, func(l CoverageLogLine) int {
 				return l.Count
 			}),
 		}

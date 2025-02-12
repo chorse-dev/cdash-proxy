@@ -29,7 +29,7 @@ type Job struct {
 	Commands           []Command      `json:"commands,omitempty"`
 	Coverage           []Coverage     `json:"coverage,omitempty"`
 	AttachedFiles      []AttachedFile `json:"attached_files,omitempty"`
-	Done               bool           `json:"done"`
+	Done               bool           `json:"done,omitempty"`
 }
 
 type Site struct {
@@ -64,7 +64,6 @@ type Command struct {
 	Name          string             `json:"name"`
 	Type          CommandType        `json:"type"`
 	Status        CommandStatus      `json:"status"`
-	Duration      time.Duration      `json:"duration"`
 	CommandLine   string             `json:"command_line"`
 	Output        string             `json:"output"`
 	Labels        []string           `json:"labels,omitempty"`
@@ -109,7 +108,7 @@ const (
 
 type Coverage struct {
 	FilePath          string   `json:"file_path"`
-	LineCoverage      []int    `json:"line_coverage,omitempty"`
+	Lines             []int    `json:"lines,omitempty"`
 	LinesTested       *int     `json:"lines_tested,omitempty"`
 	LinesUntested     *int     `json:"lines_untested,omitempty"`
 	BranchesTested    *int     `json:"branches_tested,omitempty"`

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Linux-cc"
+	BuildStamp="20250211-1137-Experimental"
+	Name="NUC"
+	Generator="ctest-3.31.20250131-gf0cc688"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="Linux"
+	Hostname="NUC"
+	OSRelease="6.13.2-arch1-1"
+	OSVersion="#1 SMP PREEMPT_DYNAMIC Sat, 08 Feb 2025 18:54:55 +0000"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="170"
+	ModelName="Intel(R) Core(TM) Ultra 7 155H"
+	ProcessorCacheSize="24576"
+	NumberOfLogicalCPU="22"
+	NumberOfPhysicalCPU="16"
+	TotalVirtualMemory="131071"
+	TotalPhysicalMemory="63787"
+	LogicalProcessorsPerPhysical="1"
+	ProcessorClockFrequency="2000"
+	>
+	<Subproject name="Sanitizers">
+		<Label>Sanitizers</Label>
+	</Subproject>
+	<Configure>
+		<StartDateTime>Feb 11 12:37 CET</StartDateTime>
+		<StartConfigureTime>1739273869</StartConfigureTime>
+		<ConfigureCommand>"/home/daniel/.local/bin/cmake" "/home/daniel/Projects/Example"</ConfigureCommand>
+		<Log>CMake Deprecation Warning at CMakeLists.txt:7 (cmake_minimum_required):
+  Compatibility with CMake &lt; 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument &lt;min&gt; value.  Or, use the &lt;min&gt;...&lt;max&gt; syntax
+  to tell CMake that the project requires at least &lt;min&gt; but has been updated
+  to work with policies introduced by &lt;max&gt; or earlier.
+
+
+-- Configuring done (0.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/daniel/Projects/Example/build
+</Log>
+		<ConfigureStatus>0</ConfigureStatus>
+		<EndDateTime>Feb 11 12:37 CET</EndDateTime>
+		<EndConfigureTime>1739273869</EndConfigureTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Configure>
+</Site>

@@ -26,7 +26,6 @@ func parseConfigure(cfg *Configure, generator string) TimedCommands {
 		Type:        model.Configure,
 		Status:      configureStatus(cfg.Status),
 		CommandLine: cfg.Command,
-		Duration:    ret.EndTime.Sub(ret.StartTime),
 		Output:      cfg.Log,
 		Diagnostics: splitCMakeOutput(cfg.Log),
 		Attributes:  map[string]string{"Generator": generator},
