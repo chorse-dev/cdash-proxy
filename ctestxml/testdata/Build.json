@@ -5,23 +5,19 @@
   "site": {
     "name": "NUC",
     "hostname": "NUC",
-    "cpu": {
-      "vendor": "GenuineIntel",
-      "vendor_id": "Intel Corporation",
-      "family_id": 6,
-      "model_id": 170,
-      "model_name": "Intel(R) Core(TM) Ultra 7 155H",
-      "logical_cpus": 22,
-      "physical_cpus": 16,
-      "cache_size": 24576,
-      "clock_frequency": 4290
-    },
-    "kernel": {
-      "name": "Linux",
-      "release": "6.13.2-arch1-1",
-      "version": "#1 SMP PREEMPT_DYNAMIC Sat, 08 Feb 2025 18:54:55 +0000",
-      "platform": "x86_64"
-    },
+    "cpu_vendor": "GenuineIntel",
+    "cpu_vendor_id": "Intel Corporation",
+    "cpu_family_id": 6,
+    "cpu_model_id": 170,
+    "cpu_model_name": "Intel(R) Core(TM) Ultra 7 155H",
+    "cpu_logical_cores": 22,
+    "cpu_physical_cores": 16,
+    "cpu_cache_size": 24576,
+    "cpu_clock_frequency": 4290,
+    "os_name": "Linux",
+    "os_release": "6.13.2-arch1-1",
+    "os_version": "#1 SMP PREEMPT_DYNAMIC Sat, 08 Feb 2025 18:54:55 +0000",
+    "os_platform": "x86_64",
     "physical_memory": 63787,
     "virtual_memory": 131071
   },

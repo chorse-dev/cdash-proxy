@@ -43,27 +43,23 @@ func parseSite(dec *xml.Decoder, elem *xml.StartElement, project string) (*model
 
 	if site.VendorString != "" {
 		job.Site = &model.Site{
-			Name: site.Name,
-			CPU: model.CPU{
-				Vendor:         site.VendorString,
-				VendorID:       site.VendorID,
-				FamilyID:       site.FamilyID,
-				ModelID:        site.ModelID,
-				ModelName:      site.ModelName,
-				LogicalCPUs:    site.NumberOfLogicalCPU,
-				PhysicalCPUs:   site.NumberOfPhysicalCPU,
-				CacheSize:      site.ProcessorCacheSize,
-				ClockFrequency: int(site.ProcessorClockFrequency),
-			},
-			Kernel: model.Kernel{
-				Name:     site.OSName,
-				Release:  site.OSRelease,
-				Version:  site.OSVersion,
-				Platform: site.OSPlatform,
-			},
-			Hostname:       site.Hostname,
-			PhysicalMemory: site.TotalPhysicalMemory,
-			VirtualMemory:  site.TotalVirtualMemory,
+			Name:              site.Name,
+			Hostname:          site.Hostname,
+			CPUVendor:         site.VendorString,
+			CPUVendorID:       site.VendorID,
+			CPUFamilyID:       site.FamilyID,
+			CPUModelID:        site.ModelID,
+			CPUModelName:      site.ModelName,
+			CPULogicalCores:   site.NumberOfLogicalCPU,
+			CPUPhysicalCores:  site.NumberOfPhysicalCPU,
+			CPUCacheSize:      site.ProcessorCacheSize,
+			CPUClockFrequency: int(site.ProcessorClockFrequency),
+			OSName:            site.OSName,
+			OSRelease:         site.OSRelease,
+			OSVersion:         site.OSVersion,
+			OSPlatform:        site.OSPlatform,
+			PhysicalMemory:    site.TotalPhysicalMemory,
+			VirtualMemory:     site.TotalVirtualMemory,
 		}
 	}
 
