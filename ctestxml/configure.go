@@ -4,7 +4,6 @@
 package ctestxml
 
 import (
-	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
@@ -14,7 +13,6 @@ import (
 )
 
 var cfgDiagRegex = regexp.MustCompile(`CMake (Deprecation Warning|Error|Warning \(dev\)|Warning) at ([^:]+):([0-9]+) \((.*)\):`)
-var cfgNameRegex = regexp.MustCompile(`"-DCMAKE_BUILD_TYPE:STRING=([^"]+)"`)
 
 func parseConfigure(cfg *Configure, generator string) TimedCommands {
 	ret := TimedCommands{
@@ -22,37 +20,17 @@ func parseConfigure(cfg *Configure, generator string) TimedCommands {
 		EndTime:   time.Unix(cfg.EndTime, 0),
 	}
 	ret.Commands = append(ret.Commands, model.Command{
-		Name:        configName(cfg.Command),
-		Type:        "Configure",
-		Status:      configureStatus(cfg.Status),
-		CommandLine: cfg.Command,
-		Output:      cfg.Log,
-		Diagnostics: splitCMakeOutput(cfg.Log),
-		Attributes:  map[string]string{"Generator": generator},
-		Measurements: map[string]float64{
-			"Execution Time": ret.EndTime.Sub(ret.StartTime).Seconds(),
-		},
+		Role:         "Configure",
+		Result:       cfg.Status,
+		CommandLine:  cfg.Command,
+		StdOut:       cfg.Log,
+		StartTime:    &ret.StartTime,
+		Duration:     ret.EndTime.Sub(ret.StartTime).Milliseconds(),
+		Diagnostics:  splitCMakeOutput(cfg.Log),
+		Attributes:   map[string]string{"Generator": generator},
+		Measurements: map[string]float64{},
 	})
 	return ret
-}
-
-// TODO: Add to CTest a way to specify and report the configuration to CDash.
-// Example: Add a CONFIGURATION argument to cmake_configure, that results in
-// "-DCMAKE_BUILD_TYPE:STRING=Debug" being passed to cmake and also adds
-// <Configure><Configuration>Debug</Configuration></Configure> to the XML
-// that can be used here instead of parsing the command line.
-func configName(cmd string) string {
-	if match := cfgNameRegex.FindStringSubmatch(cmd); match != nil {
-		return fmt.Sprintf("Configure (%s)", match[1])
-	}
-	return "Configure"
-}
-
-func configureStatus(s int) string {
-	if s == 0 {
-		return "Passed"
-	}
-	return "Failed"
 }
 
 func splitCMakeOutput(log string) []model.Diagnostic {

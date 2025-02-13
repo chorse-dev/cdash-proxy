@@ -4,6 +4,7 @@
 package ctestxml
 
 import (
+	"math"
 	"mime"
 	"strconv"
 	"strings"
@@ -14,21 +15,26 @@ import (
 )
 
 func parseTesting(tst *Testing, sub []Subproject) TimedCommands {
-	ret := TimedCommands{
+	return TimedCommands{
 		StartTime: time.Unix(tst.StartTime, 0),
 		EndTime:   time.Unix(tst.EndTime, 0),
+		Commands:  transformTests(tst.Tests, sub),
 	}
-	for _, t := range tst.Tests {
+}
+
+func transformTests(tests []Test, sub []Subproject) []model.Command {
+	return algorithm.Map(tests, func(t Test) model.Command {
 		cmd := model.Command{
-			Name:         t.Name,
-			Type:         "Test",
-			Status:       testStatus(t.Status, t.Measurements),
-			CommandLine:  t.Command,
-			Output:       t.Output.string,
-			Labels:       t.Labels,
-			Diagnostics:  parseTestOutput(t.Output.string),
-			Attributes:   map[string]string{"WorkingDirectory": t.Path},
-			Measurements: map[string]float64{},
+			TestName:         t.Name,
+			Role:             "Test",
+			TestStatus:       t.Status,
+			CommandLine:      t.Command,
+			StdOut:           t.Output.string,
+			TargetLabels:     t.Labels,
+			WorkingDirectory: t.Path,
+			Diagnostics:      parseTestOutput(t.Output.string),
+			Attributes:       map[string]string{},
+			Measurements:     map[string]float64{},
 		}
 		for _, m := range t.Measurements {
 			transformMeasurement(m, &cmd)
@@ -36,45 +42,8 @@ func parseTesting(tst *Testing, sub []Subproject) TimedCommands {
 		if p := getSubproject(sub, t.Labels); len(p) != 0 {
 			cmd.Attributes["Subproject"] = p
 		}
-		ret.Commands = append(ret.Commands, cmd)
-	}
-	return ret
-}
-
-// CTest reports NOT_RUN as "notrun", COMPLETED as "passed", and all others as "passed".
-// The actual status is reported the named measurement called "Exit Code" (search for
-// "GetTestStatus" in the CTest source code). Note that instead of OTHER_FAULT, it
-// returns the ExceptionStatus variable, which is set by the "GetExitExceptionString"
-// function and may contain to many variants to store in an enum.
-
-// enum
-// { // Program statuses
-//   NOT_RUN = 0,
-//   TIMEOUT,
-//   SEGFAULT,
-//   ILLEGAL,
-//   INTERRUPT,
-//   NUMERICAL,
-//   OTHER_FAULT,
-//   FAILED,
-//   BAD_COMMAND,
-//   COMPLETED
-// };
-
-func testStatus(s string, measurements []Measurement) string {
-	switch s {
-	case "passed":
-		return "Passed"
-
-	case "notrun":
-		if algorithm.AnyOf(measurements, isDisabled) {
-			return "Disabled"
-		}
-		return "NotRun"
-
-	default:
-		return "Failed"
-	}
+		return cmd
+	})
 }
 
 // https://cmake.org/cmake/help/latest/prop_test/ATTACHED_FILES.html
@@ -86,6 +55,12 @@ func testStatus(s string, measurements []Measurement) string {
 func transformMeasurement(m Measurement, cmd *model.Command) {
 	if m.Name == "Command Line" {
 		return // should already be in CommandLine
+	}
+
+	if m.Name == "Execution Time" {
+		sec, _ := strconv.ParseFloat(string(m.Value), 64)
+		cmd.Duration = int64(math.Round(sec * 1000))
+		return
 	}
 
 	if m.Type == "file" {
@@ -128,8 +103,4 @@ func transformMeasurement(m Measurement, cmd *model.Command) {
 
 func parseTestOutput(log string) []model.Diagnostic {
 	return []model.Diagnostic{}
-}
-
-func isDisabled(m Measurement) bool {
-	return m.Name == "Completion Status" && string(m.Value) == "Disabled"
 }

@@ -5,8 +5,6 @@ package ctestxml
 
 import (
 	"bytes"
-	"fmt"
-	"regexp"
 	"strings"
 	"time"
 
@@ -15,72 +13,42 @@ import (
 	"github.com/purpleKarrot/cdash-proxy/model"
 )
 
-var buildConfigRegex = regexp.MustCompile(`--config "([^"]+)"`)
-
 func parseBuild(build *Build) TimedCommands {
 	ret := TimedCommands{
 		StartTime: time.Unix(build.StartTime, 0),
 		EndTime:   time.Unix(build.EndTime, 0),
 	}
-	configuration := buildConfig(build.Command)
+
 	ret.Commands = append(ret.Commands, model.Command{
-		Name:        buildName("Build", configuration),
-		Type:        "Build",
-		Status:      "Passed", // TODO: "Failed" if there are 'Error's
-		CommandLine: build.Command,
-		Output:      combineOutput(build.Diagnostics),
-		Diagnostics: mapDiagnostics(build.Diagnostics),
-		Measurements: map[string]float64{
-			"Execution Time": ret.EndTime.Sub(ret.StartTime).Seconds(),
-		},
+		Role:         "Build",
+		CommandLine:  build.Command,
+		StartTime:    &ret.StartTime,
+		Duration:     ret.EndTime.Sub(ret.StartTime).Milliseconds(),
+		StdOut:       combineOutput(build.Diagnostics),
+		Diagnostics:  mapDiagnostics(build.Diagnostics),
+		Measurements: map[string]float64{},
 	})
+
 	for _, failure := range build.Failures {
 		ret.Commands = append(ret.Commands, model.Command{
-			Name:        buildName(failure.Name(), configuration),
-			Type:        "Build",
-			Status:      failure.Status(),
-			CommandLine: strings.Join(failure.Argv, " "),
-			Output:      buildparser.CleanOutput(failure.StdErr),
-			Labels:      failure.Labels,
-			Diagnostics: buildparser.ParseOutput(failure.SourceFile, failure.StdErr),
-			Attributes:  failureVariables(&failure),
+			CommandLine:      strings.Join(failure.Argv, " "),
+			Result:           failure.ExitCondition,
+			Role:             "Compile",
+			Target:           failure.Target,
+			TargetType:       failure.OutputType,
+			TargetLabels:     failure.Labels,
+			Source:           failure.SourceFile,
+			Language:         failure.Language,
+			StdOut:           buildparser.CleanOutput(failure.StdOut),
+			StdErr:           buildparser.CleanOutput(failure.StdErr),
+			Diagnostics:      buildparser.ParseOutput(failure.SourceFile, failure.StdErr),
+			Attributes:       map[string]string{},
+			WorkingDirectory: failure.WorkingDirectory,
+			// Outputs:          failure.OutputFile,
 		})
 	}
+
 	return ret
-}
-
-// TODO: Add to CTest a way to report the configuration to CDash.
-func buildConfig(cmd string) string {
-	if match := buildConfigRegex.FindStringSubmatch(cmd); match != nil {
-		return match[1]
-	}
-	return ""
-}
-
-func buildName(name, cfg string) string {
-	if cfg != "" {
-		return fmt.Sprintf("%s (%s)", name, cfg)
-	}
-	return name
-}
-
-func (f *Failure) Name() string {
-	return fmt.Sprintf("%s while building %s %s '%s' in target %s",
-		f.Type, f.Language, f.OutputType, f.OutputFile, f.Target)
-}
-
-func (f *Failure) Status() string {
-	if f.Type == "Error" {
-		return "Failed"
-	}
-	return "Passed"
-}
-
-func failureVariables(failure *Failure) map[string]string {
-	return map[string]string{
-		"SourceFile":       failure.SourceFile,
-		"WorkingDirectory": failure.WorkingDirectory,
-	}
 }
 
 func combineOutput(messages []Diagnostic) string {

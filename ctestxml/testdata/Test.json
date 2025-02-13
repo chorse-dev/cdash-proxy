@@ -25,61 +25,66 @@
   "end_test_time": "2025-02-11T12:37:50+01:00",
   "commands": [
     {
-      "name": "Failures.FPE",
-      "type": "Test",
-      "status": "Failed",
       "command_line": "/home/daniel/Projects/Example/build/Failures/fpe",
-      "output": "",
+      "result": 0,
+      "role": "Test",
+      "duration": 56,
+      "test_name": "Failures.FPE",
+      "test_status": "failed",
+      "working_directory": "./Failures",
       "attributes": {
         "Completion Status": "Completed",
         "Environment": "#CTEST_RESOURCE_GROUP_COUNT=",
         "Exit Code": "NUMERICAL",
-        "Exit Value": "0",
-        "WorkingDirectory": "./Failures"
+        "Exit Value": "0"
       },
       "measurements": {
-        "Execution Time": 0.0557437,
         "Processors": 1
       }
     },
     {
-      "name": "Failures.DIS",
-      "type": "Test",
-      "status": "Disabled",
       "command_line": "",
-      "output": "Disabled",
+      "result": 0,
+      "role": "Test",
+      "test_name": "Failures.DIS",
+      "test_status": "notrun",
+      "stdout": "Disabled",
+      "working_directory": "./Failures",
       "attributes": {
         "Completion Status": "Disabled",
-        "Environment": "",
-        "WorkingDirectory": "./Failures"
+        "Environment": ""
       },
       "measurements": {
         "Processors": 1
       }
     },
     {
-      "name": "numeric_measurement",
-      "type": "Test",
-      "status": "Passed",
       "command_line": "/home/daniel/.local/bin/cmake \"-E\" \"echo\" \"    test output\n    \u003cCTestMeasurement type=\"numeric/double\" name=\"MyCustomValue\"\u003e1.4847\u003c/CTestMeasurement\u003e\n    more output\n    \"",
-      "output": "    test output\n    \n    more output\n    \n",
+      "result": 0,
+      "role": "Test",
+      "duration": 4,
+      "test_name": "numeric_measurement",
+      "test_status": "passed",
+      "stdout": "    test output\n    \n    more output\n    \n",
+      "working_directory": "./Measurements",
       "attributes": {
         "Completion Status": "Completed",
-        "Environment": "#CTEST_RESOURCE_GROUP_COUNT=",
-        "WorkingDirectory": "./Measurements"
+        "Environment": "#CTEST_RESOURCE_GROUP_COUNT="
       },
       "measurements": {
-        "Execution Time": 0.00391,
         "MyCustomValue": 1.4847,
         "Processors": 1
       }
     },
     {
-      "name": "image_measurement",
-      "type": "Test",
-      "status": "Passed",
       "command_line": "/home/daniel/.local/bin/cmake \"-E\" \"echo\" \"    test output\n    \u003cCTestMeasurementFile name=\"TestImage\" type=\"image/png\"\u003e\" \"/home/daniel/Projects/Example/Measurements/TestImage.png\" \"\u003c/CTestMeasurementFile\u003e\n    \u003cCTestMeasurementFile name=\"ValidImage\" type=\"image/png\"\u003e\" \"/home/daniel/Projects/Example/Measurements/ValidImage.png\" \"\u003c/CTestMeasurementFile\u003e\n    \u003cCTestMeasurementFile name=\"DifferenceImage\" type=\"image/png\"\u003e\" \"/home/daniel/Projects/Example/Measurements/DifferenceImage.png\" \"\u003c/CTestMeasurementFile\u003e\n    more output\n    \"",
-      "output": "    test output\n    \n    \n    \n    more output\n    \n",
+      "result": 0,
+      "role": "Test",
+      "duration": 4,
+      "test_name": "image_measurement",
+      "test_status": "passed",
+      "stdout": "    test output\n    \n    \n    \n    more output\n    \n",
+      "working_directory": "./Measurements",
       "attached_files": [
         {
           "name": "TestImage",
@@ -102,20 +107,21 @@
       ],
       "attributes": {
         "Completion Status": "Completed",
-        "Environment": "#CTEST_RESOURCE_GROUP_COUNT=",
-        "WorkingDirectory": "./Measurements"
+        "Environment": "#CTEST_RESOURCE_GROUP_COUNT="
       },
       "measurements": {
-        "Execution Time": 0.00422663,
         "Processors": 1
       }
     },
     {
-      "name": "file_measurement",
-      "type": "Test",
-      "status": "Passed",
       "command_line": "/home/daniel/.local/bin/cmake \"-E\" \"echo\" \"    test output\n    \u003cCTestMeasurementFile name=\"CurrentListFile\" type=\"file\"\u003e\" \"/home/daniel/Projects/Example/Measurements/CMakeLists.txt\" \"\u003c/CTestMeasurementFile\u003e\n    more output\n    \"",
-      "output": "    test output\n    \n    more output\n    \n",
+      "result": 0,
+      "role": "Test",
+      "duration": 5,
+      "test_name": "file_measurement",
+      "test_status": "passed",
+      "stdout": "    test output\n    \n    more output\n    \n",
+      "working_directory": "./Measurements",
       "attached_files": [
         {
           "name": "CurrentListFile",
@@ -126,87 +132,86 @@
       ],
       "attributes": {
         "Completion Status": "Completed",
-        "Environment": "#CTEST_RESOURCE_GROUP_COUNT=",
-        "WorkingDirectory": "./Measurements"
+        "Environment": "#CTEST_RESOURCE_GROUP_COUNT="
       },
       "measurements": {
-        "Execution Time": 0.00505991,
         "Processors": 1
       }
     },
     {
-      "name": "custom_details",
-      "type": "Test",
-      "status": "Passed",
       "command_line": "/home/daniel/.local/bin/cmake \"-E\" \"echo\" \"    test output\n    \u003cCTestDetails\u003eCustomDetails\u003c/CTestDetails\u003e\n    more output\n    \"",
-      "output": "    test output\n    more output\n    \n",
+      "result": 0,
+      "role": "Test",
+      "duration": 3,
+      "test_name": "custom_details",
+      "test_status": "passed",
+      "stdout": "    test output\n    more output\n    \n",
+      "working_directory": "./Measurements",
       "attributes": {
         "Completion Status": "CustomDetails",
-        "Environment": "#CTEST_RESOURCE_GROUP_COUNT=",
-        "WorkingDirectory": "./Measurements"
+        "Environment": "#CTEST_RESOURCE_GROUP_COUNT="
       },
       "measurements": {
-        "Execution Time": 0.00312224,
         "Processors": 1
       }
     },
     {
-      "name": "Sanitize.Address",
-      "type": "Test",
-      "status": "Passed",
       "command_line": "/home/daniel/Projects/Example/build/Sanitizers/sanitizers \"asan\"",
-      "output": "",
-      "labels": [
+      "result": 0,
+      "role": "Test",
+      "target_labels": [
         "Sanitizers"
       ],
+      "duration": 1,
+      "test_name": "Sanitize.Address",
+      "test_status": "passed",
+      "working_directory": "./Sanitizers",
       "attributes": {
         "Completion Status": "Completed",
         "Environment": "#CTEST_RESOURCE_GROUP_COUNT=",
-        "Subproject": "Sanitizers",
-        "WorkingDirectory": "./Sanitizers"
+        "Subproject": "Sanitizers"
       },
       "measurements": {
-        "Execution Time": 0.000801011,
         "Processors": 1
       }
     },
     {
-      "name": "Sanitize.Memory",
-      "type": "Test",
-      "status": "Passed",
       "command_line": "/home/daniel/Projects/Example/build/Sanitizers/sanitizers \"msan\"",
-      "output": "",
-      "labels": [
+      "result": 0,
+      "role": "Test",
+      "target_labels": [
         "Sanitizers"
       ],
+      "duration": 1,
+      "test_name": "Sanitize.Memory",
+      "test_status": "passed",
+      "working_directory": "./Sanitizers",
       "attributes": {
         "Completion Status": "Completed",
         "Environment": "#CTEST_RESOURCE_GROUP_COUNT=",
-        "Subproject": "Sanitizers",
-        "WorkingDirectory": "./Sanitizers"
+        "Subproject": "Sanitizers"
       },
       "measurements": {
-        "Execution Time": 0.000519287,
         "Processors": 1
       }
     },
     {
-      "name": "Sanitize.Thread",
-      "type": "Test",
-      "status": "Passed",
       "command_line": "/home/daniel/Projects/Example/build/Sanitizers/sanitizers \"tsan\"",
-      "output": "",
-      "labels": [
+      "result": 0,
+      "role": "Test",
+      "target_labels": [
         "Sanitizers"
       ],
+      "duration": 1,
+      "test_name": "Sanitize.Thread",
+      "test_status": "passed",
+      "working_directory": "./Sanitizers",
       "attributes": {
         "Completion Status": "Completed",
         "Environment": "#CTEST_RESOURCE_GROUP_COUNT=",
-        "Subproject": "Sanitizers",
-        "WorkingDirectory": "./Sanitizers"
+        "Subproject": "Sanitizers"
       },
       "measurements": {
-        "Execution Time": 0.000894397,
         "Processors": 1
       }
     }

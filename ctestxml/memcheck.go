@@ -6,27 +6,31 @@ package ctestxml
 import (
 	"time"
 
+	"github.com/purpleKarrot/cdash-proxy/algorithm"
 	"github.com/purpleKarrot/cdash-proxy/ctestxml/memcheck"
 	"github.com/purpleKarrot/cdash-proxy/model"
 )
 
 func parseDynamicAnalysis(da *DynamicAnalysis) TimedCommands {
-	var ret TimedCommands
-	for _, t := range da.Tests {
-		ret.Commands = append(ret.Commands, model.Command{
-			Name:         t.Name,
-			Type:         "Test",
-			Status:       testStatus(t.Status, nil),
+	return TimedCommands{
+		StartTime: time.Unix(da.StartTime, 0),
+		EndTime:   time.Unix(da.EndTime, 0),
+		Commands:  transformTestsDA(da),
+	}
+}
+
+func transformTestsDA(da *DynamicAnalysis) []model.Command {
+	return algorithm.Map(da.Tests, func(t DynamicAnalysisTest) model.Command {
+		return model.Command{
+			TestName:     t.Name,
+			Role:         "Test",
+			TestStatus:   t.Status,
 			CommandLine:  t.CommandLine,
-			Output:       t.Log.string,
+			StdOut:       t.Log.string,
 			Diagnostics:  memcheck.Parse(da.Checker, t.Log.string),
 			Attributes:   map[string]string{"DA Checker": da.Checker},
-			Measurements: memcheckParseDefects(t.Defects),
-		})
-	}
-	ret.StartTime = time.Unix(da.StartTime, 0)
-	ret.EndTime = time.Unix(da.EndTime, 0)
-	return ret
+			Measurements: memcheckParseDefects(t.Defects)}
+	})
 }
 
 func memcheckParseDefects(defects []DynamicAnalysisDefect) map[string]float64 {
