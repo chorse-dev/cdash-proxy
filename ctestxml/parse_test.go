@@ -9,11 +9,13 @@ import (
 	"path/filepath"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/google/go-cmp/cmp"
 )
 
 func TestXMLToJSONConversion(t *testing.T) {
+	time.Local = time.UTC
 	dir := "./testdata"
 
 	xmlFiles, err := filepath.Glob(filepath.Join(dir, "*.xml"))

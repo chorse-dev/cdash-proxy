@@ -21,8 +21,8 @@
     "physical_memory": 63787,
     "virtual_memory": 131071
   },
-  "start_test_time": "2025-02-11T12:37:49+01:00",
-  "end_test_time": "2025-02-11T12:37:50+01:00",
+  "start_test_time": "2025-02-11T11:37:49Z",
+  "end_test_time": "2025-02-11T11:37:50Z",
   "commands": [
     {
       "command_line": "/home/daniel/Projects/Example/build/Failures/fpe",
