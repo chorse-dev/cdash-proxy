@@ -26,7 +26,7 @@ func transformTests(tests []Test, sub []Subproject) []model.Command {
 	return algorithm.Map(tests, func(t Test) model.Command {
 		cmd := model.Command{
 			TestName:         t.Name,
-			Role:             "Test",
+			Role:             "test",
 			TestStatus:       t.Status,
 			CommandLine:      t.Command,
 			StdOut:           t.Output.string,

@@ -20,7 +20,7 @@ func parseBuild(build *Build) TimedCommands {
 	}
 
 	ret.Commands = append(ret.Commands, model.Command{
-		Role:         "Build",
+		Role:         "build",
 		CommandLine:  build.Command,
 		StartTime:    &ret.StartTime,
 		Duration:     ret.EndTime.Sub(ret.StartTime).Milliseconds(),
@@ -33,7 +33,7 @@ func parseBuild(build *Build) TimedCommands {
 		ret.Commands = append(ret.Commands, model.Command{
 			CommandLine:      strings.Join(failure.Argv, " "),
 			Result:           failure.ExitCondition,
-			Role:             "Compile",
+			Role:             "compile",
 			Target:           failure.Target,
 			TargetType:       failure.OutputType,
 			TargetLabels:     failure.Labels,

@@ -20,7 +20,7 @@ func parseConfigure(cfg *Configure, generator string) TimedCommands {
 		EndTime:   time.Unix(cfg.EndTime, 0),
 	}
 	ret.Commands = append(ret.Commands, model.Command{
-		Role:         "Configure",
+		Role:         "configure",
 		Result:       cfg.Status,
 		CommandLine:  cfg.Command,
 		StdOut:       cfg.Log,

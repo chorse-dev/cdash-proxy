@@ -23,7 +23,7 @@ func transformTestsDA(da *DynamicAnalysis) []model.Command {
 	return algorithm.Map(da.Tests, func(t DynamicAnalysisTest) model.Command {
 		return model.Command{
 			TestName:     t.Name,
-			Role:         "Test",
+			Role:         "test",
 			TestStatus:   t.Status,
 			CommandLine:  t.CommandLine,
 			StdOut:       t.Log.string,

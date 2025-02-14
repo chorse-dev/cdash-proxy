@@ -27,7 +27,7 @@
     {
       "command_line": "/home/daniel/Projects/Example/build/Failures/fpe",
       "result": 0,
-      "role": "Test",
+      "role": "test",
       "duration": 56,
       "test_name": "Failures.FPE",
       "test_status": "failed",
@@ -45,7 +45,7 @@
     {
       "command_line": "",
       "result": 0,
-      "role": "Test",
+      "role": "test",
       "test_name": "Failures.DIS",
       "test_status": "notrun",
       "stdout": "Disabled",
@@ -61,7 +61,7 @@
     {
       "command_line": "/home/daniel/.local/bin/cmake \"-E\" \"echo\" \"    test output\n    \u003cCTestMeasurement type=\"numeric/double\" name=\"MyCustomValue\"\u003e1.4847\u003c/CTestMeasurement\u003e\n    more output\n    \"",
       "result": 0,
-      "role": "Test",
+      "role": "test",
       "duration": 4,
       "test_name": "numeric_measurement",
       "test_status": "passed",
@@ -79,7 +79,7 @@
     {
       "command_line": "/home/daniel/.local/bin/cmake \"-E\" \"echo\" \"    test output\n    \u003cCTestMeasurementFile name=\"TestImage\" type=\"image/png\"\u003e\" \"/home/daniel/Projects/Example/Measurements/TestImage.png\" \"\u003c/CTestMeasurementFile\u003e\n    \u003cCTestMeasurementFile name=\"ValidImage\" type=\"image/png\"\u003e\" \"/home/daniel/Projects/Example/Measurements/ValidImage.png\" \"\u003c/CTestMeasurementFile\u003e\n    \u003cCTestMeasurementFile name=\"DifferenceImage\" type=\"image/png\"\u003e\" \"/home/daniel/Projects/Example/Measurements/DifferenceImage.png\" \"\u003c/CTestMeasurementFile\u003e\n    more output\n    \"",
       "result": 0,
-      "role": "Test",
+      "role": "test",
       "duration": 4,
       "test_name": "image_measurement",
       "test_status": "passed",
@@ -116,7 +116,7 @@
     {
       "command_line": "/home/daniel/.local/bin/cmake \"-E\" \"echo\" \"    test output\n    \u003cCTestMeasurementFile name=\"CurrentListFile\" type=\"file\"\u003e\" \"/home/daniel/Projects/Example/Measurements/CMakeLists.txt\" \"\u003c/CTestMeasurementFile\u003e\n    more output\n    \"",
       "result": 0,
-      "role": "Test",
+      "role": "test",
       "duration": 5,
       "test_name": "file_measurement",
       "test_status": "passed",
@@ -141,7 +141,7 @@
     {
       "command_line": "/home/daniel/.local/bin/cmake \"-E\" \"echo\" \"    test output\n    \u003cCTestDetails\u003eCustomDetails\u003c/CTestDetails\u003e\n    more output\n    \"",
       "result": 0,
-      "role": "Test",
+      "role": "test",
       "duration": 3,
       "test_name": "custom_details",
       "test_status": "passed",
@@ -158,7 +158,7 @@
     {
       "command_line": "/home/daniel/Projects/Example/build/Sanitizers/sanitizers \"asan\"",
       "result": 0,
-      "role": "Test",
+      "role": "test",
       "target_labels": [
         "Sanitizers"
       ],
@@ -178,7 +178,7 @@
     {
       "command_line": "/home/daniel/Projects/Example/build/Sanitizers/sanitizers \"msan\"",
       "result": 0,
-      "role": "Test",
+      "role": "test",
       "target_labels": [
         "Sanitizers"
       ],
@@ -198,7 +198,7 @@
     {
       "command_line": "/home/daniel/Projects/Example/build/Sanitizers/sanitizers \"tsan\"",
       "result": 0,
-      "role": "Test",
+      "role": "test",
       "target_labels": [
         "Sanitizers"
       ],
