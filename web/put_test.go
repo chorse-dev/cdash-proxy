@@ -15,13 +15,19 @@ import (
 	"github.com/purpleKarrot/cdash-proxy/model"
 )
 
+var serveOK = Serve(func(ctx context.Context, job *model.Job) error {
+	return nil
+})
+
+var serveError = Serve(func(ctx context.Context, job *model.Job) error {
+	return errors.New("test error")
+})
+
 func TestPutGcovTarOK(t *testing.T) {
 	file, _ := os.Open("../gcovtar/testdata/gcov.tbz2")
 	w := httptest.NewRecorder()
 	r := httptest.NewRequest(http.MethodPut, "/submit?type=GcovTar", file)
-	Put(w, r, func(ctx context.Context, job *model.Job) error {
-		return nil
-	})
+	serveOK(w, r)
 	res := w.Result()
 	defer res.Body.Close()
 	body, err := io.ReadAll(res.Body)
@@ -37,9 +43,7 @@ func TestPutGcovTarError(t *testing.T) {
 	file, _ := os.Open("../gcovtar/testdata/gcov.tbz2")
 	w := httptest.NewRecorder()
 	r := httptest.NewRequest(http.MethodPut, "/submit?type=GcovTar", file)
-	Put(w, r, func(ctx context.Context, job *model.Job) error {
-		return errors.New("test error")
-	})
+	serveError(w, r)
 	res := w.Result()
 	defer res.Body.Close()
 	body, err := io.ReadAll(res.Body)
@@ -55,9 +59,7 @@ func TestPutXmlOK(t *testing.T) {
 	file, _ := os.Open("../ctestxml/testdata/Configure.xml")
 	w := httptest.NewRecorder()
 	r := httptest.NewRequest(http.MethodPut, "/submit?project=Example&FileName=Configure.xml", file)
-	Put(w, r, func(ctx context.Context, job *model.Job) error {
-		return nil
-	})
+	serveOK(w, r)
 	res := w.Result()
 	defer res.Body.Close()
 	body, err := io.ReadAll(res.Body)
@@ -73,9 +75,7 @@ func TestPutXmlError(t *testing.T) {
 	file, _ := os.Open("../ctestxml/testdata/Configure.xml")
 	w := httptest.NewRecorder()
 	r := httptest.NewRequest(http.MethodPut, "/submit?project=Example&FileName=Configure.xml", file)
-	Put(w, r, func(ctx context.Context, job *model.Job) error {
-		return errors.New("test error")
-	})
+	serveError(w, r)
 	res := w.Result()
 	defer res.Body.Close()
 	body, err := io.ReadAll(res.Body)
