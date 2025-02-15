@@ -56,10 +56,17 @@ func splitCMakeOutput(log string) []model.Diagnostic {
 				FilePath: match[2],
 				Line:     linenr,
 				Column:   -1,
-				Type:     parseDiagnosticType(match[1]),
+				Type:     cmakeDiagnosticType(match[1]),
 				Option:   match[4],
 			}
 		}
 	}
 	return diags
+}
+
+func cmakeDiagnosticType(s string) string {
+	if s == "Error" {
+		return "Error"
+	}
+	return "Warning"
 }

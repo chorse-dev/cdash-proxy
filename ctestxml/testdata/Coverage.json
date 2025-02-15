@@ -1,0 +1,60 @@
+{
+  "job_id": "b4d5d7ce06fd51ce3f89396af34f5af1",
+  "project": "Example",
+  "build_name": "Coverage",
+  "site": {
+    "name": "NUC",
+    "hostname": "NUC",
+    "cpu_vendor": "GenuineIntel",
+    "cpu_vendor_id": "Intel Corporation",
+    "cpu_family_id": 6,
+    "cpu_model_id": 170,
+    "cpu_model_name": "Intel(R) Core(TM) Ultra 7 155H",
+    "cpu_logical_cores": 22,
+    "cpu_physical_cores": 16,
+    "cpu_cache_size": 24576,
+    "cpu_clock_frequency": 1998,
+    "os_name": "Linux",
+    "os_release": "6.13.2-arch1-1",
+    "os_version": "#1 SMP PREEMPT_DYNAMIC Sat, 08 Feb 2025 18:54:55 +0000",
+    "os_platform": "x86_64",
+    "physical_memory": 63787,
+    "virtual_memory": 131071
+  },
+  "start_coverage_time": "2025-02-15T21:16:39Z",
+  "end_coverage_time": "2025-02-15T21:16:39Z",
+  "coverage": [
+    {
+      "file_path": "Sanitizers/asan.c",
+      "lines_tested": 4,
+      "lines_untested": 0,
+      "labels": [
+        "Sanitizers"
+      ]
+    },
+    {
+      "file_path": "Sanitizers/msan.c",
+      "lines_tested": 5,
+      "lines_untested": 1,
+      "labels": [
+        "Sanitizers"
+      ]
+    },
+    {
+      "file_path": "Sanitizers/tsan.c",
+      "lines_tested": 12,
+      "lines_untested": 0,
+      "labels": [
+        "Sanitizers"
+      ]
+    },
+    {
+      "file_path": "Sanitizers/main.c",
+      "lines_tested": 35,
+      "lines_untested": 50,
+      "labels": [
+        "Sanitizers"
+      ]
+    }
+  ]
+}

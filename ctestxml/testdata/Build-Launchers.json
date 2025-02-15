@@ -1,0 +1,71 @@
+{
+  "job_id": "f01628bb2fb6440249deeca4d244bd32",
+  "project": "Example",
+  "build_name": "Launchers",
+  "site": {
+    "name": "NUC",
+    "hostname": "NUC",
+    "cpu_vendor": "GenuineIntel",
+    "cpu_vendor_id": "Intel Corporation",
+    "cpu_family_id": 6,
+    "cpu_model_id": 170,
+    "cpu_model_name": "Intel(R) Core(TM) Ultra 7 155H",
+    "cpu_logical_cores": 22,
+    "cpu_physical_cores": 16,
+    "cpu_cache_size": 24576,
+    "cpu_clock_frequency": 2000,
+    "os_name": "Linux",
+    "os_release": "6.13.2-arch1-1",
+    "os_version": "#1 SMP PREEMPT_DYNAMIC Sat, 08 Feb 2025 18:54:55 +0000",
+    "os_platform": "x86_64",
+    "physical_memory": 63787,
+    "virtual_memory": 131071
+  },
+  "start_build_time": "2025-02-15T21:42:10Z",
+  "end_build_time": "2025-02-15T21:42:10Z",
+  "commands": [
+    {
+      "command_line": "/home/daniel/.local/bin/cmake --build . --config \"Debug\"",
+      "result": 0,
+      "role": "build",
+      "start_time": "2025-02-15T21:42:10Z"
+    },
+    {
+      "command_line": "/usr/bin/cc -g -Wall -Wextra -MD -MT Failures/CMakeFiles/fpe.dir/fpe.c.o -MF CMakeFiles/fpe.dir/fpe.c.o.d -o CMakeFiles/fpe.dir/fpe.c.o -c /home/daniel/Projects/Example/Failures/fpe.c",
+      "result": 0,
+      "role": "compile",
+      "target": "fpe",
+      "target_type": "object file",
+      "source": "Failures/fpe.c",
+      "language": "C",
+      "stderr": "/home/daniel/Projects/Example/Failures/fpe.c: In function ‘main’:\n/home/daniel/Projects/Example/Failures/fpe.c:10:20: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘double’ [-Wformat=]\n   10 |   printf(\"Result: %d\\n\", result);\n      |                   ~^     ~~~~~~\n      |                    |     |\n      |                    int   double\n      |                   %f\n/home/daniel/Projects/Example/Failures/fpe.c:14:29: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘double’ [-Wformat=]\n   14 |     printf(\"Safe division: %d\\n\", result);\n      |                            ~^     ~~~~~~\n      |                             |     |\n      |                             int   double\n      |                            %f\n/home/daniel/Projects/Example/Failures/fpe.c:7:7: warning: unused variable ‘unusedVar’ [-Wunused-variable]\n    7 |   int unusedVar = 10;\n      |       ^~~~~~~~~",
+      "working_directory": "/home/daniel/Projects/Example/build/Failures",
+      "diagnostics": [
+        {
+          "file_path": "Failures/fpe.c",
+          "line": 10,
+          "column": 20,
+          "type": "Warning",
+          "message": "format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘double’",
+          "option": "-Wformat="
+        },
+        {
+          "file_path": "Failures/fpe.c",
+          "line": 14,
+          "column": 29,
+          "type": "Warning",
+          "message": "format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘double’",
+          "option": "-Wformat="
+        },
+        {
+          "file_path": "Failures/fpe.c",
+          "line": 7,
+          "column": 7,
+          "type": "Warning",
+          "message": "unused variable ‘unusedVar’",
+          "option": "-Wunused-variable"
+        }
+      ]
+    }
+  ]
+}

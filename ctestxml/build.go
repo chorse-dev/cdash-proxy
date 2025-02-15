@@ -64,20 +64,8 @@ func combineOutput(messages []Diagnostic) string {
 
 func mapDiagnostics(messages []Diagnostic) []model.Diagnostic {
 	return algorithm.Map(messages, func(e Diagnostic) model.Diagnostic {
-		return model.Diagnostic{
-			FilePath: e.SourceFile,
-			Line:     e.SourceLine,
-			Column:   -1,
-			Type:     parseDiagnosticType(e.XMLName.Local),
-			Message:  e.Text,
-			Option:   "",
-		}
+		diag := buildparser.ParseDiagnostic(e.SourceFile, e.XMLName.Local, e.Text)
+		diag.Line = e.SourceLine
+		return diag
 	})
-}
-
-func parseDiagnosticType(s string) string {
-	if s == "Error" {
-		return "Error"
-	}
-	return "Warning"
 }

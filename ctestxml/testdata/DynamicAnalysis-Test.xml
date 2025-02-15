@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Valgrind"
+	BuildStamp="20250215-2134-Experimental"
+	Name="NUC"
+	Generator="ctest-4.0.20250213-g7cd1750"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="Linux"
+	Hostname="NUC"
+	OSRelease="6.13.2-arch1-1"
+	OSVersion="#1 SMP PREEMPT_DYNAMIC Sat, 08 Feb 2025 18:54:55 +0000"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="170"
+	ModelName="Intel(R) Core(TM) Ultra 7 155H"
+	ProcessorCacheSize="24576"
+	NumberOfLogicalCPU="22"
+	NumberOfPhysicalCPU="16"
+	TotalVirtualMemory="131071"
+	TotalPhysicalMemory="63787"
+	LogicalProcessorsPerPhysical="1"
+	ProcessorClockFrequency="1995.7"
+	>
+	<Subproject name="Sanitizers">
+		<Label>Sanitizers</Label>
+	</Subproject>
+	<Testing>
+		<StartDateTime>Feb 15 22:34 CET</StartDateTime>
+		<StartTestTime>1739655275</StartTestTime>
+		<TestList>
+			<Test>./Failures/Failures.FPE</Test>
+			<Test>./Failures/Failures.DIS</Test>
+			<Test>./Sanitizers/Sanitize.Address</Test>
+			<Test>./Sanitizers/Sanitize.Memory</Test>
+			<Test>./Sanitizers/Sanitize.Thread</Test>
+		</TestList>
+		<Test Status="failed">
+			<Name>Failures.FPE</Name>
+			<Path>./Failures</Path>
+			<FullName>./Failures/Failures.FPE</FullName>
+			<FullCommandLine>/usr/bin/valgrind "--log-file=/home/daniel/Projects/Example/build/Testing/Temporary/MemoryChecker.1.log" "-q" "--tool=memcheck" "--leak-check=yes" "--show-reachable=yes" "--num-callers=50" "/home/daniel/Projects/Example/build/Failures/fpe"</FullCommandLine>
+			<Results>
+				<NamedMeasurement type="text/string" name="Exit Code">
+					<Value>NUMERICAL</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Exit Value">
+					<Value>0</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Execution Time">
+					<Value>2.40873</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Processors">
+					<Value>1</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Completion Status">
+					<Value>Completed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Command Line">
+					<Value>/usr/bin/valgrind "--log-file=/home/daniel/Projects/Example/build/Testing/Temporary/MemoryChecker.1.log" "-q" "--tool=memcheck" "--leak-check=yes" "--show-reachable=yes" "--num-callers=50" "/home/daniel/Projects/Example/build/Failures/fpe"</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Environment">
+					<Value>#CTEST_RESOURCE_GROUP_COUNT=</Value>
+				</NamedMeasurement>
+				<Measurement>
+					<Value>==27305== 
+==27305== Process terminating with default action of signal 8 (SIGFPE): dumping core
+==27305==  Integer divide by zero at address 0x1002E79BE7
+==27305==    at 0x10915A: main (fpe.c:9)
+</Value>
+				</Measurement>
+			</Results>
+		</Test>
+		<Test Status="notrun">
+			<Name>Failures.DIS</Name>
+			<Path>./Failures</Path>
+			<FullName>./Failures/Failures.DIS</FullName>
+			<FullCommandLine></FullCommandLine>
+			<Results>
+				<NamedMeasurement type="numeric/double" name="Processors">
+					<Value>1</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Completion Status">
+					<Value>Disabled</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Command Line">
+					<Value></Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Environment">
+					<Value></Value>
+				</NamedMeasurement>
+				<Measurement>
+					<Value>Disabled</Value>
+				</Measurement>
+			</Results>
+		</Test>
+		<Test Status="passed">
+			<Name>Sanitize.Address</Name>
+			<Path>./Sanitizers</Path>
+			<FullName>./Sanitizers/Sanitize.Address</FullName>
+			<FullCommandLine>/usr/bin/valgrind "--log-file=/home/daniel/Projects/Example/build/Testing/Temporary/MemoryChecker.3.log" "-q" "--tool=memcheck" "--leak-check=yes" "--show-reachable=yes" "--num-callers=50" "/home/daniel/Projects/Example/build/Sanitizers/sanitizers" "asan"</FullCommandLine>
+			<Results>
+				<NamedMeasurement type="numeric/double" name="Execution Time">
+					<Value>0.495065</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Processors">
+					<Value>1</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Completion Status">
+					<Value>Completed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Command Line">
+					<Value>/usr/bin/valgrind "--log-file=/home/daniel/Projects/Example/build/Testing/Temporary/MemoryChecker.3.log" "-q" "--tool=memcheck" "--leak-check=yes" "--show-reachable=yes" "--num-callers=50" "/home/daniel/Projects/Example/build/Sanitizers/sanitizers" "asan"</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Environment">
+					<Value>#CTEST_RESOURCE_GROUP_COUNT=</Value>
+				</NamedMeasurement>
+				<Measurement>
+					<Value>==27320== Invalid read of size 1
+==27320==    at 0x10986F: asan (asan.c:7)
+==27320==    by 0x10979D: main (main.c:201)
+==27320==  Address 0x4a650e5 is 5 bytes inside a block of size 80 free'd
+==27320==    at 0x48488EF: free (vg_replace_malloc.c:989)
+==27320==    by 0x109866: asan (asan.c:6)
+==27320==    by 0x10979D: main (main.c:201)
+==27320==  Block was alloc'd at
+==27320==    at 0x484CC13: calloc (vg_replace_malloc.c:1675)
+==27320==    by 0x109856: asan (asan.c:5)
+==27320==    by 0x10979D: main (main.c:201)
+==27320== 
+</Value>
+				</Measurement>
+			</Results>
+			<Labels>
+				<Label>Sanitizers</Label>
+			</Labels>
+		</Test>
+		<Test Status="passed">
+			<Name>Sanitize.Memory</Name>
+			<Path>./Sanitizers</Path>
+			<FullName>./Sanitizers/Sanitize.Memory</FullName>
+			<FullCommandLine>/usr/bin/valgrind "--log-file=/home/daniel/Projects/Example/build/Testing/Temporary/MemoryChecker.4.log" "-q" "--tool=memcheck" "--leak-check=yes" "--show-reachable=yes" "--num-callers=50" "/home/daniel/Projects/Example/build/Sanitizers/sanitizers" "msan"</FullCommandLine>
+			<Results>
+				<NamedMeasurement type="numeric/double" name="Execution Time">
+					<Value>0.303442</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Processors">
+					<Value>1</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Completion Status">
+					<Value>Completed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Command Line">
+					<Value>/usr/bin/valgrind "--log-file=/home/daniel/Projects/Example/build/Testing/Temporary/MemoryChecker.4.log" "-q" "--tool=memcheck" "--leak-check=yes" "--show-reachable=yes" "--num-callers=50" "/home/daniel/Projects/Example/build/Sanitizers/sanitizers" "msan"</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Environment">
+					<Value>#CTEST_RESOURCE_GROUP_COUNT=</Value>
+				</NamedMeasurement>
+				<Measurement>
+					<Value>==27332== Conditional jump or move depends on uninitialised value(s)
+==27332==    at 0x1098B1: msan (msan.c:8)
+==27332==    by 0x10979D: main (main.c:201)
+==27332== 
+==27332== 80 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==27332==    at 0x48457A8: malloc (vg_replace_malloc.c:446)
+==27332==    by 0x10988F: msan (msan.c:6)
+==27332==    by 0x10979D: main (main.c:201)
+==27332== 
+</Value>
+				</Measurement>
+			</Results>
+			<Labels>
+				<Label>Sanitizers</Label>
+			</Labels>
+		</Test>
+		<Test Status="passed">
+			<Name>Sanitize.Thread</Name>
+			<Path>./Sanitizers</Path>
+			<FullName>./Sanitizers/Sanitize.Thread</FullName>
+			<FullCommandLine>/usr/bin/valgrind "--log-file=/home/daniel/Projects/Example/build/Testing/Temporary/MemoryChecker.5.log" "-q" "--tool=memcheck" "--leak-check=yes" "--show-reachable=yes" "--num-callers=50" "/home/daniel/Projects/Example/build/Sanitizers/sanitizers" "tsan"</FullCommandLine>
+			<Results>
+				<NamedMeasurement type="numeric/double" name="Execution Time">
+					<Value>0.44724</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Processors">
+					<Value>1</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Completion Status">
+					<Value>Completed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Command Line">
+					<Value>/usr/bin/valgrind "--log-file=/home/daniel/Projects/Example/build/Testing/Temporary/MemoryChecker.5.log" "-q" "--tool=memcheck" "--leak-check=yes" "--show-reachable=yes" "--num-callers=50" "/home/daniel/Projects/Example/build/Sanitizers/sanitizers" "tsan"</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Environment">
+					<Value>#CTEST_RESOURCE_GROUP_COUNT=</Value>
+				</NamedMeasurement>
+				<Measurement>
+					<Value></Value>
+				</Measurement>
+			</Results>
+			<Labels>
+				<Label>Sanitizers</Label>
+			</Labels>
+		</Test>
+		<EndDateTime>Feb 15 22:34 CET</EndDateTime>
+		<EndTestTime>1739655279</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Valgrind"
+	BuildStamp="20250215-2134-Experimental"
+	Name="NUC"
+	Generator="ctest-4.0.20250213-g7cd1750"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="Linux"
+	Hostname="NUC"
+	OSRelease="6.13.2-arch1-1"
+	OSVersion="#1 SMP PREEMPT_DYNAMIC Sat, 08 Feb 2025 18:54:55 +0000"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="170"
+	ModelName="Intel(R) Core(TM) Ultra 7 155H"
+	ProcessorCacheSize="24576"
+	NumberOfLogicalCPU="22"
+	NumberOfPhysicalCPU="16"
+	TotalVirtualMemory="131071"
+	TotalPhysicalMemory="63787"
+	LogicalProcessorsPerPhysical="1"
+	ProcessorClockFrequency="1995.7"
+	>
+	<Subproject name="Sanitizers">
+		<Label>Sanitizers</Label>
+	</Subproject>
+	<DynamicAnalysis Checker="Valgrind">
+		<StartDateTime>Feb 15 22:34 CET</StartDateTime>
+		<StartTestTime>1739655275</StartTestTime>
+		<TestList>
+			<Test>./Failures/Failures.FPE</Test>
+			<Test>./Failures/Failures.DIS</Test>
+			<Test>./Sanitizers/Sanitize.Address</Test>
+			<Test>./Sanitizers/Sanitize.Memory</Test>
+			<Test>./Sanitizers/Sanitize.Thread</Test>
+		</TestList>
+		<Test Status="failed">
+			<Name>Failures.FPE</Name>
+			<Path>./Failures</Path>
+			<FullName>./Failures/Failures.FPE</FullName>
+			<FullCommandLine>/usr/bin/valgrind "--log-file=/home/daniel/Projects/Example/build/Testing/Temporary/MemoryChecker.1.log" "-q" "--tool=memcheck" "--leak-check=yes" "--show-reachable=yes" "--num-callers=50" "/home/daniel/Projects/Example/build/Failures/fpe"</FullCommandLine>
+			<Results/>
+			<Log compression="gzip" encoding="base64">eJxNjcsKgzAURPd+xSx1U6JFrEIWLdjiTugXpOZqL2giMfb19W02xd3AzDkjZVbsRS4lIvmPrbMdLQs8uYmN8mwGPNnfoalX6+ihOs/WwPZYeDBqxAHxtbmc2zqpoNdpDkRnHW2kaIyngRw0P1gTbm98yFmon05rF/7EKxUiq4vyVBdbEmEUyjLNjxUmxQZxP9Ouq8ok+gL2CjoS====</Log>
+		</Test>
+		<Test Status="notrun">
+			<Name>Failures.DIS</Name>
+			<Path>./Failures</Path>
+			<FullName>./Failures/Failures.DIS</FullName>
+			<FullCommandLine></FullCommandLine>
+			<Results/>
+			<Log compression="gzip" encoding="base64">eJxzySxOTMpJTeECABC7AyM=</Log>
+		</Test>
+		<Test Status="passed">
+			<Name>Sanitize.Address</Name>
+			<Path>./Sanitizers</Path>
+			<FullName>./Sanitizers/Sanitize.Address</FullName>
+			<FullCommandLine>/usr/bin/valgrind "--log-file=/home/daniel/Projects/Example/build/Testing/Temporary/MemoryChecker.3.log" "-q" "--tool=memcheck" "--leak-check=yes" "--show-reachable=yes" "--num-callers=50" "/home/daniel/Projects/Example/build/Sanitizers/sanitizers" "asan"</FullCommandLine>
+			<Results>
+				<Defect type="Uninitialized Memory Read">1</Defect>
+			</Results>
+			<Log compression="gzip" encoding="base64">eJydz8FLwzAUx/H7/orfbdtFk65J07IOdCp48CJ4Hq/N2wh2nTRjU/960wrKRstgObzTl5fPmxeLt5fX+W2xQJ5HySwSeY7n+kCVs2iYLHZrePfNkKP/IDzaQ3xKkRr9lIE81Zi086bMkulpWXz9lkn6kGFLLpTtDGUk5El7Z23D3oc8Jq0EKzgPFRbs2cPV3lkGoah25fsfywisG+ax7eHFJjbmMfjaApPDZtXwR0Ulr7ZUhS2BkJp0gGu0PjtMX33YfUc+kkf379gGX793uZSzDGWX9YulTtQQWZ2Th8qL5NEPTL+QEg==</Log>
+			<Labels>
+				<Label>Sanitizers</Label>
+			</Labels>
+		</Test>
+		<Test Status="passed">
+			<Name>Sanitize.Memory</Name>
+			<Path>./Sanitizers</Path>
+			<FullName>./Sanitizers/Sanitize.Memory</FullName>
+			<FullCommandLine>/usr/bin/valgrind "--log-file=/home/daniel/Projects/Example/build/Testing/Temporary/MemoryChecker.4.log" "-q" "--tool=memcheck" "--leak-check=yes" "--show-reachable=yes" "--num-callers=50" "/home/daniel/Projects/Example/build/Sanitizers/sanitizers" "msan"</FullCommandLine>
+			<Results>
+				<Defect type="Memory Leak">1</Defect>
+				<Defect type="Uninitialized Memory Conditional">1</Defect>
+			</Results>
+			<Log compression="gzip" encoding="base64">eJyFj7FOwzAQhvc+xY1hgTgNxK2SSFDEAh2ZKzu+VgbHF9lJRN+eszqAIio8nKXz51/fX+v2fb+r73QLTVNU63XRNLAjb+xoySsHH1M/AAXoaUYwOKA3EcjD5K1nRjkb0cCs3IRZvFn9hPBRI+RfIt/IJ7GFPioPWZq33VYuSH2+kNXmmUllE8mTySIXv9lVrdv92+tCWOacMGIE/ihAO+o+I6iQhI9JE90ZHMUxvfMdIWBHwTBLRxB/SJeyvK8eZXJxnAbZfDoEHJzq8HBZsVpZPlypIeXLovA18v/C31RFdWQ=</Log>
+			<Labels>
+				<Label>Sanitizers</Label>
+			</Labels>
+		</Test>
+		<DefectList>
+			<Defect Type="Memory Leak"/>
+			<Defect Type="Uninitialized Memory Conditional"/>
+			<Defect Type="Uninitialized Memory Read"/>
+		</DefectList>
+		<EndDateTime>Feb 15 22:34 CET</EndDateTime>
+		<EndTestTime>1739655279</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</DynamicAnalysis>
+</Site>

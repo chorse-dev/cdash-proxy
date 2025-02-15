@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Coverage"
+	BuildStamp="20250215-2116-Experimental"
+	Name="NUC"
+	Generator="ctest-4.0.20250213-g7cd1750"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="Linux"
+	Hostname="NUC"
+	OSRelease="6.13.2-arch1-1"
+	OSVersion="#1 SMP PREEMPT_DYNAMIC Sat, 08 Feb 2025 18:54:55 +0000"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="170"
+	ModelName="Intel(R) Core(TM) Ultra 7 155H"
+	ProcessorCacheSize="24576"
+	NumberOfLogicalCPU="22"
+	NumberOfPhysicalCPU="16"
+	TotalVirtualMemory="131071"
+	TotalPhysicalMemory="63787"
+	LogicalProcessorsPerPhysical="1"
+	ProcessorClockFrequency="1998.77"
+	>
+	<CoverageLog>
+		<StartDateTime>Feb 15 22:16 CET</StartDateTime>
+		<StartTime>1739654199</StartTime>
+		<File Name="asan.c" FullPath="./Sanitizers/asan.c">
+			<Report>
+				<Line Number="0" Count="-1">#include &lt;stdlib.h&gt;</Line>
+				<Line Number="1" Count="-1"></Line>
+				<Line Number="2" Count="1">int asan(int argc, char* argv[])</Line>
+				<Line Number="3" Count="-1">{</Line>
+				<Line Number="4" Count="1">  char* x = calloc(10, sizeof(char*));</Line>
+				<Line Number="5" Count="1">  free(x);</Line>
+				<Line Number="6" Count="1">  return x[5];</Line>
+				<Line Number="7" Count="-1">}</Line>
+			</Report>
+		</File>
+		<File Name="msan.c" FullPath="./Sanitizers/msan.c">
+			<Report>
+				<Line Number="0" Count="-1">#include &lt;stdio.h&gt;</Line>
+				<Line Number="1" Count="-1">#include &lt;stdlib.h&gt;</Line>
+				<Line Number="2" Count="-1"></Line>
+				<Line Number="3" Count="1">int msan(int argc, char* argv[])</Line>
+				<Line Number="4" Count="-1">{</Line>
+				<Line Number="5" Count="1">  char* a = malloc(10 * sizeof(char*));</Line>
+				<Line Number="6" Count="1">  a[5] = 0;</Line>
+				<Line Number="7" Count="1">  if (a[argc])</Line>
+				<Line Number="8" Count="0">    printf("xx\n");</Line>
+				<Line Number="9" Count="1">  return 0;</Line>
+				<Line Number="10" Count="-1">}</Line>
+			</Report>
+		</File>
+		<File Name="tsan.c" FullPath="./Sanitizers/tsan.c">
+			<Report>
+				<Line Number="0" Count="-1">#include &lt;pthread.h&gt;</Line>
+				<Line Number="1" Count="-1">#include &lt;stdio.h&gt;</Line>
+				<Line Number="2" Count="-1"></Line>
+				<Line Number="3" Count="-1">static int Global;</Line>
+				<Line Number="4" Count="-1"></Line>
+				<Line Number="5" Count="1">static void* Thread1(void* x)</Line>
+				<Line Number="6" Count="-1">{</Line>
+				<Line Number="7" Count="1">  Global++;</Line>
+				<Line Number="8" Count="1">  return NULL;</Line>
+				<Line Number="9" Count="-1">}</Line>
+				<Line Number="10" Count="-1"></Line>
+				<Line Number="11" Count="1">static void* Thread2(void* x)</Line>
+				<Line Number="12" Count="-1">{</Line>
+				<Line Number="13" Count="1">  Global--;</Line>
+				<Line Number="14" Count="1">  return NULL;</Line>
+				<Line Number="15" Count="-1">}</Line>
+				<Line Number="16" Count="-1"></Line>
+				<Line Number="17" Count="1">int tsan(int argc, char* argv[])</Line>
+				<Line Number="18" Count="-1">{</Line>
+				<Line Number="19" Count="-1">  pthread_t t[2];</Line>
+				<Line Number="20" Count="1">  pthread_create(&amp;t[0], NULL, Thread1, NULL);</Line>
+				<Line Number="21" Count="1">  pthread_create(&amp;t[1], NULL, Thread2, NULL);</Line>
+				<Line Number="22" Count="1">  pthread_join(t[0], NULL);</Line>
+				<Line Number="23" Count="1">  pthread_join(t[1], NULL);</Line>
+				<Line Number="24" Count="1">  return Global;</Line>
+				<Line Number="25" Count="-1">}</Line>
+			</Report>
+		</File>
+		<File Name="main.c" FullPath="./Sanitizers/main.c">
+			<Report>
+				<Line Number="0" Count="-1">#include &lt;ctype.h&gt;  /* NOLINT */</Line>
+				<Line Number="1" Count="-1">#include &lt;stdio.h&gt;  /* NOLINT */</Line>
+				<Line Number="2" Count="-1">#include &lt;stdlib.h&gt; /* NOLINT */</Line>
+				<Line Number="3" Count="-1">#include &lt;string.h&gt; /* NOLINT */</Line>
+				<Line Number="4" Count="-1">#include &lt;time.h&gt;   /* NOLINT */</Line>
+				<Line Number="5" Count="-1"></Line>
+				<Line Number="6" Count="-1">#if defined(_MSC_VER)</Line>
+				<Line Number="7" Count="-1">#pragma warning(disable : 4996) /* deprecation */</Line>
+				<Line Number="8" Count="-1">#endif</Line>
+				<Line Number="9" Count="-1"></Line>
+				<Line Number="10" Count="-1"></Line>
+				<Line Number="11" Count="-1"></Line>
+				<Line Number="12" Count="-1">/* Forward declare test functions. */</Line>
+				<Line Number="13" Count="-1">extern int asan(int, char*[]);</Line>
+				<Line Number="14" Count="-1">extern int msan(int, char*[]);</Line>
+				<Line Number="15" Count="-1">extern int tsan(int, char*[]);</Line>
+				<Line Number="16" Count="-1"></Line>
+				<Line Number="17" Count="-1"></Line>
+				<Line Number="18" Count="-1">#ifdef __cplusplus</Line>
+				<Line Number="19" Count="-1">#  define CM_CAST(TYPE, EXPR) static_cast&lt;TYPE&gt;(EXPR)</Line>
+				<Line Number="20" Count="-1">#  if __cplusplus &gt;= 201103L</Line>
+				<Line Number="21" Count="-1">#    define CM_NULL nullptr</Line>
+				<Line Number="22" Count="-1">#  else</Line>
+				<Line Number="23" Count="-1">#    define CM_NULL NULL</Line>
+				<Line Number="24" Count="-1">#  endif</Line>
+				<Line Number="25" Count="-1">#  define CM_NAMESPACE_BEGIN namespace {</Line>
+				<Line Number="26" Count="-1">#  define CM_NAMESPACE_END }</Line>
+				<Line Number="27" Count="-1">#  define CM_LOCAL</Line>
+				<Line Number="28" Count="-1">#else</Line>
+				<Line Number="29" Count="-1">#  define CM_CAST(TYPE, EXPR) (TYPE)(EXPR)</Line>
+				<Line Number="30" Count="-1">#  define CM_NULL NULL</Line>
+				<Line Number="31" Count="-1">#  define CM_NAMESPACE_BEGIN</Line>
+				<Line Number="32" Count="-1">#  define CM_NAMESPACE_END</Line>
+				<Line Number="33" Count="-1">#  define CM_LOCAL static</Line>
+				<Line Number="34" Count="-1">#endif</Line>
+				<Line Number="35" Count="-1"></Line>
+				<Line Number="36" Count="-1">CM_NAMESPACE_BEGIN</Line>
+				<Line Number="37" Count="-1"></Line>
+				<Line Number="38" Count="-1">/* Create map.  */</Line>
+				<Line Number="39" Count="-1"></Line>
+				<Line Number="40" Count="-1">typedef int (*MainFuncPointer)(int, char* []); /* NOLINT */</Line>
+				<Line Number="41" Count="-1">typedef struct /* NOLINT */</Line>
+				<Line Number="42" Count="-1">{</Line>
+				<Line Number="43" Count="-1">  const char* name;</Line>
+				<Line Number="44" Count="-1">  MainFuncPointer func;</Line>
+				<Line Number="45" Count="-1">} functionMapEntry;</Line>
+				<Line Number="46" Count="-1"></Line>
+				<Line Number="47" Count="-1">CM_LOCAL const functionMapEntry cmakeGeneratedFunctionMapEntries[] = {</Line>
+				<Line Number="48" Count="-1">    {</Line>
+				<Line Number="49" Count="-1">    "asan",</Line>
+				<Line Number="50" Count="-1">    asan</Line>
+				<Line Number="51" Count="-1">  },</Line>
+				<Line Number="52" Count="-1">  {</Line>
+				<Line Number="53" Count="-1">    "msan",</Line>
+				<Line Number="54" Count="-1">    msan</Line>
+				<Line Number="55" Count="-1">  },</Line>
+				<Line Number="56" Count="-1">  {</Line>
+				<Line Number="57" Count="-1">    "tsan",</Line>
+				<Line Number="58" Count="-1">    tsan</Line>
+				<Line Number="59" Count="-1">  },</Line>
+				<Line Number="60" Count="-1"></Line>
+				<Line Number="61" Count="-1">  { CM_NULL, CM_NULL } /* NOLINT */</Line>
+				<Line Number="62" Count="-1">};</Line>
+				<Line Number="63" Count="-1"></Line>
+				<Line Number="64" Count="-1">CM_LOCAL const int NumTests = CM_CAST(int,</Line>
+				<Line Number="65" Count="-1">  sizeof(cmakeGeneratedFunctionMapEntries) / sizeof(functionMapEntry)) - 1;</Line>
+				<Line Number="66" Count="-1"></Line>
+				<Line Number="67" Count="-1">/* Allocate and create a lowercased copy of string</Line>
+				<Line Number="68" Count="-1">   (note that it has to be free'd manually) */</Line>
+				<Line Number="69" Count="9">CM_LOCAL char* lowercase(const char* string)</Line>
+				<Line Number="70" Count="-1">{</Line>
+				<Line Number="71" Count="-1">  char *new_string;</Line>
+				<Line Number="72" Count="-1">  char *p;</Line>
+				<Line Number="73" Count="-1">  size_t stringSize;</Line>
+				<Line Number="74" Count="-1"></Line>
+				<Line Number="75" Count="9">  stringSize = CM_CAST(size_t, strlen(string) + 1);</Line>
+				<Line Number="76" Count="9">  new_string = CM_CAST(char*, malloc(sizeof(char) * stringSize));</Line>
+				<Line Number="77" Count="-1"></Line>
+				<Line Number="78" Count="9">  if (new_string == CM_NULL) { /* NOLINT */</Line>
+				<Line Number="79" Count="0">    return CM_NULL;            /* NOLINT */</Line>
+				<Line Number="80" Count="-1">  }</Line>
+				<Line Number="81" Count="9">  strcpy(new_string, string);  /* NOLINT */</Line>
+				<Line Number="82" Count="45">  for (p = new_string; *p != 0; ++p) {</Line>
+				<Line Number="83" Count="36">    *p = CM_CAST(char, tolower(*p));</Line>
+				<Line Number="84" Count="-1">  }</Line>
+				<Line Number="85" Count="9">  return new_string;</Line>
+				<Line Number="86" Count="-1">}</Line>
+				<Line Number="87" Count="-1"></Line>
+				<Line Number="88" Count="0">CM_LOCAL int isTestSkipped(const char *name, int n_skipped_tests, char *skipped_tests[]) {</Line>
+				<Line Number="89" Count="-1">  int i;</Line>
+				<Line Number="90" Count="0">  for (i = 0; i &lt; n_skipped_tests; i++) {</Line>
+				<Line Number="91" Count="0">    if (strcmp(name, skipped_tests[i]) == 0) {</Line>
+				<Line Number="92" Count="0">      return 1;</Line>
+				<Line Number="93" Count="-1">    }</Line>
+				<Line Number="94" Count="-1">  }</Line>
+				<Line Number="95" Count="-1"></Line>
+				<Line Number="96" Count="0">  return 0;</Line>
+				<Line Number="97" Count="-1">}</Line>
+				<Line Number="98" Count="-1"></Line>
+				<Line Number="99" Count="-1">CM_NAMESPACE_END</Line>
+				<Line Number="100" Count="-1"></Line>
+				<Line Number="101" Count="3">int main(int ac, char* av[])</Line>
+				<Line Number="102" Count="-1">{</Line>
+				<Line Number="103" Count="-1">  int i;</Line>
+				<Line Number="104" Count="3">  int testNum = 0;</Line>
+				<Line Number="105" Count="-1">  int partial_match;</Line>
+				<Line Number="106" Count="-1">  int run_all;</Line>
+				<Line Number="107" Count="-1">  char *arg;</Line>
+				<Line Number="108" Count="3">  int testToRun = -1;</Line>
+				<Line Number="109" Count="-1"></Line>
+				<Line Number="110" Count="-1">  </Line>
+				<Line Number="111" Count="-1"></Line>
+				<Line Number="112" Count="-1">  /* If no test name was given */</Line>
+				<Line Number="113" Count="-1">  /* process command line with user function.  */</Line>
+				<Line Number="114" Count="3">  if (ac &lt; 2) {</Line>
+				<Line Number="115" Count="-1">    /* Ask for a test.  */</Line>
+				<Line Number="116" Count="0">    printf("Available tests:\n");</Line>
+				<Line Number="117" Count="0">    for (i = 0; i &lt; NumTests; ++i) {</Line>
+				<Line Number="118" Count="0">      printf("%3d. %s\n", i, cmakeGeneratedFunctionMapEntries[i].name);</Line>
+				<Line Number="119" Count="-1">    }</Line>
+				<Line Number="120" Count="0">    printf("To run a test, enter the test number: ");</Line>
+				<Line Number="121" Count="0">    fflush(stdout);</Line>
+				<Line Number="122" Count="0">    if (scanf("%d", &amp;testNum) != 1) {</Line>
+				<Line Number="123" Count="0">      printf("Couldn't parse that input as a number\n");</Line>
+				<Line Number="124" Count="0">      return -1;</Line>
+				<Line Number="125" Count="-1">    }</Line>
+				<Line Number="126" Count="0">    if (testNum &gt;= NumTests) {</Line>
+				<Line Number="127" Count="0">      printf("%3d is an invalid test number.\n", testNum);</Line>
+				<Line Number="128" Count="0">      return -1;</Line>
+				<Line Number="129" Count="-1">    }</Line>
+				<Line Number="130" Count="0">    testToRun = testNum;</Line>
+				<Line Number="131" Count="0">    ac--;</Line>
+				<Line Number="132" Count="0">    av++;</Line>
+				<Line Number="133" Count="-1">  }</Line>
+				<Line Number="134" Count="3">  partial_match = 0;</Line>
+				<Line Number="135" Count="3">  run_all = 0;</Line>
+				<Line Number="136" Count="3">  arg = CM_NULL; /* NOLINT */</Line>
+				<Line Number="137" Count="-1">  /* If partial match or running all tests are requested.  */</Line>
+				<Line Number="138" Count="3">  if (testToRun == -1 &amp;&amp; ac &gt; 1) {</Line>
+				<Line Number="139" Count="3">    partial_match = (strcmp(av[1], "-R") == 0) ? 1 : 0;</Line>
+				<Line Number="140" Count="3">    run_all = (strcmp(av[1], "-A") == 0) ? 1 : 0;</Line>
+				<Line Number="141" Count="-1">  }</Line>
+				<Line Number="142" Count="3">  if (partial_match != 0 &amp;&amp; ac &lt; 3) {</Line>
+				<Line Number="143" Count="0">    printf("-R needs an additional parameter.\n");</Line>
+				<Line Number="144" Count="0">    return -1;</Line>
+				<Line Number="145" Count="-1">  }</Line>
+				<Line Number="146" Count="3">  if (run_all == 1) {</Line>
+				<Line Number="147" Count="-1">    clock_t t;</Line>
+				<Line Number="148" Count="0">    int status = 0;</Line>
+				<Line Number="149" Count="0">    const char* status_message = CM_NULL;</Line>
+				<Line Number="150" Count="0">    printf("TAP version 13\n");</Line>
+				<Line Number="151" Count="0">    printf("1..%d\n", NumTests);</Line>
+				<Line Number="152" Count="0">    for (i = 0; i &lt; NumTests; ++i) {</Line>
+				<Line Number="153" Count="0">      const char *name = cmakeGeneratedFunctionMapEntries[i].name;</Line>
+				<Line Number="154" Count="0">      if (ac &gt; 2) {</Line>
+				<Line Number="155" Count="0">        if (isTestSkipped(name, ac - 2, av + 2) == 1) {</Line>
+				<Line Number="156" Count="0">          printf("ok %d %s # SKIP\n", i + 1, name);</Line>
+				<Line Number="157" Count="0">          continue;</Line>
+				<Line Number="158" Count="-1">        }</Line>
+				<Line Number="159" Count="-1">      }</Line>
+				<Line Number="160" Count="0">      t = clock();</Line>
+				<Line Number="161" Count="0">      status = (*cmakeGeneratedFunctionMapEntries[i].func)(ac, av);</Line>
+				<Line Number="162" Count="0">      t = clock() - t;</Line>
+				<Line Number="163" Count="0">      status_message = (status == -1) ? "not ok" : "ok";</Line>
+				<Line Number="164" Count="-1">      {</Line>
+				<Line Number="165" Count="0">        double time_taken = CM_CAST(double, t) / CLOCKS_PER_SEC;</Line>
+				<Line Number="166" Count="0">        printf("%s %d %s # %f\n", status_message, i + 1, name, time_taken);</Line>
+				<Line Number="167" Count="-1">      }</Line>
+				<Line Number="168" Count="-1">    }</Line>
+				<Line Number="169" Count="0">    printf("All tests finished.\n");</Line>
+				<Line Number="170" Count="-1"></Line>
+				<Line Number="171" Count="0">    return 0;</Line>
+				<Line Number="172" Count="-1">  }</Line>
+				<Line Number="173" Count="-1"></Line>
+				<Line Number="174" Count="3">  if (testToRun == -1) {</Line>
+				<Line Number="175" Count="3">    arg = lowercase(av[1 + partial_match]);</Line>
+				<Line Number="176" Count="-1">  }</Line>
+				<Line Number="177" Count="9">  for (i = 0; i &lt; NumTests &amp;&amp; testToRun == -1; ++i) {</Line>
+				<Line Number="178" Count="6">    char *test_name = lowercase(cmakeGeneratedFunctionMapEntries[i].name);</Line>
+				<Line Number="179" Count="6">    if (partial_match != 0 &amp;&amp; strstr(test_name, arg) != CM_NULL) { /* NOLINT */</Line>
+				<Line Number="180" Count="0">      testToRun = i;</Line>
+				<Line Number="181" Count="0">      ac -= 2;</Line>
+				<Line Number="182" Count="0">      av += 2;</Line>
+				<Line Number="183" Count="6">    } else if (partial_match == 0 &amp;&amp; strcmp(test_name, arg) == 0) {</Line>
+				<Line Number="184" Count="3">      testToRun = i;</Line>
+				<Line Number="185" Count="3">      ac--;</Line>
+				<Line Number="186" Count="3">      av++;</Line>
+				<Line Number="187" Count="-1">    }</Line>
+				<Line Number="188" Count="6">    free(test_name);</Line>
+				<Line Number="189" Count="-1">  }</Line>
+				<Line Number="190" Count="3">  free(arg);</Line>
+				<Line Number="191" Count="3">  if (testToRun != -1) {</Line>
+				<Line Number="192" Count="-1">    int result;</Line>
+				<Line Number="193" Count="-1"></Line>
+				<Line Number="194" Count="3">    if (testToRun &lt; 0 || testToRun &gt;= NumTests) {</Line>
+				<Line Number="195" Count="0">      printf("testToRun was modified by TestDriver code to an invalid value: "</Line>
+				<Line Number="196" Count="-1">             "%3d.\n",</Line>
+				<Line Number="197" Count="-1">             testNum);</Line>
+				<Line Number="198" Count="0">      return -1;</Line>
+				<Line Number="199" Count="-1">    }</Line>
+				<Line Number="200" Count="3">    result = (*cmakeGeneratedFunctionMapEntries[testToRun].func)(ac, av);</Line>
+				<Line Number="201" Count="-1"></Line>
+				<Line Number="202" Count="3">    return result;</Line>
+				<Line Number="203" Count="-1">  }</Line>
+				<Line Number="204" Count="-1"></Line>
+				<Line Number="205" Count="-1">  /* Nothing was run, display the test names.  */</Line>
+				<Line Number="206" Count="0">  printf("Available tests:\n");</Line>
+				<Line Number="207" Count="0">  for (i = 0; i &lt; NumTests; ++i) {</Line>
+				<Line Number="208" Count="0">    printf("%3d. %s\n", i, cmakeGeneratedFunctionMapEntries[i].name);</Line>
+				<Line Number="209" Count="-1">  }</Line>
+				<Line Number="210" Count="0">  printf("Failed: %s is an invalid test name.\n", av[1]);</Line>
+				<Line Number="211" Count="-1"></Line>
+				<Line Number="212" Count="0">  return -1;</Line>
+				<Line Number="213" Count="-1">}</Line>
+			</Report>
+		</File>
+		<EndDateTime>Feb 15 22:16 CET</EndDateTime>
+		<EndTime>1739654199</EndTime>
+	</CoverageLog>
+</Site>

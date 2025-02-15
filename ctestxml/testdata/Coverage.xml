@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Coverage"
+	BuildStamp="20250215-2116-Experimental"
+	Name="NUC"
+	Generator="ctest-4.0.20250213-g7cd1750"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="Linux"
+	Hostname="NUC"
+	OSRelease="6.13.2-arch1-1"
+	OSVersion="#1 SMP PREEMPT_DYNAMIC Sat, 08 Feb 2025 18:54:55 +0000"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="170"
+	ModelName="Intel(R) Core(TM) Ultra 7 155H"
+	ProcessorCacheSize="24576"
+	NumberOfLogicalCPU="22"
+	NumberOfPhysicalCPU="16"
+	TotalVirtualMemory="131071"
+	TotalPhysicalMemory="63787"
+	LogicalProcessorsPerPhysical="1"
+	ProcessorClockFrequency="1998.77"
+	>
+	<Coverage>
+		<StartDateTime>Feb 15 22:16 CET</StartDateTime>
+		<StartTime>1739654199</StartTime>
+		<File Name="asan.c" FullPath="./Sanitizers/asan.c" Covered="true">
+			<LOCTested>4</LOCTested>
+			<LOCUnTested>0</LOCUnTested>
+			<PercentCoverage>100.00</PercentCoverage>
+			<CoverageMetric>1.00</CoverageMetric>
+			<Labels>
+				<Label>Sanitizers</Label>
+			</Labels>
+		</File>
+		<File Name="msan.c" FullPath="./Sanitizers/msan.c" Covered="true">
+			<LOCTested>5</LOCTested>
+			<LOCUnTested>1</LOCUnTested>
+			<PercentCoverage>83.33</PercentCoverage>
+			<CoverageMetric>0.94</CoverageMetric>
+			<Labels>
+				<Label>Sanitizers</Label>
+			</Labels>
+		</File>
+		<File Name="tsan.c" FullPath="./Sanitizers/tsan.c" Covered="true">
+			<LOCTested>12</LOCTested>
+			<LOCUnTested>0</LOCUnTested>
+			<PercentCoverage>100.00</PercentCoverage>
+			<CoverageMetric>1.00</CoverageMetric>
+			<Labels>
+				<Label>Sanitizers</Label>
+			</Labels>
+		</File>
+		<File Name="main.c" FullPath="./Sanitizers/main.c" Covered="true">
+			<LOCTested>35</LOCTested>
+			<LOCUnTested>50</LOCUnTested>
+			<PercentCoverage>41.18</PercentCoverage>
+			<CoverageMetric>0.47</CoverageMetric>
+			<Labels>
+				<Label>Sanitizers</Label>
+			</Labels>
+		</File>
+		<LOCTested>56</LOCTested>
+		<LOCUntested>51</LOCUntested>
+		<LOC>107</LOC>
+		<PercentCoverage>52.34</PercentCoverage>
+		<EndDateTime>Feb 15 22:16 CET</EndDateTime>
+		<EndTime>1739654199</EndTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Coverage>
+</Site>

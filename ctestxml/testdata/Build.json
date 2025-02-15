@@ -34,26 +34,26 @@
         {
           "file_path": "Failures/fpe.c",
           "line": 10,
-          "column": -1,
+          "column": 20,
           "type": "Warning",
-          "message": "/.../Example/Failures/fpe.c:10:20: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘double’ [-Wformat=]",
-          "option": ""
+          "message": "format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘double’",
+          "option": "-Wformat="
         },
         {
           "file_path": "Failures/fpe.c",
           "line": 14,
-          "column": -1,
+          "column": 29,
           "type": "Warning",
-          "message": "/.../Example/Failures/fpe.c:14:29: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘double’ [-Wformat=]",
-          "option": ""
+          "message": "format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘double’",
+          "option": "-Wformat="
         },
         {
           "file_path": "Failures/fpe.c",
           "line": 7,
-          "column": -1,
+          "column": 7,
           "type": "Warning",
-          "message": "/.../Example/Failures/fpe.c:7:7: warning: unused variable ‘unusedVar’ [-Wunused-variable]",
-          "option": ""
+          "message": "unused variable ‘unusedVar’",
+          "option": "-Wunused-variable"
         }
       ]
     }

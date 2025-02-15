@@ -9,30 +9,27 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/purpleKarrot/cdash-proxy/algorithm"
 	"github.com/purpleKarrot/cdash-proxy/model"
 )
 
-var reFileLine []*regexp.Regexp
+var reFileLine = algorithm.Map([]string{
+	"^(?P<file>[a-zA-Z./0-9_+ ~-]+):(?P<line>[0-9]+):(?P<column>[0-9]+): (?P<type>error|warning|note): (?P<message>.*) \\[(?P<option>.*)\\]$",
+	"^(?P<file>[a-zA-Z./0-9_+ ~-]+):(?P<line>[0-9]+):(?P<column>[0-9]+): (?P<type>error|warning|note): (?P<message>.*)",
+	"^(?P<file>[a-zA-Z.\\:/0-9_+ ~-]+)\\((?P<line>[0-9]+)\\)",
+	"^[0-9]+>(?P<file>[a-zA-Z.\\:/0-9_+ ~-]+)\\((?P<line>[0-9]+)\\)",
+	"^(?P<file>[a-zA-Z./0-9_+ ~-]+)\\((?P<line>[0-9]+)\\)",
+	"\"(?P<file>[a-zA-Z./0-9_+ ~-]+)\", line (?P<line>[0-9]+)",
+	"File = (?P<file>[a-zA-Z./0-9_+ ~-]+), Line = (?P<line>[0-9]+)",
+	"^Warning W[0-9]+ (?P<file>[a-zA-Z.\\:/0-9_+ ~-]+) (?P<line>[0-9]+):",
+}, func(p string) *regexp.Regexp {
+	return regexp.MustCompile(p)
+})
+
 var replacer = strings.NewReplacer(
 	"[CTest: warning suppressed] ", "",
 	"[CTest: warning matched] ", "",
 )
-
-func init() {
-	var cmCTestWarningErrorFileLine = []string{
-		"^(?P<file>[a-zA-Z./0-9_+ ~-]+):(?P<line>[0-9]+):(?P<column>[0-9]+): (?P<type>error|warning|note): (?P<message>.*) \\[(?P<option>.*)\\]$",
-		"^(?P<file>[a-zA-Z./0-9_+ ~-]+):(?P<line>[0-9]+):(?P<column>[0-9]+): (?P<type>error|warning|note): (?P<message>.*)",
-		"^(?P<file>[a-zA-Z.\\:/0-9_+ ~-]+)\\((?P<line>[0-9]+)\\)",
-		"^[0-9]+>(?P<file>[a-zA-Z.\\:/0-9_+ ~-]+)\\((?P<line>[0-9]+)\\)",
-		"^(?P<file>[a-zA-Z./0-9_+ ~-]+)\\((?P<line>[0-9]+)\\)",
-		"\"(?P<file>[a-zA-Z./0-9_+ ~-]+)\", line (?P<line>[0-9]+)",
-		"File = (?P<file>[a-zA-Z./0-9_+ ~-]+), Line = (?P<line>[0-9]+)",
-		"^Warning W[0-9]+ (?P<file>[a-zA-Z.\\:/0-9_+ ~-]+) (?P<line>[0-9]+):",
-	}
-	for _, p := range cmCTestWarningErrorFileLine {
-		reFileLine = append(reFileLine, regexp.MustCompile(p))
-	}
-}
 
 func CleanOutput(output string) string {
 	return replacer.Replace(output)
@@ -50,7 +47,8 @@ func ParseOutput(file, output string) []model.Diagnostic {
 		if kind == lineTypeRegular {
 			continue
 		}
-		diags = append(diags, parseDiagnostic(file, kind, line))
+		line = CleanOutput(line)
+		diags = append(diags, ParseDiagnostic(file, kind.DiagnosticType(), line))
 	}
 
 	// TODO: We need a better way to strip the source directory!
@@ -91,13 +89,12 @@ func detectLineType(line string) lineType {
 	return lineTypeRegular
 }
 
-func parseDiagnostic(file string, kind lineType, line string) model.Diagnostic {
-	line = CleanOutput(line)
+func ParseDiagnostic(file string, kind string, line string) model.Diagnostic {
 	diag := model.Diagnostic{
 		FilePath: file,
 		Line:     -1,
 		Column:   -1,
-		Type:     kind.DiagnosticType(),
+		Type:     kind,
 		Message:  line,
 		Option:   "",
 	}
@@ -122,18 +119,6 @@ func parseDiagnostic(file string, kind lineType, line string) model.Diagnostic {
 				diag.Option = match[k]
 			}
 		}
-
-		//cmSystemTools::ConvertToUnixSlashes(sourceFile);
-		//if(sourceFile.find("/.../") != cm->SourceFile.npos) {
-		//  cmSystemTools::ReplaceString(sourceFile, "/.../", "");
-		//  std::string::size_type p = sourceFile.find("/");
-		//  if(p != cm->SourceFile.npos) {
-		//    sourceFile = sourceFile.substr(p+1, sourceFile.size()-p);
-		//  }
-		//} else {
-		//  sourceFile = cmSystemTools::CollapseFullPath(sourceFile);
-		//  cmSystemTools::ReplaceString(sourceFile, srcdir.c_str(), "");
-		//}
 
 		break
 	}
