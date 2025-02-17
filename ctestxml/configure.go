@@ -6,67 +6,66 @@ package ctestxml
 import (
 	"regexp"
 	"strconv"
-	"strings"
 	"time"
 
+	"github.com/purpleKarrot/cdash-proxy/algorithm"
+	"github.com/purpleKarrot/cdash-proxy/ctestxml/configure"
 	"github.com/purpleKarrot/cdash-proxy/model"
 )
 
-var cfgDiagRegex = regexp.MustCompile(`CMake (Deprecation Warning|Error|Warning \(dev\)|Warning) at ([^:]+):([0-9]+) \((.*)\):`)
+type cfgStep struct {
+	role  string
+	regex *regexp.Regexp
+}
+
+var cfgSteps = []cfgStep{
+	{"configure", regexp.MustCompile(`-- Configuring done \(([0-9.]+)s\)\n`)},
+	{"generate", regexp.MustCompile(`-- Generating done \(([0-9.]+)s\)\n`)},
+}
 
 func parseConfigure(cfg *Configure, generator string) TimedCommands {
-	ret := TimedCommands{
-		StartTime: time.Unix(cfg.StartTime, 0),
-		EndTime:   time.Unix(cfg.EndTime, 0),
-	}
-	ret.Commands = append(ret.Commands, model.Command{
-		Role:         "configure",
-		Result:       cfg.Status,
-		CommandLine:  cfg.Command,
-		StdOut:       cfg.Log,
-		StartTime:    &ret.StartTime,
-		Duration:     ret.EndTime.Sub(ret.StartTime).Milliseconds(),
-		Diagnostics:  splitCMakeOutput(cfg.Log),
-		Attributes:   map[string]string{"Generator": generator},
-		Measurements: map[string]float64{},
-	})
-	return ret
-}
+	input := cfg.Log
+	startTime := time.Unix(cfg.StartTime, 0)
+	endTime := time.Unix(cfg.EndTime, 0)
+	duration := time.Duration(0)
 
-func splitCMakeOutput(log string) []model.Diagnostic {
-	var diags []model.Diagnostic
-	diag := model.Diagnostic{} // TODO: set to nil
-
-	for _, line := range strings.Split(log, "\n") {
-		if len(line) == 0 {
-			diag.Message += "\n"
-			continue
-		} else if strings.HasPrefix(line, "  ") {
-			diag.Message += line[2:] + "\n"
-			continue
-		} else if len(diag.Message) != 0 && len(diag.FilePath) != 0 {
-			diag.Message = strings.TrimRight(diag.Message, "\n")
-			diags = append(diags, diag)
-			diag = model.Diagnostic{} // TODO: set to nil
+	var cmds []model.Command
+	for _, step := range cfgSteps {
+		cmd := model.Command{
+			Role:         step.role,
+			CommandLine:  cfg.Command,
+			StartTime:    algorithm.NewPointer(startTime.Add(duration)),
+			Attributes:   map[string]string{"Generator": generator},
+			Measurements: map[string]float64{},
 		}
 
-		if match := cfgDiagRegex.FindStringSubmatch(line); match != nil {
-			linenr, _ := strconv.Atoi(match[3])
-			diag = model.Diagnostic{
-				FilePath: match[2],
-				Line:     linenr,
-				Column:   -1,
-				Type:     cmakeDiagnosticType(match[1]),
-				Option:   match[4],
-			}
+		match := step.regex.FindStringSubmatchIndex(input)
+		if match != nil {
+			seconds, _ := strconv.ParseFloat(input[match[2]:match[3]], 64)
+
+			cmd.Result = 0
+			cmd.StdOut = input[:match[1]]
+			cmd.Duration = int64(seconds * 1000.0)
+
+			input = input[match[1]:]
+			duration += time.Duration(seconds * float64(time.Second))
+		} else {
+			cmd.Result = cfg.Status
+			cmd.StdOut = input
+			cmd.Duration = endTime.Sub(*cmd.StartTime).Milliseconds()
+		}
+
+		cmd.Diagnostics = configure.Parse(cmd.StdOut)
+		cmds = append(cmds, cmd)
+
+		if match == nil {
+			break
 		}
 	}
-	return diags
-}
 
-func cmakeDiagnosticType(s string) string {
-	if s == "Error" {
-		return "Error"
+	return TimedCommands{
+		StartTime: startTime,
+		EndTime:   endTime,
+		Commands:  cmds,
 	}
-	return "Warning"
 }
