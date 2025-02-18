@@ -56,7 +56,7 @@ func parseConfigure(cfg *Configure, generator string) TimedCommands {
 			cmd.Duration = endTime.Sub(*cmd.StartTime).Milliseconds()
 		}
 
-		cmd.Diagnostics = configure.Parse(cmd.StdOut)
+		cmd.Diagnostics = configure.Parse(cmd.StdOut, cmd.Result)
 		cmds = append(cmds, cmd)
 
 		if match == nil {

@@ -4,6 +4,7 @@
 package configure
 
 import (
+	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
@@ -13,7 +14,7 @@ import (
 
 var cfgDiagRegex = regexp.MustCompile(`CMake (Deprecation Warning|Error|Warning \(dev\)|Warning) at ([^:]+):([0-9]+) \((.*)\):`)
 
-func Parse(log string) []model.Diagnostic {
+func Parse(log string, result int) []model.Diagnostic {
 	var diags []model.Diagnostic
 	diag := model.Diagnostic{} // TODO: set to nil
 
@@ -41,6 +42,17 @@ func Parse(log string) []model.Diagnostic {
 			}
 		}
 	}
+
+	if len(diags) == 0 && result != 0 {
+		diags = append(diags, model.Diagnostic{
+			FilePath: "CMakeLists.txt",
+			Line:     -1,
+			Column:   -1,
+			Type:     "Error",
+			Message:  fmt.Sprintf("Command finished with exit code %d", result),
+		})
+	}
+
 	return diags
 }
 
