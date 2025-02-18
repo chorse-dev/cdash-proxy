@@ -16,24 +16,32 @@ var cfgDiagRegex = regexp.MustCompile(`CMake (Deprecation Warning|Error|Warning 
 
 func Parse(log string, result int) []model.Diagnostic {
 	var diags []model.Diagnostic
-	diag := model.Diagnostic{} // TODO: set to nil
+	var diag *model.Diagnostic
 
 	for _, line := range strings.Split(log, "\n") {
 		if len(line) == 0 {
-			diag.Message += "\n"
+			if diag != nil {
+				diag.Message += "\n"
+			}
 			continue
-		} else if strings.HasPrefix(line, "  ") {
-			diag.Message += line[2:] + "\n"
+		}
+
+		if strings.HasPrefix(line, "  ") {
+			if diag != nil {
+				diag.Message += line[2:] + "\n"
+			}
 			continue
-		} else if len(diag.Message) != 0 && len(diag.FilePath) != 0 {
+		}
+
+		if diag != nil {
 			diag.Message = strings.TrimRight(diag.Message, "\n")
-			diags = append(diags, diag)
-			diag = model.Diagnostic{} // TODO: set to nil
+			diags = append(diags, *diag)
+			diag = nil
 		}
 
 		if match := cfgDiagRegex.FindStringSubmatch(line); match != nil {
 			linenr, _ := strconv.Atoi(match[3])
-			diag = model.Diagnostic{
+			diag = &model.Diagnostic{
 				FilePath: match[2],
 				Line:     linenr,
 				Column:   -1,
