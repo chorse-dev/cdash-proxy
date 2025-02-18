@@ -82,25 +82,54 @@ type Subproject struct {
 }
 
 type Configure struct {
-	StartTime int64  `xml:"StartConfigureTime"`
-	EndTime   int64  `xml:"EndConfigureTime"`
-	Command   string `xml:"ConfigureCommand"`
-	Log       string `xml:"Log"`
-	Status    int    `xml:"ConfigureStatus"`
+	StartConfigureTime int64    `xml:"StartConfigureTime"`
+	EndConfigureTime   int64    `xml:"EndConfigureTime"`
+	ConfigureCommand   string   `xml:"ConfigureCommand"`
+	Log                string   `xml:"Log"`
+	ConfigureStatus    int      `xml:"ConfigureStatus"`
+	Commands           Commands `xml:"Commands"`
 }
 
 type Build struct {
-	StartTime   int64        `xml:"StartBuildTime"`
-	EndTime     int64        `xml:"EndBuildTime"`
-	Command     string       `xml:"BuildCommand"`
-	Diagnostics []Diagnostic `xml:",any"`
-	Failures    []Failure    `xml:"Failure"`
+	StartBuildTime int64        `xml:"StartBuildTime"`
+	EndBuildTime   int64        `xml:"EndBuildTime"`
+	BuildCommand   string       `xml:"BuildCommand"`
+	Diagnostics    []Diagnostic `xml:",any"`
+	Failures       []Failure    `xml:"Failure"`
+	Targets        []Target     `xml:"Targets>Target"`
+	Commands       Commands     `xml:"Commands"`
 
 	// Make sure they do not get catched by ",any"
 	StartDateTime  struct{} `xml:"StartDateTime"`
 	EndDateTime    struct{} `xml:"EndDateTime"`
 	Log            struct{} `xml:"Log"`
 	ElapsedMinutes struct{} `xml:"ElapsedMinutes"`
+}
+
+type Target struct {
+	Name     string   `xml:"name,attr"`
+	Type     string   `xml:"type,attr"`
+	Labels   []string `xml:"Labels>Label"`
+	Commands Commands `xml:"Commands"`
+}
+
+type Commands struct {
+	Commands []Command `xml:",any"`
+}
+
+type Command struct {
+	XMLName      xml.Name
+	Version      int           `xml:"version,attr"`
+	Command      string        `xml:"command,attr"`
+	Result       int           `xml:"result,attr"`
+	Target       string        `xml:"target,attr"`
+	TargetType   string        `xml:"targetType,attr"`
+	TimeStart    int64         `xml:"timeStart,attr"`
+	Duration     int64         `xml:"duration,attr"`
+	Source       string        `xml:"source,attr"`
+	Language     string        `xml:"language,attr"`
+	Config       string        `xml:"config,attr"`
+	Measurements []Measurement `xml:"NamedMeasurement"`
 }
 
 type Diagnostic struct {

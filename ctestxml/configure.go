@@ -25,15 +25,15 @@ var cfgSteps = []cfgStep{
 
 func parseConfigure(cfg *Configure, generator string) TimedCommands {
 	input := cfg.Log
-	startTime := time.Unix(cfg.StartTime, 0)
-	endTime := time.Unix(cfg.EndTime, 0)
+	startTime := time.Unix(cfg.StartConfigureTime, 0)
+	endTime := time.Unix(cfg.EndConfigureTime, 0)
 	duration := time.Duration(0)
 
 	var cmds []model.Command
 	for _, step := range cfgSteps {
 		cmd := model.Command{
 			Role:         step.role,
-			CommandLine:  cfg.Command,
+			CommandLine:  cfg.ConfigureCommand,
 			StartTime:    algorithm.NewPointer(startTime.Add(duration)),
 			Attributes:   map[string]string{"Generator": generator},
 			Measurements: map[string]float64{},
@@ -50,7 +50,7 @@ func parseConfigure(cfg *Configure, generator string) TimedCommands {
 			input = input[match[1]:]
 			duration += time.Duration(seconds * float64(time.Second))
 		} else {
-			cmd.Result = cfg.Status
+			cmd.Result = cfg.ConfigureStatus
 			cmd.StdOut = input
 			cmd.Duration = endTime.Sub(*cmd.StartTime).Milliseconds()
 		}

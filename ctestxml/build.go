@@ -15,13 +15,13 @@ import (
 
 func parseBuild(build *Build) TimedCommands {
 	ret := TimedCommands{
-		StartTime: time.Unix(build.StartTime, 0),
-		EndTime:   time.Unix(build.EndTime, 0),
+		StartTime: time.Unix(build.StartBuildTime, 0),
+		EndTime:   time.Unix(build.EndBuildTime, 0),
 	}
 
 	ret.Commands = append(ret.Commands, model.Command{
 		Role:         "build",
-		CommandLine:  build.Command,
+		CommandLine:  build.BuildCommand,
 		StartTime:    &ret.StartTime,
 		Duration:     ret.EndTime.Sub(ret.StartTime).Milliseconds(),
 		StdOut:       combineOutput(build.Diagnostics),
