@@ -4,6 +4,7 @@
 package ctestxml
 
 import (
+	"log"
 	"regexp"
 	"strconv"
 	"time"
@@ -63,6 +64,30 @@ func parseConfigure(cfg *Configure, generator string) TimedCommands {
 		}
 	}
 
+	if cfg.Commands.Commands == nil {
+		goto ret
+	}
+
+	if len(cmds) != len(cfg.Commands.Commands) {
+		log.Printf("Command lenght mismatch: %d != %d\n", len(cmds), len(cfg.Commands.Commands))
+		goto ret
+	}
+
+	for i, in := range cfg.Commands.Commands {
+		out := cmds[i]
+
+		if out.Role != in.Role() {
+			log.Printf("Role mismatch: %s != %s\n", out.Role, in.Role())
+		}
+
+		out.Result = in.Result
+		out.StartTime = algorithm.NewPointer(time.UnixMilli(in.TimeStart))
+		out.Duration = in.Duration
+		transformMeasurements(in.Measurements, &out)
+		cmds[i] = out
+	}
+
+ret:
 	return TimedCommands{
 		StartTime: startTime,
 		EndTime:   endTime,

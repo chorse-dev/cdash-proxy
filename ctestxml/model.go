@@ -132,6 +132,11 @@ type Command struct {
 	Measurements []Measurement `xml:"NamedMeasurement"`
 }
 
+func (c Command) Role() string {
+	s := c.XMLName.Local
+	return strings.ToLower(string(s[0])) + s[1:]
+}
+
 type Diagnostic struct {
 	XMLName     xml.Name
 	Line        int    `xml:"BuildLogLine"`

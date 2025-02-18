@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Coverage"
+	BuildStamp="20250216-2204-Experimental"
+	Name="NUC"
+	Generator="ctest-4.0.20250216-gceacabc"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="Linux"
+	Hostname="NUC"
+	OSRelease="6.13.2-arch1-1"
+	OSVersion="#1 SMP PREEMPT_DYNAMIC Sat, 08 Feb 2025 18:54:55 +0000"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="170"
+	ModelName="Intel(R) Core(TM) Ultra 7 155H"
+	ProcessorCacheSize="24576"
+	NumberOfLogicalCPU="22"
+	NumberOfPhysicalCPU="16"
+	TotalVirtualMemory="131071"
+	TotalPhysicalMemory="63787"
+	LogicalProcessorsPerPhysical="1"
+	ProcessorClockFrequency="1993.17"
+	>
+	<Subproject name="Sanitizers">
+		<Label>Sanitizers</Label>
+	</Subproject>
+	<Configure>
+		<StartDateTime>Feb 16 23:04 CET</StartDateTime>
+		<StartConfigureTime>1739743496</StartConfigureTime>
+		<ConfigureCommand>"/home/daniel/.local/bin/cmake" "-DCMAKE_BUILD_TYPE:STRING=Debug" "-GUnix Makefiles" "-S/home/daniel/Projects/Example" "-B/home/daniel/Projects/Example/build"</ConfigureCommand>
+		<Log>CMake Deprecation Warning at CMakeLists.txt:7 (cmake_minimum_required):
+  Compatibility with CMake &lt; 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument &lt;min&gt; value.  Or, use the &lt;min&gt;...&lt;max&gt; syntax
+  to tell CMake that the project requires at least &lt;min&gt; but has been updated
+  to work with policies introduced by &lt;max&gt; or earlier.
+
+
+-- The C compiler identification is GNU 14.2.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Configuring done (0.2s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/daniel/Projects/Example/build
+</Log>
+		<ConfigureStatus>0</ConfigureStatus>
+		<EndDateTime>Feb 16 23:04 CET</EndDateTime>
+		<EndConfigureTime>1739743496</EndConfigureTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+		<Commands>
+			<Configure command="/home/daniel/.local/bin/cmake -DCMAKE_BUILD_TYPE:STRING=Debug -GUnix Makefiles -S/home/daniel/Projects/Example -B/home/daniel/Projects/Example/build" duration="248" result="0" timeStart="1739743496166" version="1">
+				<NamedMeasurement type="numeric/double" name="AfterCPULoadAverage">
+					<Value>1.18505859375</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="AfterHostMemoryUsed">
+					<Value>5883200.0</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="BeforeCPULoadAverage">
+					<Value>0.0</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="BeforeHostMemoryUsed">
+					<Value>0.0</Value>
+				</NamedMeasurement>
+			</Configure>
+			<Generate command="/home/daniel/.local/bin/cmake -DCMAKE_BUILD_TYPE:STRING=Debug -GUnix Makefiles -S/home/daniel/Projects/Example -B/home/daniel/Projects/Example/build" duration="9" result="0" timeStart="1739743496417" version="1">
+				<NamedMeasurement type="numeric/double" name="AfterCPULoadAverage">
+					<Value>1.18505859375</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="AfterHostMemoryUsed">
+					<Value>5877932.0</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="BeforeCPULoadAverage">
+					<Value>1.18505859375</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="BeforeHostMemoryUsed">
+					<Value>5883200.0</Value>
+				</NamedMeasurement>
+			</Generate>
+		</Commands>
+	</Configure>
+</Site>

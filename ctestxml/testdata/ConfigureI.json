@@ -1,0 +1,72 @@
+{
+  "job_id": "f5b4ff09774e9b9dd2d89b814f0c906e",
+  "project": "Example",
+  "build_name": "Coverage",
+  "site": {
+    "name": "NUC",
+    "hostname": "NUC",
+    "cpu_vendor": "GenuineIntel",
+    "cpu_vendor_id": "Intel Corporation",
+    "cpu_family_id": 6,
+    "cpu_model_id": 170,
+    "cpu_model_name": "Intel(R) Core(TM) Ultra 7 155H",
+    "cpu_logical_cores": 22,
+    "cpu_physical_cores": 16,
+    "cpu_cache_size": 24576,
+    "cpu_clock_frequency": 1993,
+    "os_name": "Linux",
+    "os_release": "6.13.2-arch1-1",
+    "os_version": "#1 SMP PREEMPT_DYNAMIC Sat, 08 Feb 2025 18:54:55 +0000",
+    "os_platform": "x86_64",
+    "physical_memory": 63787,
+    "virtual_memory": 131071
+  },
+  "start_configure_time": "2025-02-16T22:04:56Z",
+  "end_configure_time": "2025-02-16T22:04:56Z",
+  "commands": [
+    {
+      "command_line": "\"/home/daniel/.local/bin/cmake\" \"-DCMAKE_BUILD_TYPE:STRING=Debug\" \"-GUnix Makefiles\" \"-S/home/daniel/Projects/Example\" \"-B/home/daniel/Projects/Example/build\"",
+      "result": 0,
+      "role": "configure",
+      "start_time": "2025-02-16T22:04:56.166Z",
+      "duration": 248,
+      "stdout": "CMake Deprecation Warning at CMakeLists.txt:7 (cmake_minimum_required):\n  Compatibility with CMake \u003c 3.10 will be removed from a future version of\n  CMake.\n\n  Update the VERSION argument \u003cmin\u003e value.  Or, use the \u003cmin\u003e...\u003cmax\u003e syntax\n  to tell CMake that the project requires at least \u003cmin\u003e but has been updated\n  to work with policies introduced by \u003cmax\u003e or earlier.\n\n\n-- The C compiler identification is GNU 14.2.1\n-- Detecting C compiler ABI info\n-- Detecting C compiler ABI info - done\n-- Check for working C compiler: /usr/bin/cc - skipped\n-- Detecting C compile features\n-- Detecting C compile features - done\n-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n-- Found Threads: TRUE\n-- Configuring done (0.2s)\n",
+      "diagnostics": [
+        {
+          "file_path": "CMakeLists.txt",
+          "line": 7,
+          "column": -1,
+          "type": "Warning",
+          "message": "Compatibility with CMake \u003c 3.10 will be removed from a future version of\nCMake.\n\nUpdate the VERSION argument \u003cmin\u003e value.  Or, use the \u003cmin\u003e...\u003cmax\u003e syntax\nto tell CMake that the project requires at least \u003cmin\u003e but has been updated\nto work with policies introduced by \u003cmax\u003e or earlier.",
+          "option": "cmake_minimum_required"
+        }
+      ],
+      "attributes": {
+        "Generator": "ctest-4.0.20250216-gceacabc"
+      },
+      "measurements": {
+        "AfterCPULoadAverage": 1.18505859375,
+        "AfterHostMemoryUsed": 5883200,
+        "BeforeCPULoadAverage": 0,
+        "BeforeHostMemoryUsed": 0
+      }
+    },
+    {
+      "command_line": "\"/home/daniel/.local/bin/cmake\" \"-DCMAKE_BUILD_TYPE:STRING=Debug\" \"-GUnix Makefiles\" \"-S/home/daniel/Projects/Example\" \"-B/home/daniel/Projects/Example/build\"",
+      "result": 0,
+      "role": "generate",
+      "start_time": "2025-02-16T22:04:56.417Z",
+      "duration": 9,
+      "stdout": "-- Generating done (0.0s)\n",
+      "attributes": {
+        "Generator": "ctest-4.0.20250216-gceacabc"
+      },
+      "measurements": {
+        "AfterCPULoadAverage": 1.18505859375,
+        "AfterHostMemoryUsed": 5877932,
+        "BeforeCPULoadAverage": 1.18505859375,
+        "BeforeHostMemoryUsed": 5883200
+      }
+    }
+  ]
+}
