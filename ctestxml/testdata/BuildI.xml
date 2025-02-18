@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Darwin-cc"
+	BuildStamp="20250218-1121-Experimental"
+	Name="Mac.fritz.box"
+	Generator="ctest-4.0.20250218-gf643ca3"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="macOS"
+	Hostname="Mac.fritz.box"
+	OSRelease="15.3.1"
+	OSVersion="24D70"
+	OSPlatform="arm64"
+	Is64Bits="1"
+	VendorString="Apple"
+	VendorID="Apple"
+	FamilyID="0"
+	ModelID="0"
+	ModelName="Apple M4 Pro"
+	ProcessorCacheSize="131072"
+	NumberOfLogicalCPU="12"
+	NumberOfPhysicalCPU="12"
+	TotalVirtualMemory="0"
+	TotalPhysicalMemory="24576"
+	LogicalProcessorsPerPhysical="12"
+	ProcessorClockFrequency="0"
+	>
+	<Subproject name="Sanitizers">
+		<Label>Sanitizers</Label>
+	</Subproject>
+	<Build>
+		<StartDateTime>Feb 18 12:21 CET</StartDateTime>
+		<StartBuildTime>1739877671</StartBuildTime>
+		<BuildCommand>/Users/dpfeifer/.local/bin/cmake --build . --config "Release"</BuildCommand>
+		<Warning>
+			<BuildLogLine>1</BuildLogLine>
+			<Text>make[4]: warning: jobserver unavailable: using -j1.  Add `+' to parent make rule.</Text>
+			<PreContext></PreContext>
+			<PostContext>[ 11%] Building C object Hello/CMakeFiles/hello.dir/hello.c.o
+[ 22%] Linking C executable hello
+[ 22%] Built target hello
+[ 33%] Building C object Failures/CMakeFiles/fpe.dir/fpe.c.o
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>6</BuildLogLine>
+			<Text>/.../Example/Failures/fpe.c:10:26: warning: format specifies type 'int' but the argument has type 'double' [-Wformat]</Text>
+			<SourceFile>Failures/fpe.c</SourceFile>
+			<SourceLineNumber>10</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>   10 |   printf("Result: %d\n", result);
+      |                   ~~     ^~~~~~
+      |                   %f
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>10</BuildLogLine>
+			<Text>/.../Example/Failures/fpe.c:14:35: warning: format specifies type 'int' but the argument has type 'double' [-Wformat]</Text>
+			<SourceFile>Failures/fpe.c</SourceFile>
+			<SourceLineNumber>14</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>   14 |     printf("Safe division: %d\n", result);
+      |                            ~~     ^~~~~~
+      |                            %f
+</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Warning>
+			<BuildLogLine>14</BuildLogLine>
+			<Text>/.../Example/Failures/fpe.c:7:7: warning: unused variable 'unusedVar' [-Wunused-variable]</Text>
+			<SourceFile>Failures/fpe.c</SourceFile>
+			<SourceLineNumber>7</SourceLineNumber>
+			<PreContext></PreContext>
+			<PostContext>    7 |   int unusedVar = 10;
+      |       ^~~~~~~~~
+3 warnings generated.
+[ 44%] Linking C executable fpe
+[ 44%] Built target fpe
+[ 55%] Building C object Sanitizers/CMakeFiles/sanitizers.dir/main.c.o
+[ 66%] Building C object Sanitizers/CMakeFiles/sanitizers.dir/asan.c.o
+[ 77%] Building C object Sanitizers/CMakeFiles/sanitizers.dir/msan.c.o
+[ 88%] Building C object Sanitizers/CMakeFiles/sanitizers.dir/tsan.c.o
+[100%] Linking C executable sanitizers</PostContext>
+			<RepeatCount>0</RepeatCount>
+		</Warning>
+		<Targets>
+			<Target name="sanitizers" type="EXECUTABLE">
+				<Commands>
+					<Compile command="/usr/bin/cc -arch arm64 -MD -MT Sanitizers/CMakeFiles/sanitizers.dir/main.c.o -MF CMakeFiles/sanitizers.dir/main.c.o.d -o CMakeFiles/sanitizers.dir/main.c.o -c /Users/dpfeifer/Projects/Example/build/Sanitizers/main.c" config="" duration="27" language="C" result="0" source="/Users/dpfeifer/Projects/Example/build/Sanitizers/main.c" timeStart="1739877671224" version="1">
+						<NamedMeasurement type="numeric/double" name="AfterCPULoadAverage">
+							<Value>2.43701171875</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="AfterHostMemoryUsed">
+							<Value>12350304.0</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="BeforeCPULoadAverage">
+							<Value>2.43701171875</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="BeforeHostMemoryUsed">
+							<Value>12350192.0</Value>
+						</NamedMeasurement>
+					</Compile>
+					<Compile command="/usr/bin/cc -arch arm64 -MD -MT Sanitizers/CMakeFiles/sanitizers.dir/tsan.c.o -MF CMakeFiles/sanitizers.dir/tsan.c.o.d -o CMakeFiles/sanitizers.dir/tsan.c.o -c /Users/dpfeifer/Projects/Example/Sanitizers/tsan.c" config="" duration="24" language="C" result="0" source="/Users/dpfeifer/Projects/Example/Sanitizers/tsan.c" timeStart="1739877671340" version="1">
+						<NamedMeasurement type="numeric/double" name="AfterCPULoadAverage">
+							<Value>2.43701171875</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="AfterHostMemoryUsed">
+							<Value>12340272.0</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="BeforeCPULoadAverage">
+							<Value>2.43701171875</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="BeforeHostMemoryUsed">
+							<Value>12341536.0</Value>
+						</NamedMeasurement>
+					</Compile>
+					<Compile command="/usr/bin/cc -arch arm64 -MD -MT Sanitizers/CMakeFiles/sanitizers.dir/asan.c.o -MF CMakeFiles/sanitizers.dir/asan.c.o.d -o CMakeFiles/sanitizers.dir/asan.c.o -c /Users/dpfeifer/Projects/Example/Sanitizers/asan.c" config="" duration="23" language="C" result="0" source="/Users/dpfeifer/Projects/Example/Sanitizers/asan.c" timeStart="1739877671265" version="1">
+						<NamedMeasurement type="numeric/double" name="AfterCPULoadAverage">
+							<Value>2.43701171875</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="AfterHostMemoryUsed">
+							<Value>12339344.0</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="BeforeCPULoadAverage">
+							<Value>2.43701171875</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="BeforeHostMemoryUsed">
+							<Value>12342256.0</Value>
+						</NamedMeasurement>
+					</Compile>
+					<Link command="/usr/bin/cc -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/sanitizers.dir/main.c.o CMakeFiles/sanitizers.dir/asan.c.o CMakeFiles/sanitizers.dir/msan.c.o CMakeFiles/sanitizers.dir/tsan.c.o -o sanitizers" config="" duration="27" language="C" result="0" timeStart="1739877671382" version="1">
+						<NamedMeasurement type="numeric/double" name="AfterCPULoadAverage">
+							<Value>2.43701171875</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="AfterHostMemoryUsed">
+							<Value>12341888.0</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="BeforeCPULoadAverage">
+							<Value>2.43701171875</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="BeforeHostMemoryUsed">
+							<Value>12344752.0</Value>
+						</NamedMeasurement>
+					</Link>
+					<Compile command="/usr/bin/cc -arch arm64 -MD -MT Sanitizers/CMakeFiles/sanitizers.dir/msan.c.o -MF CMakeFiles/sanitizers.dir/msan.c.o.d -o CMakeFiles/sanitizers.dir/msan.c.o -c /Users/dpfeifer/Projects/Example/Sanitizers/msan.c" config="" duration="25" language="C" result="0" source="/Users/dpfeifer/Projects/Example/Sanitizers/msan.c" timeStart="1739877671302" version="1">
+						<NamedMeasurement type="numeric/double" name="AfterCPULoadAverage">
+							<Value>2.43701171875</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="AfterHostMemoryUsed">
+							<Value>12339776.0</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="BeforeCPULoadAverage">
+							<Value>2.43701171875</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="BeforeHostMemoryUsed">
+							<Value>12342240.0</Value>
+						</NamedMeasurement>
+					</Compile>
+				</Commands>
+			</Target>
+			<Target name="fpe" type="EXECUTABLE">
+				<Commands>
+					<Compile command="/usr/bin/cc -arch arm64 -Wall -Wextra -MD -MT Failures/CMakeFiles/fpe.dir/fpe.c.o -MF CMakeFiles/fpe.dir/fpe.c.o.d -o CMakeFiles/fpe.dir/fpe.c.o -c /Users/dpfeifer/Projects/Example/Failures/fpe.c" config="" duration="21" language="C" result="0" source="/Users/dpfeifer/Projects/Example/Failures/fpe.c" timeStart="1739877671133" version="1">
+						<NamedMeasurement type="numeric/double" name="AfterCPULoadAverage">
+							<Value>2.43701171875</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="AfterHostMemoryUsed">
+							<Value>12351856.0</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="BeforeCPULoadAverage">
+							<Value>2.43701171875</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="BeforeHostMemoryUsed">
+							<Value>12351520.0</Value>
+						</NamedMeasurement>
+					</Compile>
+					<Link command="/usr/bin/cc -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/fpe.dir/fpe.c.o -o fpe" config="" duration="27" language="C" result="0" timeStart="1739877671171" version="1">
+						<NamedMeasurement type="numeric/double" name="AfterCPULoadAverage">
+							<Value>2.43701171875</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="AfterHostMemoryUsed">
+							<Value>12351696.0</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="BeforeCPULoadAverage">
+							<Value>2.43701171875</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="BeforeHostMemoryUsed">
+							<Value>12354096.0</Value>
+						</NamedMeasurement>
+					</Link>
+				</Commands>
+			</Target>
+			<Target name="hello" type="EXECUTABLE">
+				<Commands>
+					<Compile command="/usr/bin/cc -arch arm64 -MD -MT Hello/CMakeFiles/hello.dir/hello.c.o -MF CMakeFiles/hello.dir/hello.c.o.d -o CMakeFiles/hello.dir/hello.c.o -c /Users/dpfeifer/Projects/Example/Hello/hello.c" config="" duration="22" language="C" result="0" source="/Users/dpfeifer/Projects/Example/Hello/hello.c" timeStart="1739877671042" version="1">
+						<NamedMeasurement type="numeric/double" name="AfterCPULoadAverage">
+							<Value>2.43701171875</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="AfterHostMemoryUsed">
+							<Value>12356368.0</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="BeforeCPULoadAverage">
+							<Value>2.43701171875</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="BeforeHostMemoryUsed">
+							<Value>12356832.0</Value>
+						</NamedMeasurement>
+					</Compile>
+					<Link command="/usr/bin/cc -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/hello.dir/hello.c.o -o hello" config="" duration="26" language="C" result="0" timeStart="1739877671081" version="1">
+						<NamedMeasurement type="numeric/double" name="AfterCPULoadAverage">
+							<Value>2.43701171875</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="AfterHostMemoryUsed">
+							<Value>12352608.0</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="BeforeCPULoadAverage">
+							<Value>2.43701171875</Value>
+						</NamedMeasurement>
+						<NamedMeasurement type="numeric/double" name="BeforeHostMemoryUsed">
+							<Value>12358160.0</Value>
+						</NamedMeasurement>
+					</Link>
+				</Commands>
+			</Target>
+		</Targets>
+		<Commands>
+			<CmakeBuild command="/Users/dpfeifer/.local/bin/cmake --build . --config Release" duration="416" result="0" timeStart="1739877671006" version="1">
+				<NamedMeasurement type="numeric/double" name="AfterCPULoadAverage">
+					<Value>2.43701171875</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="AfterHostMemoryUsed">
+					<Value>12335152.0</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="BeforeCPULoadAverage">
+					<Value>2.43701171875</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="BeforeHostMemoryUsed">
+					<Value>12348528.0</Value>
+				</NamedMeasurement>
+			</CmakeBuild>
+		</Commands>
+		<Log Encoding="base64" Compression="bin/gzip"/>
+		<EndDateTime>Feb 18 12:21 CET</EndDateTime>
+		<EndBuildTime>1739877671</EndBuildTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Build>
+</Site>

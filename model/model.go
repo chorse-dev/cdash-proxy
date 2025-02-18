@@ -58,6 +58,7 @@ type Command struct {
 	TargetLabels     []string           `json:"target_labels,omitempty"`
 	StartTime        *time.Time         `json:"start_time,omitempty"`
 	Duration         int64              `json:"duration,omitempty"`
+	Config           string             `json:"config,omitempty"`
 	Source           string             `json:"source,omitempty"`
 	Language         string             `json:"language,omitempty"`
 	TestName         string             `json:"test_name,omitempty"`

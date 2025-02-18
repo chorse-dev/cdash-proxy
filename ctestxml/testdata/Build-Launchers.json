@@ -27,7 +27,7 @@
     {
       "command_line": "/home/daniel/.local/bin/cmake --build . --config \"Debug\"",
       "result": 0,
-      "role": "build",
+      "role": "cmakeBuild",
       "start_time": "2025-02-15T21:42:10Z"
     },
     {
