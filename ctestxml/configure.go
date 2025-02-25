@@ -6,6 +6,7 @@ package ctestxml
 import (
 	"log"
 	"regexp"
+	"sort"
 	"strconv"
 	"time"
 
@@ -73,6 +74,7 @@ func parseConfigure(cfg *Configure, generator string) TimedCommands {
 		goto ret
 	}
 
+	sortCommands(cfg.Commands.Commands)
 	for i, in := range cfg.Commands.Commands {
 		out := cmds[i]
 
@@ -93,4 +95,10 @@ ret:
 		EndTime:   endTime,
 		Commands:  cmds,
 	}
+}
+
+func sortCommands(cmds []Command) {
+	sort.Slice(cmds, func(i, j int) bool {
+		return cmds[i].TimeStart < cmds[j].TimeStart
+	})
 }
