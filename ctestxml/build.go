@@ -68,10 +68,26 @@ func parseBuild(build *Build) TimedCommands {
 		}
 	}
 
-	// TODO: Merge into existing commands
+	lookupTable := make(map[string]*model.Command)
+	for i := range cmds {
+		lookupTable[cmds[i].CommandLine] = &cmds[i]
+	}
+
 	for _, failure := range build.Failures {
+		commandLine := cmdFromArgv(failure.Argv)
+		stdout := buildparser.CleanOutput(failure.StdOut)
+		stderr := buildparser.CleanOutput(failure.StdErr)
+		diagnostics := buildparser.ParseOutput(failure.SourceFile, failure.StdErr)
+
+		if cmd, found := lookupTable[commandLine]; found {
+			cmd.StdOut = stdout
+			cmd.StdErr = stderr
+			cmd.Diagnostics = diagnostics
+			continue
+		}
+
 		cmds = append(cmds, model.Command{
-			CommandLine:      cmdFromArgv(failure.Argv),
+			CommandLine:      commandLine,
 			Result:           failure.ExitCondition,
 			Role:             "compile",
 			Target:           failure.Target,
@@ -79,9 +95,9 @@ func parseBuild(build *Build) TimedCommands {
 			TargetLabels:     failure.Labels,
 			Source:           failure.SourceFile,
 			Language:         failure.Language,
-			StdOut:           buildparser.CleanOutput(failure.StdOut),
-			StdErr:           buildparser.CleanOutput(failure.StdErr),
-			Diagnostics:      buildparser.ParseOutput(failure.SourceFile, failure.StdErr),
+			StdOut:           stdout,
+			StdErr:           stderr,
+			Diagnostics:      diagnostics,
 			Attributes:       map[string]string{},
 			WorkingDirectory: failure.WorkingDirectory,
 			// Outputs:          failure.OutputFile,
