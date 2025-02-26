@@ -25,7 +25,7 @@
   "end_configure_time": "2025-02-11T11:37:49Z",
   "commands": [
     {
-      "command_line": "\"/home/daniel/.local/bin/cmake\" \"/home/daniel/Projects/Example\"",
+      "command_line": "/home/daniel/.local/bin/cmake /home/daniel/Projects/Example",
       "result": 0,
       "role": "configure",
       "start_time": "2025-02-11T11:37:49Z",
@@ -45,7 +45,7 @@
       }
     },
     {
-      "command_line": "\"/home/daniel/.local/bin/cmake\" \"/home/daniel/Projects/Example\"",
+      "command_line": "/home/daniel/.local/bin/cmake /home/daniel/Projects/Example",
       "result": 0,
       "role": "generate",
       "start_time": "2025-02-11T11:37:49Z",

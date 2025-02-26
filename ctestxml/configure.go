@@ -35,7 +35,7 @@ func parseConfigure(cfg *Configure, generator string) TimedCommands {
 	for _, step := range cfgSteps {
 		cmd := model.Command{
 			Role:         step.role,
-			CommandLine:  cfg.ConfigureCommand,
+			CommandLine:  cmdFromString(cfg.ConfigureCommand),
 			StartTime:    algorithm.NewPointer(startTime.Add(duration)),
 			Attributes:   map[string]string{"Generator": generator},
 			Measurements: map[string]float64{},

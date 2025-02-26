@@ -25,7 +25,7 @@
   "end_configure_time": "2025-02-16T22:04:56Z",
   "commands": [
     {
-      "command_line": "\"/home/daniel/.local/bin/cmake\" \"-DCMAKE_BUILD_TYPE:STRING=Debug\" \"-GUnix Makefiles\" \"-S/home/daniel/Projects/Example\" \"-B/home/daniel/Projects/Example/build\"",
+      "command_line": "/home/daniel/.local/bin/cmake -DCMAKE_BUILD_TYPE:STRING=Debug \"-GUnix Makefiles\" -S/home/daniel/Projects/Example -B/home/daniel/Projects/Example/build",
       "result": 0,
       "role": "configure",
       "start_time": "2025-02-16T22:04:56.166Z",
@@ -50,7 +50,7 @@
       }
     },
     {
-      "command_line": "\"/home/daniel/.local/bin/cmake\" \"-DCMAKE_BUILD_TYPE:STRING=Debug\" \"-GUnix Makefiles\" \"-S/home/daniel/Projects/Example\" \"-B/home/daniel/Projects/Example/build\"",
+      "command_line": "/home/daniel/.local/bin/cmake -DCMAKE_BUILD_TYPE:STRING=Debug \"-GUnix Makefiles\" -S/home/daniel/Projects/Example -B/home/daniel/Projects/Example/build",
       "result": 0,
       "role": "generate",
       "start_time": "2025-02-16T22:04:56.417Z",

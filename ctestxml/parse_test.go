@@ -44,7 +44,7 @@ func TestXMLToJSONConversion(t *testing.T) {
 	}
 }
 
-func readXML(filePath string) (interface{}, error) {
+func readXML(filePath string) (any, error) {
 	file, err := os.Open(filePath)
 	if err != nil {
 		return nil, err
@@ -61,7 +61,7 @@ func readXML(filePath string) (interface{}, error) {
 		return nil, err
 	}
 
-	var data interface{}
+	var data any
 	err = json.Unmarshal(jobJSON, &data)
 	if err != nil {
 		return nil, err
@@ -70,14 +70,14 @@ func readXML(filePath string) (interface{}, error) {
 	return data, nil
 }
 
-func readJSON(filePath string) (interface{}, error) {
+func readJSON(filePath string) (any, error) {
 	file, err := os.Open(filePath)
 	if err != nil {
 		return nil, err
 	}
 	defer file.Close()
 
-	var job interface{}
+	var job any
 	if err := json.NewDecoder(file).Decode(&job); err != nil {
 		return nil, err
 	}

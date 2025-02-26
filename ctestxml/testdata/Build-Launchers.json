@@ -25,7 +25,7 @@
   "end_build_time": "2025-02-15T21:42:10Z",
   "commands": [
     {
-      "command_line": "/home/daniel/.local/bin/cmake --build . --config \"Debug\"",
+      "command_line": "/home/daniel/.local/bin/cmake --build . --config Debug",
       "result": 0,
       "role": "cmakeBuild",
       "start_time": "2025-02-15T21:42:10Z"

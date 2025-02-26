@@ -5,7 +5,6 @@ package ctestxml
 
 import (
 	"bytes"
-	"strings"
 	"time"
 
 	"github.com/purpleKarrot/cdash-proxy/algorithm"
@@ -25,7 +24,7 @@ func parseBuild(build *Build) TimedCommands {
 
 		cmd := model.Command{
 			Role:         command.Role(),
-			CommandLine:  command.Command,
+			CommandLine:  cmdFromString(command.Command),
 			StartTime:    algorithm.NewPointer(startTime),
 			Duration:     command.Duration,
 			Measurements: map[string]float64{},
@@ -37,7 +36,7 @@ func parseBuild(build *Build) TimedCommands {
 	} else {
 		cmds = append(cmds, model.Command{
 			Role:         "cmakeBuild",
-			CommandLine:  build.BuildCommand,
+			CommandLine:  cmdFromString(build.BuildCommand),
 			StartTime:    algorithm.NewPointer(startTime),
 			Duration:     endTime.Sub(startTime).Milliseconds(),
 			Measurements: map[string]float64{},
@@ -52,7 +51,7 @@ func parseBuild(build *Build) TimedCommands {
 			cmd := model.Command{
 				Role:         command.Role(),
 				Result:       command.Result,
-				CommandLine:  command.Command,
+				CommandLine:  cmdFromString(command.Command),
 				StartTime:    algorithm.NewPointer(time.UnixMilli(command.TimeStart)),
 				Duration:     command.Duration,
 				Config:       command.Config,
@@ -72,7 +71,7 @@ func parseBuild(build *Build) TimedCommands {
 	// TODO: Merge into existing commands
 	for _, failure := range build.Failures {
 		cmds = append(cmds, model.Command{
-			CommandLine:      strings.Join(failure.Argv, " "),
+			CommandLine:      cmdFromArgv(failure.Argv),
 			Result:           failure.ExitCondition,
 			Role:             "compile",
 			Target:           failure.Target,
