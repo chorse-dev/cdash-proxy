@@ -17,8 +17,7 @@ func parseBuild(build *Build) TimedCommands {
 	endTime := time.Unix(build.EndBuildTime, 0)
 	var cmds []model.Command
 
-	if len(build.Commands.Commands) == 1 {
-		command := build.Commands.Commands[0]
+	for _, command := range build.Commands.Commands {
 		startTime = time.UnixMilli(command.TimeStart)
 		endTime = time.UnixMilli(command.TimeStart + command.Duration)
 
@@ -33,7 +32,9 @@ func parseBuild(build *Build) TimedCommands {
 		transformMeasurements(command.Measurements, &cmd)
 
 		cmds = append(cmds, cmd)
-	} else {
+	}
+
+	if len(build.Commands.Commands) == 0 {
 		cmds = append(cmds, model.Command{
 			Role:         "cmakeBuild",
 			CommandLine:  cmdFromString(build.BuildCommand),
