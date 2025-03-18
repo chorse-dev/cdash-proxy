@@ -51,6 +51,7 @@ type Site struct {
 
 type Command struct {
 	CommandLine          string             `json:"command_line"`
+	WorkingDirectory     string             `json:"working_directory,omitempty"`
 	Result               int                `json:"result"`
 	Role                 string             `json:"role"`
 	Target               string             `json:"target,omitempty"`
@@ -65,7 +66,6 @@ type Command struct {
 	Config               string             `json:"config,omitempty"`
 	StdOut               string             `json:"stdout,omitempty"`
 	StdErr               string             `json:"stderr,omitempty"`
-	WorkingDirectory     string             `json:"working_directory,omitempty"`
 	CPULoadAverageBefore *float64           `json:"cpu_load_average_before,omitempty"`
 	CPULoadAverageAfter  *float64           `json:"cpu_load_average_after,omitempty"`
 	HostMemoryUsedBefore *float64           `json:"host_memory_used_before,omitempty"`

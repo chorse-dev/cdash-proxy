@@ -26,13 +26,13 @@
   "commands": [
     {
       "command_line": "/usr/bin/valgrind \"--log-file=/home/daniel/Projects/Example/build/Testing/Temporary/MemoryChecker.1.log\" \"-q\" \"--tool=memcheck\" \"--leak-check=yes\" \"--show-reachable=yes\" \"--num-callers=50\" \"/home/daniel/Projects/Example/build/Failures/fpe\"",
+      "working_directory": "./Failures",
       "result": 0,
       "role": "test",
       "duration": 2409,
       "test_name": "Failures.FPE",
       "test_status": "failed",
       "stdout": "==27305== \n==27305== Process terminating with default action of signal 8 (SIGFPE): dumping core\n==27305==  Integer divide by zero at address 0x1002E79BE7\n==27305==    at 0x10915A: main (fpe.c:9)\n",
-      "working_directory": "./Failures",
       "attributes": {
         "Completion Status": "Completed",
         "Environment": "#CTEST_RESOURCE_GROUP_COUNT=",
@@ -45,12 +45,12 @@
     },
     {
       "command_line": "",
+      "working_directory": "./Failures",
       "result": 0,
       "role": "test",
       "test_name": "Failures.DIS",
       "test_status": "notrun",
       "stdout": "Disabled",
-      "working_directory": "./Failures",
       "attributes": {
         "Completion Status": "Disabled",
         "Environment": ""
@@ -61,6 +61,7 @@
     },
     {
       "command_line": "/usr/bin/valgrind \"--log-file=/home/daniel/Projects/Example/build/Testing/Temporary/MemoryChecker.3.log\" \"-q\" \"--tool=memcheck\" \"--leak-check=yes\" \"--show-reachable=yes\" \"--num-callers=50\" \"/home/daniel/Projects/Example/build/Sanitizers/sanitizers\" \"asan\"",
+      "working_directory": "./Sanitizers",
       "result": 0,
       "role": "test",
       "target_labels": [
@@ -70,7 +71,6 @@
       "test_name": "Sanitize.Address",
       "test_status": "passed",
       "stdout": "==27320== Invalid read of size 1\n==27320==    at 0x10986F: asan (asan.c:7)\n==27320==    by 0x10979D: main (main.c:201)\n==27320==  Address 0x4a650e5 is 5 bytes inside a block of size 80 free'd\n==27320==    at 0x48488EF: free (vg_replace_malloc.c:989)\n==27320==    by 0x109866: asan (asan.c:6)\n==27320==    by 0x10979D: main (main.c:201)\n==27320==  Block was alloc'd at\n==27320==    at 0x484CC13: calloc (vg_replace_malloc.c:1675)\n==27320==    by 0x109856: asan (asan.c:5)\n==27320==    by 0x10979D: main (main.c:201)\n==27320== \n",
-      "working_directory": "./Sanitizers",
       "attributes": {
         "Completion Status": "Completed",
         "Environment": "#CTEST_RESOURCE_GROUP_COUNT=",
@@ -82,6 +82,7 @@
     },
     {
       "command_line": "/usr/bin/valgrind \"--log-file=/home/daniel/Projects/Example/build/Testing/Temporary/MemoryChecker.4.log\" \"-q\" \"--tool=memcheck\" \"--leak-check=yes\" \"--show-reachable=yes\" \"--num-callers=50\" \"/home/daniel/Projects/Example/build/Sanitizers/sanitizers\" \"msan\"",
+      "working_directory": "./Sanitizers",
       "result": 0,
       "role": "test",
       "target_labels": [
@@ -91,7 +92,6 @@
       "test_name": "Sanitize.Memory",
       "test_status": "passed",
       "stdout": "==27332== Conditional jump or move depends on uninitialised value(s)\n==27332==    at 0x1098B1: msan (msan.c:8)\n==27332==    by 0x10979D: main (main.c:201)\n==27332== \n==27332== 80 bytes in 1 blocks are definitely lost in loss record 1 of 1\n==27332==    at 0x48457A8: malloc (vg_replace_malloc.c:446)\n==27332==    by 0x10988F: msan (msan.c:6)\n==27332==    by 0x10979D: main (main.c:201)\n==27332== \n",
-      "working_directory": "./Sanitizers",
       "attributes": {
         "Completion Status": "Completed",
         "Environment": "#CTEST_RESOURCE_GROUP_COUNT=",
@@ -103,6 +103,7 @@
     },
     {
       "command_line": "/usr/bin/valgrind \"--log-file=/home/daniel/Projects/Example/build/Testing/Temporary/MemoryChecker.5.log\" \"-q\" \"--tool=memcheck\" \"--leak-check=yes\" \"--show-reachable=yes\" \"--num-callers=50\" \"/home/daniel/Projects/Example/build/Sanitizers/sanitizers\" \"tsan\"",
+      "working_directory": "./Sanitizers",
       "result": 0,
       "role": "test",
       "target_labels": [
@@ -111,7 +112,6 @@
       "duration": 447,
       "test_name": "Sanitize.Thread",
       "test_status": "passed",
-      "working_directory": "./Sanitizers",
       "attributes": {
         "Completion Status": "Completed",
         "Environment": "#CTEST_RESOURCE_GROUP_COUNT=",

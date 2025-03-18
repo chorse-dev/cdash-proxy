@@ -26,12 +26,12 @@
   "commands": [
     {
       "command_line": "/home/daniel/Projects/Example/build/Failures/fpe",
+      "working_directory": "./Failures",
       "result": 0,
       "role": "test",
       "duration": 56,
       "test_name": "Failures.FPE",
       "test_status": "failed",
-      "working_directory": "./Failures",
       "attributes": {
         "Completion Status": "Completed",
         "Environment": "#CTEST_RESOURCE_GROUP_COUNT=",
@@ -44,12 +44,12 @@
     },
     {
       "command_line": "",
+      "working_directory": "./Failures",
       "result": 0,
       "role": "test",
       "test_name": "Failures.DIS",
       "test_status": "notrun",
       "stdout": "Disabled",
-      "working_directory": "./Failures",
       "attributes": {
         "Completion Status": "Disabled",
         "Environment": ""
@@ -60,13 +60,13 @@
     },
     {
       "command_line": "/home/daniel/.local/bin/cmake \"-E\" \"echo\" \"    test output\n    \u003cCTestMeasurement type=\"numeric/double\" name=\"MyCustomValue\"\u003e1.4847\u003c/CTestMeasurement\u003e\n    more output\n    \"",
+      "working_directory": "./Measurements",
       "result": 0,
       "role": "test",
       "duration": 4,
       "test_name": "numeric_measurement",
       "test_status": "passed",
       "stdout": "    test output\n    \n    more output\n    \n",
-      "working_directory": "./Measurements",
       "attributes": {
         "Completion Status": "Completed",
         "Environment": "#CTEST_RESOURCE_GROUP_COUNT="
@@ -78,13 +78,13 @@
     },
     {
       "command_line": "/home/daniel/.local/bin/cmake \"-E\" \"echo\" \"    test output\n    \u003cCTestMeasurementFile name=\"TestImage\" type=\"image/png\"\u003e\" \"/home/daniel/Projects/Example/Measurements/TestImage.png\" \"\u003c/CTestMeasurementFile\u003e\n    \u003cCTestMeasurementFile name=\"ValidImage\" type=\"image/png\"\u003e\" \"/home/daniel/Projects/Example/Measurements/ValidImage.png\" \"\u003c/CTestMeasurementFile\u003e\n    \u003cCTestMeasurementFile name=\"DifferenceImage\" type=\"image/png\"\u003e\" \"/home/daniel/Projects/Example/Measurements/DifferenceImage.png\" \"\u003c/CTestMeasurementFile\u003e\n    more output\n    \"",
+      "working_directory": "./Measurements",
       "result": 0,
       "role": "test",
       "duration": 4,
       "test_name": "image_measurement",
       "test_status": "passed",
       "stdout": "    test output\n    \n    \n    \n    more output\n    \n",
-      "working_directory": "./Measurements",
       "attached_files": [
         {
           "name": "TestImage",
@@ -115,13 +115,13 @@
     },
     {
       "command_line": "/home/daniel/.local/bin/cmake \"-E\" \"echo\" \"    test output\n    \u003cCTestMeasurementFile name=\"CurrentListFile\" type=\"file\"\u003e\" \"/home/daniel/Projects/Example/Measurements/CMakeLists.txt\" \"\u003c/CTestMeasurementFile\u003e\n    more output\n    \"",
+      "working_directory": "./Measurements",
       "result": 0,
       "role": "test",
       "duration": 5,
       "test_name": "file_measurement",
       "test_status": "passed",
       "stdout": "    test output\n    \n    more output\n    \n",
-      "working_directory": "./Measurements",
       "attached_files": [
         {
           "name": "CurrentListFile",
@@ -140,13 +140,13 @@
     },
     {
       "command_line": "/home/daniel/.local/bin/cmake \"-E\" \"echo\" \"    test output\n    \u003cCTestDetails\u003eCustomDetails\u003c/CTestDetails\u003e\n    more output\n    \"",
+      "working_directory": "./Measurements",
       "result": 0,
       "role": "test",
       "duration": 3,
       "test_name": "custom_details",
       "test_status": "passed",
       "stdout": "    test output\n    more output\n    \n",
-      "working_directory": "./Measurements",
       "attributes": {
         "Completion Status": "CustomDetails",
         "Environment": "#CTEST_RESOURCE_GROUP_COUNT="
@@ -157,6 +157,7 @@
     },
     {
       "command_line": "/home/daniel/Projects/Example/build/Sanitizers/sanitizers \"asan\"",
+      "working_directory": "./Sanitizers",
       "result": 0,
       "role": "test",
       "target_labels": [
@@ -165,7 +166,6 @@
       "duration": 1,
       "test_name": "Sanitize.Address",
       "test_status": "passed",
-      "working_directory": "./Sanitizers",
       "attributes": {
         "Completion Status": "Completed",
         "Environment": "#CTEST_RESOURCE_GROUP_COUNT=",
@@ -177,6 +177,7 @@
     },
     {
       "command_line": "/home/daniel/Projects/Example/build/Sanitizers/sanitizers \"msan\"",
+      "working_directory": "./Sanitizers",
       "result": 0,
       "role": "test",
       "target_labels": [
@@ -185,7 +186,6 @@
       "duration": 1,
       "test_name": "Sanitize.Memory",
       "test_status": "passed",
-      "working_directory": "./Sanitizers",
       "attributes": {
         "Completion Status": "Completed",
         "Environment": "#CTEST_RESOURCE_GROUP_COUNT=",
@@ -197,6 +197,7 @@
     },
     {
       "command_line": "/home/daniel/Projects/Example/build/Sanitizers/sanitizers \"tsan\"",
+      "working_directory": "./Sanitizers",
       "result": 0,
       "role": "test",
       "target_labels": [
@@ -205,7 +206,6 @@
       "duration": 1,
       "test_name": "Sanitize.Thread",
       "test_status": "passed",
-      "working_directory": "./Sanitizers",
       "attributes": {
         "Completion Status": "Completed",
         "Environment": "#CTEST_RESOURCE_GROUP_COUNT=",

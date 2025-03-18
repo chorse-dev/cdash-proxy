@@ -82,6 +82,7 @@ func parseConfigure(cfg *Configure, generator string) TimedCommands {
 			log.Printf("Role mismatch: %s != %s\n", out.Role, in.Role())
 		}
 
+		out.WorkingDirectory = in.WorkingDirectory
 		out.Result = in.Result
 		out.StartTime = algorithm.NewPointer(time.UnixMilli(in.TimeStart))
 		out.Duration = in.Duration

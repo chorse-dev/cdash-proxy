@@ -22,11 +22,12 @@ func parseBuild(build *Build) TimedCommands {
 		endTime = time.UnixMilli(command.TimeStart + command.Duration)
 
 		cmd := model.Command{
-			Role:         command.Role(),
-			CommandLine:  cmdFromString(command.Command),
-			StartTime:    algorithm.NewPointer(startTime),
-			Duration:     command.Duration,
-			Measurements: map[string]float64{},
+			Role:             command.Role(),
+			CommandLine:      cmdFromString(command.CommandLine),
+			WorkingDirectory: command.WorkingDirectory,
+			StartTime:        algorithm.NewPointer(startTime),
+			Duration:         command.Duration,
+			Measurements:     map[string]float64{},
 		}
 
 		transformMeasurements(command.Measurements, &cmd)
@@ -50,19 +51,20 @@ func parseBuild(build *Build) TimedCommands {
 	for _, target := range build.Targets {
 		for _, command := range target.Commands.Commands {
 			cmd := model.Command{
-				Role:         command.Role(),
-				Result:       command.Result,
-				CommandLine:  cmdFromString(command.Command),
-				StartTime:    algorithm.NewPointer(time.UnixMilli(command.TimeStart)),
-				Duration:     command.Duration,
-				Config:       command.Config,
-				Language:     command.Language,
-				Source:       command.Source,
-				Target:       target.Name,
-				TargetType:   target.Type,
-				TargetLabels: target.Labels,
-				Attributes:   map[string]string{},
-				Measurements: map[string]float64{},
+				Role:             command.Role(),
+				Result:           command.Result,
+				CommandLine:      cmdFromString(command.CommandLine),
+				WorkingDirectory: command.WorkingDirectory,
+				StartTime:        algorithm.NewPointer(time.UnixMilli(command.TimeStart)),
+				Duration:         command.Duration,
+				Config:           command.Config,
+				Language:         command.Language,
+				Source:           command.Source,
+				Target:           target.Name,
+				TargetType:       target.Type,
+				TargetLabels:     target.Labels,
+				Attributes:       map[string]string{},
+				Measurements:     map[string]float64{},
 			}
 			transformMeasurements(command.Measurements, &cmd)
 			cmds = append(cmds, cmd)
@@ -89,6 +91,7 @@ func parseBuild(build *Build) TimedCommands {
 
 		cmds = append(cmds, model.Command{
 			CommandLine:      commandLine,
+			WorkingDirectory: failure.WorkingDirectory,
 			Result:           failure.ExitCondition,
 			Role:             "compile",
 			Target:           failure.Target,
@@ -100,7 +103,6 @@ func parseBuild(build *Build) TimedCommands {
 			StdErr:           stderr,
 			Diagnostics:      diagnostics,
 			Attributes:       map[string]string{},
-			WorkingDirectory: failure.WorkingDirectory,
 			// Outputs:          failure.OutputFile,
 		})
 	}

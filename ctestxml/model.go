@@ -118,18 +118,19 @@ type Commands struct {
 }
 
 type Command struct {
-	XMLName      xml.Name
-	Version      int           `xml:"version,attr"`
-	Command      string        `xml:"command,attr"`
-	Result       int           `xml:"result,attr"`
-	Target       string        `xml:"target,attr"`
-	TargetType   string        `xml:"targetType,attr"`
-	TimeStart    int64         `xml:"timeStart,attr"`
-	Duration     int64         `xml:"duration,attr"`
-	Source       string        `xml:"source,attr"`
-	Language     string        `xml:"language,attr"`
-	Config       string        `xml:"config,attr"`
-	Measurements []Measurement `xml:"NamedMeasurement"`
+	XMLName          xml.Name
+	Version          int           `xml:"version,attr"`
+	CommandLine      string        `xml:"command,attr"`
+	WorkingDirectory string        `xml:"workingDir,attr"`
+	Result           int           `xml:"result,attr"`
+	Target           string        `xml:"target,attr"`
+	TargetType       string        `xml:"targetType,attr"`
+	TimeStart        int64         `xml:"timeStart,attr"`
+	Duration         int64         `xml:"duration,attr"`
+	Source           string        `xml:"source,attr"`
+	Language         string        `xml:"language,attr"`
+	Config           string        `xml:"config,attr"`
+	Measurements     []Measurement `xml:"NamedMeasurement"`
 }
 
 func (c Command) Role() string {
@@ -154,8 +155,8 @@ type Failure struct {
 	SourceFile       string   `xml:"Action>SourceFile"`
 	OutputFile       string   `xml:"Action>OutputFile"`
 	OutputType       string   `xml:"Action>OutputType"`
-	WorkingDirectory string   `xml:"Command>WorkingDirectory"`
 	Argv             []string `xml:"Command>Argument"`
+	WorkingDirectory string   `xml:"Command>WorkingDirectory"`
 	StdOut           string   `xml:"Result>StdOut"`
 	StdErr           string   `xml:"Result>StdErr"`
 	ExitCondition    int      `xml:"Result>ExitCondition"`
