@@ -12,7 +12,7 @@ import (
 	"github.com/purpleKarrot/cdash-proxy/model"
 )
 
-var cfgDiagRegex = regexp.MustCompile(`CMake (Deprecation Warning|Error|Warning \(dev\)|Warning) at ([^:]+):([0-9]+) \((.*)\):`)
+var cfgDiagRegex = regexp.MustCompile(`CMake (Deprecation Warning|Error|Warning \(dev\)|Warning)( at ([^:]+):([0-9]+) \((.*)\))?:`)
 
 func Parse(log string, result int) []model.Diagnostic {
 	var diags []model.Diagnostic
@@ -40,15 +40,25 @@ func Parse(log string, result int) []model.Diagnostic {
 		}
 
 		if match := cfgDiagRegex.FindStringSubmatch(line); match != nil {
-			linenr, _ := strconv.Atoi(match[3])
 			diag = &model.Diagnostic{
-				FilePath: match[2],
-				Line:     linenr,
+				FilePath: "CMakeLists.txt",
+				Line:     -1,
 				Column:   -1,
 				Type:     cmakeDiagnosticType(match[1]),
-				Option:   match[4],
+			}
+			if match[2] != "" {
+				linenr, _ := strconv.Atoi(match[4])
+				diag.Line = linenr
+				diag.FilePath = match[3]
+				diag.Option = match[5]
 			}
 		}
+	}
+
+	if diag != nil {
+		diag.Message = strings.TrimRight(diag.Message, "\n")
+		diags = append(diags, *diag)
+		diag = nil
 	}
 
 	if len(diags) == 0 && result != 0 {
