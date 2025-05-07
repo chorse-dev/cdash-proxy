@@ -15,7 +15,7 @@ import (
 )
 
 func print(_ context.Context, job *model.Job) error {
-	jobJSON, err := json.Marshal(job)
+	jobJSON, err := json.MarshalIndent(job, "", "  ")
 	if err != nil {
 		return err
 	}
