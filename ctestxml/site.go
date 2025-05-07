@@ -6,6 +6,7 @@ package ctestxml
 import (
 	"encoding/xml"
 	"fmt"
+	"strings"
 	"time"
 
 	"github.com/purpleKarrot/cdash-proxy/model"
@@ -30,8 +31,11 @@ func parseSite(dec *xml.Decoder, elem *xml.StartElement, project string) (*model
 	}
 
 	if site.ModelName == "" {
-		// upstream change required!
-		site.ModelName = fmt.Sprintf("%s %d %d", site.VendorID, site.FamilyID, site.ModelID)
+		// https://gitlab.kitware.com/cmake/cmake/-/merge_requests/9860
+		site.ModelName = fmt.Sprintf("Some %s CPU", site.VendorID)
+	} else {
+		// https://gitlab.kitware.com/utils/kwsys/-/merge_requests/339
+		site.ModelName = strings.TrimSpace(site.ModelName)
 	}
 
 	job := &model.Job{
