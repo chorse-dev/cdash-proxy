@@ -77,10 +77,10 @@ func parseBuild(build *Build) TimedCommands {
 	}
 
 	for _, failure := range build.Failures {
-		commandLine := cmdFromArgv(failure.Argv)
-		stdout := buildparser.CleanOutput(failure.StdOut)
-		stderr := buildparser.CleanOutput(failure.StdErr)
-		diagnostics := buildparser.ParseOutput(failure.SourceFile, failure.StdErr)
+		commandLine := failure.CommandLine()
+		stdout := failure.CleanStdOut()
+		stderr := failure.CleanStdErr()
+		diagnostics := failure.Diagnostics()
 
 		if cmd, found := lookupTable[commandLine]; found {
 			cmd.StdOut = stdout
@@ -127,8 +127,18 @@ func combineOutput(messages []Diagnostic) string {
 
 func mapDiagnostics(messages []Diagnostic) []model.Diagnostic {
 	return algorithm.Map(messages, func(e Diagnostic) model.Diagnostic {
-		diag := buildparser.ParseDiagnostic(e.SourceFile, e.XMLName.Local, e.Text)
-		diag.Line = e.SourceLine
+		diag := model.Diagnostic{
+			FilePath: e.SourceFile,
+			Line:     e.SourceLine,
+			Column:   -1,
+			Type:     e.XMLName.Local,
+			Message:  e.Text,
+		}
+		if opt := buildparser.ParseDiagnostic(e.Text); opt != nil {
+			diag.Column = opt.Column
+			diag.Message = opt.Message
+			diag.Option = opt.Option
+		}
 		return diag
 	})
 }
