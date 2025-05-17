@@ -8,7 +8,7 @@ import (
 	"errors"
 	"io"
 
-	"github.com/purpleKarrot/cdash-proxy/model"
+	"github.com/chorse-dev/cdash-proxy/model"
 )
 
 func Parse(r io.Reader, project string) (*model.Job, error) {

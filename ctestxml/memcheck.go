@@ -6,9 +6,9 @@ package ctestxml
 import (
 	"time"
 
-	"github.com/purpleKarrot/cdash-proxy/algorithm"
-	"github.com/purpleKarrot/cdash-proxy/ctestxml/memcheck"
-	"github.com/purpleKarrot/cdash-proxy/model"
+	"github.com/chorse-dev/cdash-proxy/algorithm"
+	"github.com/chorse-dev/cdash-proxy/ctestxml/memcheck"
+	"github.com/chorse-dev/cdash-proxy/model"
 )
 
 func parseDynamicAnalysis(da *DynamicAnalysis) TimedCommands {

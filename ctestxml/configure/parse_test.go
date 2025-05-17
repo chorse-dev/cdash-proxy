@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
-	"github.com/purpleKarrot/cdash-proxy/model"
+	"github.com/chorse-dev/cdash-proxy/model"
 )
 
 func TestParseDeprecationWarning(t *testing.T) {

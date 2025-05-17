@@ -10,8 +10,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/purpleKarrot/cdash-proxy/model"
-	"github.com/purpleKarrot/cdash-proxy/web"
+	"github.com/chorse-dev/cdash-proxy/model"
+	"github.com/chorse-dev/cdash-proxy/web"
 )
 
 func print(_ context.Context, job *model.Job) error {

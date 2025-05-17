@@ -7,7 +7,7 @@ import (
 	"encoding/xml"
 	"time"
 
-	"github.com/purpleKarrot/cdash-proxy/model"
+	"github.com/chorse-dev/cdash-proxy/model"
 )
 
 // The only relevant piece of information that we parse from Update.xml is the CommitID.

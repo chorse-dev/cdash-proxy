@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/purpleKarrot/cdash-proxy/model"
+	"github.com/chorse-dev/cdash-proxy/model"
 )
 
 type TimedCommands struct {

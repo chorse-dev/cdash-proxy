@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/purpleKarrot/cdash-proxy/model"
+	"github.com/chorse-dev/cdash-proxy/model"
 )
 
 // https://cmake.org/cmake/help/latest/prop_test/ATTACHED_FILES.html

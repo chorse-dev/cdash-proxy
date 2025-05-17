@@ -6,8 +6,8 @@ package ctestxml
 import (
 	"time"
 
-	"github.com/purpleKarrot/cdash-proxy/algorithm"
-	"github.com/purpleKarrot/cdash-proxy/model"
+	"github.com/chorse-dev/cdash-proxy/algorithm"
+	"github.com/chorse-dev/cdash-proxy/model"
 )
 
 func parseTesting(tst *Testing, sub []Subproject) TimedCommands {

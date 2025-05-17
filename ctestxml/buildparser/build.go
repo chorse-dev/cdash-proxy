@@ -8,8 +8,8 @@ import (
 	"regexp"
 	"strconv"
 
-	"github.com/purpleKarrot/cdash-proxy/algorithm"
-	"github.com/purpleKarrot/cdash-proxy/model"
+	"github.com/chorse-dev/cdash-proxy/algorithm"
+	"github.com/chorse-dev/cdash-proxy/model"
 )
 
 var reFileLine = algorithm.Map([]string{

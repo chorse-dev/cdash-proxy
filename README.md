@@ -1,8 +1,8 @@
 # cdash-proxy
 
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/purpleKarrot/cdash-proxy)](https://pkg.go.dev/github.com/purpleKarrot/cdash-proxy)
-[![Coverage Status](https://coveralls.io/repos/github/purpleKarrot/cdash-proxy/badge.svg?branch=master)](https://coveralls.io/github/purpleKarrot/cdash-proxy?branch=master)
-[![Go Report Card](https://goreportcard.com/badge/github.com/purpleKarrot/cdash-proxy)](https://goreportcard.com/report/github.com/purpleKarrot/cdash-proxy)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/chorse-dev/cdash-proxy)](https://pkg.go.dev/github.com/chorse-dev/cdash-proxy)
+[![Coverage Status](https://coveralls.io/repos/github/chorse-dev/cdash-proxy/badge.svg?branch=master)](https://coveralls.io/github/chorse-dev/cdash-proxy?branch=master)
+[![Go Report Card](https://goreportcard.com/badge/github.com/chorse-dev/cdash-proxy)](https://goreportcard.com/report/github.com/chorse-dev/cdash-proxy)
 
 This code is used on https://ci.purplekarrot.net/ to perform additional
 processing of the data that is sent from CTest. The longterm goal of cdash-proxy

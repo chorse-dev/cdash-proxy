@@ -7,9 +7,9 @@ import (
 	"bytes"
 	"time"
 
-	"github.com/purpleKarrot/cdash-proxy/algorithm"
-	"github.com/purpleKarrot/cdash-proxy/ctestxml/buildparser"
-	"github.com/purpleKarrot/cdash-proxy/model"
+	"github.com/chorse-dev/cdash-proxy/algorithm"
+	"github.com/chorse-dev/cdash-proxy/ctestxml/buildparser"
+	"github.com/chorse-dev/cdash-proxy/model"
 )
 
 func parseBuild(build *Build) TimedCommands {

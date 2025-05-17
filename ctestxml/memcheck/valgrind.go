@@ -7,7 +7,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/purpleKarrot/cdash-proxy/model"
+	"github.com/chorse-dev/cdash-proxy/model"
 )
 
 var regex = regexp.MustCompile(`^<b>([A-Z]{3})</b>`)

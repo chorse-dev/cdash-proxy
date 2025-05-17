@@ -7,7 +7,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/purpleKarrot/cdash-proxy/ctestxml"
+	"github.com/chorse-dev/cdash-proxy/ctestxml"
 )
 
 func Post(w http.ResponseWriter, r *http.Request) {

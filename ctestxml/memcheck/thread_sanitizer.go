@@ -3,7 +3,7 @@
 
 package memcheck
 
-import "github.com/purpleKarrot/cdash-proxy/model"
+import "github.com/chorse-dev/cdash-proxy/model"
 
 func parseThreadSanitizer(log string) []model.Diagnostic {
 	return []model.Diagnostic{}

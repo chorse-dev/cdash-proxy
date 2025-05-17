@@ -10,8 +10,8 @@ import (
 	"net/http"
 	"path/filepath"
 
-	"github.com/purpleKarrot/cdash-proxy/ctestxml"
-	"github.com/purpleKarrot/cdash-proxy/gcovtar"
+	"github.com/chorse-dev/cdash-proxy/ctestxml"
+	"github.com/chorse-dev/cdash-proxy/gcovtar"
 )
 
 func Put(w http.ResponseWriter, r *http.Request, hf HandlerFunc) {

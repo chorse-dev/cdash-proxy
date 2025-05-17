@@ -15,7 +15,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/purpleKarrot/cdash-proxy/model"
+	"github.com/chorse-dev/cdash-proxy/model"
 )
 
 /**

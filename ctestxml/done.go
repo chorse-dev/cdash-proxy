@@ -6,7 +6,7 @@ package ctestxml
 import (
 	"encoding/xml"
 
-	"github.com/purpleKarrot/cdash-proxy/model"
+	"github.com/chorse-dev/cdash-proxy/model"
 )
 
 func parseDone(dec *xml.Decoder, elem *xml.StartElement, project string) (*model.Job, error) {

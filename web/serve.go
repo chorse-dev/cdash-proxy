@@ -7,7 +7,7 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/purpleKarrot/cdash-proxy/model"
+	"github.com/chorse-dev/cdash-proxy/model"
 )
 
 type HandlerFunc func(ctx context.Context, job *model.Job) error

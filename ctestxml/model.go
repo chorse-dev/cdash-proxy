@@ -8,7 +8,7 @@ import (
 	"encoding/xml"
 	"strings"
 
-	"github.com/purpleKarrot/cdash-proxy/ctestxml/util"
+	"github.com/chorse-dev/cdash-proxy/ctestxml/util"
 )
 
 type Done struct {

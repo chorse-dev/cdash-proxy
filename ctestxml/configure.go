@@ -10,9 +10,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/purpleKarrot/cdash-proxy/algorithm"
-	"github.com/purpleKarrot/cdash-proxy/ctestxml/configure"
-	"github.com/purpleKarrot/cdash-proxy/model"
+	"github.com/chorse-dev/cdash-proxy/algorithm"
+	"github.com/chorse-dev/cdash-proxy/ctestxml/configure"
+	"github.com/chorse-dev/cdash-proxy/model"
 )
 
 type cfgStep struct {

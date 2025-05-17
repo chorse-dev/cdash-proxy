@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/purpleKarrot/cdash-proxy/model"
+	"github.com/chorse-dev/cdash-proxy/model"
 )
 
 var cfgDiagRegex = regexp.MustCompile(`CMake (Deprecation Warning|Error|Warning \(dev\)|Warning)( at ([^:]+):([0-9]+) \((.*)\))?:`)

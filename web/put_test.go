@@ -12,7 +12,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/purpleKarrot/cdash-proxy/model"
+	"github.com/chorse-dev/cdash-proxy/model"
 )
 
 var serveOK = Serve(func(ctx context.Context, job *model.Job) error {
