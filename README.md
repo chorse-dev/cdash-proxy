@@ -4,10 +4,9 @@
 [![Coverage Status](https://coveralls.io/repos/github/chorse-dev/cdash-proxy/badge.svg?branch=master)](https://coveralls.io/github/chorse-dev/cdash-proxy?branch=master)
 [![Go Report Card](https://goreportcard.com/badge/github.com/chorse-dev/cdash-proxy)](https://goreportcard.com/report/github.com/chorse-dev/cdash-proxy)
 
-This code is used on https://ci.purplekarrot.net/ to perform additional
-processing of the data that is sent from CTest. The longterm goal of cdash-proxy
-is to become obsolete, because ideally, all processing should be performed by
-CTest itself.
+This code is used on https://chorse.dev/ to perform additional processing of the
+data that is sent from CTest. The longterm goal of cdash-proxy is to become
+obsolete, because ideally, all processing should be performed by CTest itself.
 
 ## Difference to CDash
 
