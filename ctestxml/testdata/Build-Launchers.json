@@ -2,6 +2,7 @@
   "job_id": "f01628bb2fb6440249deeca4d244bd32",
   "project": "Example",
   "build_name": "Launchers",
+  "build_group": "Experimental",
   "site": {
     "name": "NUC",
     "hostname": "NUC",

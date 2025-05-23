@@ -2,6 +2,7 @@
   "job_id": "87783d80b478f2aa92c1f0585adf6de7",
   "project": "Example",
   "build_name": "Valgrind",
+  "build_group": "Experimental",
   "site": {
     "name": "NUC",
     "hostname": "NUC",

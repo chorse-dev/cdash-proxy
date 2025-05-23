@@ -2,6 +2,7 @@
   "job_id": "4e5a4b59fc4badd8ec47227aa4514ba1",
   "project": "Example",
   "build_name": "Linux-cc",
+  "build_group": "Experimental",
   "site": {
     "name": "NUC",
     "hostname": "NUC",

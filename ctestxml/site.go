@@ -39,10 +39,11 @@ func parseSite(dec *xml.Decoder, elem *xml.StartElement, project string) (*model
 	}
 
 	job := &model.Job{
-		JobID:     GenerateJobID(project, site.Name, site.BuildStamp, site.BuildName),
-		Project:   project,
-		BuildName: site.BuildName,
-		ChangeID:  site.ChangeID,
+		JobID:      GenerateJobID(project, site.Name, site.BuildStamp, site.BuildName),
+		Project:    project,
+		BuildName:  site.BuildName,
+		BuildGroup: extractGroupFromBuildstamp(site.BuildStamp),
+		ChangeID:   site.ChangeID,
 	}
 
 	if site.VendorString != "" {
@@ -110,4 +111,11 @@ func parseSite(dec *xml.Decoder, elem *xml.StartElement, project string) (*model
 		job.AttachedFiles = parseUploads(site.Uploads)
 	}
 	return job, nil
+}
+
+func extractGroupFromBuildstamp(buildstamp string) string {
+	if parts := strings.SplitN(buildstamp, "-", 3); len(parts) == 3 {
+		return parts[2]
+	}
+	return ""
 }

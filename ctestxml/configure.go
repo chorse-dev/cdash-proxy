@@ -69,7 +69,7 @@ func parseConfigure(cfg *Configure, generator string) TimedCommands {
 		goto ret
 	}
 
-	if len(cmds) != len(cfg.Commands.Commands) {
+	if len(cmds) < len(cfg.Commands.Commands) {
 		log.Printf("Command lenght mismatch: %d != %d\n", len(cmds), len(cfg.Commands.Commands))
 		goto ret
 	}

@@ -2,6 +2,7 @@
   "job_id": "c070445b9d2eb9f1c147fa80814ef15b",
   "project": "Example",
   "build_name": "linux-ninja",
+  "build_group": "Experimental",
   "attached_files": [
     {
       "name": "hello.txt",

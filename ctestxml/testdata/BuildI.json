@@ -2,6 +2,7 @@
   "job_id": "339028cace695c040617921cc381362c",
   "project": "Example",
   "build_name": "Darwin-cc",
+  "build_group": "Experimental",
   "site": {
     "name": "Mac.fritz.box",
     "hostname": "Mac.fritz.box",

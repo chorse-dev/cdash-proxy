@@ -1,0 +1,72 @@
+{
+  "job_id": "d1be51f7cdb2f4bd07e7c6bfbbe49700",
+  "project": "Example",
+  "build_name": "gcov",
+  "build_group": "Experimental",
+  "change_id": "600b83e07a93160cdf37cf3f93635d405ae47636",
+  "site": {
+    "name": "purplekarrot.net",
+    "hostname": "toolbx",
+    "cpu_vendor": "GenuineIntel",
+    "cpu_vendor_id": "Intel Corporation",
+    "cpu_family_id": 6,
+    "cpu_model_id": 170,
+    "cpu_model_name": "Intel(R) Core(TM) Ultra 7 155H",
+    "cpu_logical_cores": 22,
+    "cpu_physical_cores": 16,
+    "cpu_cache_size": 24576,
+    "cpu_clock_frequency": 1746,
+    "os_name": "Linux",
+    "os_release": "6.14.6-300.fc42.x86_64",
+    "os_version": "#1 SMP PREEMPT_DYNAMIC Fri May  9 20:11:19 UTC 2025",
+    "os_platform": "x86_64",
+    "physical_memory": 63777,
+    "virtual_memory": 8191
+  },
+  "start_configure_time": "2025-05-19T20:50:43Z",
+  "end_configure_time": "2025-05-19T20:50:44Z",
+  "commands": [
+    {
+      "command_line": "/usr/sbin/cmake -DCTEST_USE_LAUNCHERS:BOOL=TRUE -GNinja -S/home/dp/Projects/Example -B/home/dp/.cache/build/83ca88f9fab95a07d56582a37692a8af",
+      "result": 0,
+      "role": "configure",
+      "start_time": "2025-05-19T20:50:43Z",
+      "duration": 100,
+      "stdout": "CMake Deprecation Warning at CMakeLists.txt:7 (cmake_minimum_required):\n  Compatibility with CMake \u003c 3.10 will be removed from a future version of\n  CMake.\n\n  Update the VERSION argument \u003cmin\u003e value.  Or, use the \u003cmin\u003e...\u003cmax\u003e syntax\n  to tell CMake that the project requires at least \u003cmin\u003e but has been updated\n  to work with policies introduced by \u003cmax\u003e or earlier.\n\n\n-- The C compiler identification is GNU 15.1.1\n-- Detecting C compiler ABI info\n-- Detecting C compiler ABI info - done\n-- Check for working C compiler: /usr/bin/gcc - skipped\n-- Detecting C compile features\n-- Detecting C compile features - done\n-- Configuring done (0.1s)\n",
+      "diagnostics": [
+        {
+          "file_path": "CMakeLists.txt",
+          "line": 7,
+          "column": -1,
+          "type": "Warning",
+          "message": "Compatibility with CMake \u003c 3.10 will be removed from a future version of\nCMake.\n\nUpdate the VERSION argument \u003cmin\u003e value.  Or, use the \u003cmin\u003e...\u003cmax\u003e syntax\nto tell CMake that the project requires at least \u003cmin\u003e but has been updated\nto work with policies introduced by \u003cmax\u003e or earlier.",
+          "option": "cmake_minimum_required"
+        }
+      ],
+      "attributes": {
+        "Generator": "ctest-4.0.2-dirty"
+      }
+    },
+    {
+      "command_line": "/usr/sbin/cmake -DCTEST_USE_LAUNCHERS:BOOL=TRUE -GNinja -S/home/dp/Projects/Example -B/home/dp/.cache/build/83ca88f9fab95a07d56582a37692a8af",
+      "result": 1,
+      "role": "generate",
+      "start_time": "2025-05-19T20:50:43.1Z",
+      "duration": 900,
+      "stdout": "CMake Error:\n  CTEST_USE_LAUNCHERS is enabled, but the RULE_LAUNCH_COMPILE global property\n  is not defined.\n\n  Did you forget to include(CTest) in the toplevel CMakeLists.txt ?\n\n\n",
+      "diagnostics": [
+        {
+          "file_path": "CMakeLists.txt",
+          "line": -1,
+          "column": -1,
+          "type": "Error",
+          "message": "CTEST_USE_LAUNCHERS is enabled, but the RULE_LAUNCH_COMPILE global property\nis not defined.\n\nDid you forget to include(CTest) in the toplevel CMakeLists.txt ?",
+          "option": ""
+        }
+      ],
+      "attributes": {
+        "Generator": "ctest-4.0.2-dirty"
+      }
+    }
+  ]
+}

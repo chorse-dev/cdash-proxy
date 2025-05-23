@@ -2,6 +2,7 @@
   "job_id": "10be0293ba736ddcf1df478c809a0bd5",
   "project": "Example",
   "build_name": "Experimental",
+  "build_group": "Experimental",
   "change_id": "4a6dab240cac5a961a0e2de32efb69f2b942e6d9",
   "site": {
     "name": "NUC",

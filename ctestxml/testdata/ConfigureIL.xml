@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="gcov"
+	BuildStamp="20250519-2053-Experimental"
+	Name="purplekarrot.net"
+	Generator="ctest-4.0.2-dirty"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="Linux"
+	Hostname="toolbx"
+	OSRelease="6.14.6-300.fc42.x86_64"
+	OSVersion="#1 SMP PREEMPT_DYNAMIC Fri May  9 20:11:19 UTC 2025"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="170"
+	ModelName="Intel(R) Core(TM) Ultra 7 155H"
+	ProcessorCacheSize="24576"
+	NumberOfLogicalCPU="22"
+	NumberOfPhysicalCPU="16"
+	TotalVirtualMemory="8191"
+	TotalPhysicalMemory="63777"
+	LogicalProcessorsPerPhysical="1"
+	ProcessorClockFrequency="1916.17"
+	ChangeId="600b83e07a93160cdf37cf3f93635d405ae47636"
+	>
+	<Subproject name="Sanitizers">
+		<Label>Sanitizers</Label>
+	</Subproject>
+	<Configure>
+		<StartDateTime>May 19 22:53 CEST</StartDateTime>
+		<StartConfigureTime>1747688018</StartConfigureTime>
+		<ConfigureCommand>"/usr/sbin/cmake" "-DCTEST_USE_LAUNCHERS:BOOL=TRUE" "-GNinja" "-S/home/dp/Projects/Example" "-B/home/dp/.cache/build/83ca88f9fab95a07d56582a37692a8af"</ConfigureCommand>
+		<Log>CMake Deprecation Warning at CMakeLists.txt:7 (cmake_minimum_required):
+  Compatibility with CMake &lt; 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument &lt;min&gt; value.  Or, use the &lt;min&gt;...&lt;max&gt; syntax
+  to tell CMake that the project requires at least &lt;min&gt; but has been updated
+  to work with policies introduced by &lt;max&gt; or earlier.
+
+
+-- The C compiler identification is GNU 15.1.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done (0.2s)
+CMake Error:
+  CTEST_USE_LAUNCHERS is enabled, but the RULE_LAUNCH_COMPILE global property
+  is not defined.
+
+  Did you forget to include(CTest) in the toplevel CMakeLists.txt ?
+
+
+</Log>
+		<ConfigureStatus>1</ConfigureStatus>
+		<EndDateTime>May 19 22:53 CEST</EndDateTime>
+		<EndConfigureTime>1747688018</EndConfigureTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+		<Commands>
+			<Configure command="&quot;/usr/sbin/cmake&quot; &quot;-DCTEST_USE_LAUNCHERS:BOOL=TRUE&quot; &quot;-GNinja&quot; &quot;-S/home/dp/Projects/Example&quot; &quot;-B/home/dp/.cache/build/83ca88f9fab95a07d56582a37692a8af&quot;" duration="151" result="0" timeStart="1747688018664" version="1" workingDir="/home/dp/.cache/build/83ca88f9fab95a07d56582a37692a8af">
+				<NamedMeasurement type="numeric/double" name="AfterCPULoadAverage">
+					<Value>0.48291015625</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="AfterHostMemoryUsed">
+					<Value>12267364.0</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="BeforeCPULoadAverage">
+					<Value>0.0</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="BeforeHostMemoryUsed">
+					<Value>0.0</Value>
+				</NamedMeasurement>
+			</Configure>
+		</Commands>
+	</Configure>
+</Site>

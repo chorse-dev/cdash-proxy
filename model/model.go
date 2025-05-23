@@ -9,6 +9,7 @@ type Job struct {
 	JobID              string         `json:"job_id"`
 	Project            string         `json:"project,omitempty"`
 	BuildName          string         `json:"build_name,omitempty"`
+	BuildGroup         string         `json:"build_group,omitempty"`
 	ChangeID           string         `json:"change_id,omitempty"`
 	Site               *Site          `json:"site,omitempty"`
 	StartUpdateTime    *time.Time     `json:"start_update_time,omitempty"`

@@ -2,6 +2,7 @@
   "job_id": "f5b4ff09774e9b9dd2d89b814f0c906e",
   "project": "Example",
   "build_name": "Coverage",
+  "build_group": "Experimental",
   "site": {
     "name": "NUC",
     "hostname": "NUC",
