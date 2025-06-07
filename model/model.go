@@ -11,7 +11,7 @@ type Job struct {
 	BuildName          string         `json:"build_name,omitempty"`
 	BuildGroup         string         `json:"build_group,omitempty"`
 	ChangeID           string         `json:"change_id,omitempty"`
-	Site               *Site          `json:"site,omitempty"`
+	Host               *Host          `json:"host,omitempty"`
 	StartUpdateTime    *time.Time     `json:"start_update_time,omitempty"`
 	EndUpdateTime      *time.Time     `json:"end_update_time,omitempty"`
 	StartConfigureTime *time.Time     `json:"start_configure_time,omitempty"`
@@ -30,24 +30,32 @@ type Job struct {
 	Done               bool           `json:"done,omitempty"`
 }
 
-type Site struct {
-	Name              string `json:"name"`
-	Hostname          string `json:"hostname"`
-	CPUVendor         string `json:"cpu_vendor"`
-	CPUVendorID       string `json:"cpu_vendor_id"`
-	CPUFamilyID       int    `json:"cpu_family_id"`
-	CPUModelID        int    `json:"cpu_model_id"`
-	CPUModelName      string `json:"cpu_model_name"`
-	CPULogicalCores   int    `json:"cpu_logical_cores"`
-	CPUPhysicalCores  int    `json:"cpu_physical_cores"`
-	CPUCacheSize      int    `json:"cpu_cache_size"`
-	CPUClockFrequency int    `json:"cpu_clock_frequency"`
-	OSName            string `json:"os_name"`
-	OSRelease         string `json:"os_release"`
-	OSVersion         string `json:"os_version"`
-	OSPlatform        string `json:"os_platform"`
-	PhysicalMemory    int    `json:"physical_memory"`
-	VirtualMemory     int    `json:"virtual_memory"`
+type Host struct {
+	Site           string `json:"site"`
+	Name           string `json:"name"`
+	CPU            CPU    `json:"cpu"`
+	OS             OS     `json:"os"`
+	PhysicalMemory int    `json:"physical_memory"`
+	VirtualMemory  int    `json:"virtual_memory"`
+}
+
+type CPU struct {
+	Vendor         string `json:"vendor"`
+	VendorID       string `json:"vendor_id"`
+	FamilyID       int    `json:"family_id"`
+	ModelID        int    `json:"model_id"`
+	ModelName      string `json:"model_name"`
+	LogicalCores   int    `json:"logical_cores"`
+	PhysicalCores  int    `json:"physical_cores"`
+	CacheSize      int    `json:"cache_size"`
+	ClockFrequency int    `json:"clock_frequency"`
+}
+
+type OS struct {
+	Name     string `json:"name"`
+	Release  string `json:"release"`
+	Version  string `json:"version"`
+	Platform string `json:"platform"`
 }
 
 type Command struct {

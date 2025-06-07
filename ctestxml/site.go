@@ -47,24 +47,28 @@ func parseSite(dec *xml.Decoder, elem *xml.StartElement, project string) (*model
 	}
 
 	if site.VendorString != "" {
-		job.Site = &model.Site{
-			Name:              site.Name,
-			Hostname:          site.Hostname,
-			CPUVendor:         site.VendorString,
-			CPUVendorID:       site.VendorID,
-			CPUFamilyID:       site.FamilyID,
-			CPUModelID:        site.ModelID,
-			CPUModelName:      site.ModelName,
-			CPULogicalCores:   site.NumberOfLogicalCPU,
-			CPUPhysicalCores:  site.NumberOfPhysicalCPU,
-			CPUCacheSize:      site.ProcessorCacheSize,
-			CPUClockFrequency: int(site.ProcessorClockFrequency),
-			OSName:            site.OSName,
-			OSRelease:         site.OSRelease,
-			OSVersion:         site.OSVersion,
-			OSPlatform:        site.OSPlatform,
-			PhysicalMemory:    site.TotalPhysicalMemory,
-			VirtualMemory:     site.TotalVirtualMemory,
+		job.Host = &model.Host{
+			Site:           site.Name,
+			Name:           site.Hostname,
+			PhysicalMemory: site.TotalPhysicalMemory,
+			VirtualMemory:  site.TotalVirtualMemory,
+		}
+		job.Host.CPU = model.CPU{
+			Vendor:         site.VendorString,
+			VendorID:       site.VendorID,
+			FamilyID:       site.FamilyID,
+			ModelID:        site.ModelID,
+			ModelName:      site.ModelName,
+			LogicalCores:   site.NumberOfLogicalCPU,
+			PhysicalCores:  site.NumberOfPhysicalCPU,
+			CacheSize:      site.ProcessorCacheSize,
+			ClockFrequency: int(site.ProcessorClockFrequency),
+		}
+		job.Host.OS = model.OS{
+			Name:     site.OSName,
+			Release:  site.OSRelease,
+			Version:  site.OSVersion,
+			Platform: site.OSPlatform,
 		}
 	}
 

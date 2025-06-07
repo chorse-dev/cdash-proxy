@@ -3,22 +3,26 @@
   "project": "Example",
   "build_name": "Darwin-cc",
   "build_group": "Experimental",
-  "site": {
+  "host": {
+    "site": "Mac.fritz.box",
     "name": "Mac.fritz.box",
-    "hostname": "Mac.fritz.box",
-    "cpu_vendor": "Apple",
-    "cpu_vendor_id": "Apple",
-    "cpu_family_id": 0,
-    "cpu_model_id": 0,
-    "cpu_model_name": "Apple M4 Pro",
-    "cpu_logical_cores": 12,
-    "cpu_physical_cores": 12,
-    "cpu_cache_size": 131072,
-    "cpu_clock_frequency": 0,
-    "os_name": "macOS",
-    "os_release": "15.3.1",
-    "os_version": "24D70",
-    "os_platform": "arm64",
+    "cpu": {
+      "vendor": "Apple",
+      "vendor_id": "Apple",
+      "family_id": 0,
+      "model_id": 0,
+      "model_name": "Apple M4 Pro",
+      "logical_cores": 12,
+      "physical_cores": 12,
+      "cache_size": 131072,
+      "clock_frequency": 0
+    },
+    "os": {
+      "name": "macOS",
+      "release": "15.3.1",
+      "version": "24D70",
+      "platform": "arm64"
+    },
     "physical_memory": 24576,
     "virtual_memory": 0
   },

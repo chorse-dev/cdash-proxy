@@ -4,22 +4,26 @@
   "build_name": "gcov",
   "build_group": "Experimental",
   "change_id": "600b83e07a93160cdf37cf3f93635d405ae47636",
-  "site": {
-    "name": "purplekarrot.net",
-    "hostname": "toolbx",
-    "cpu_vendor": "GenuineIntel",
-    "cpu_vendor_id": "Intel Corporation",
-    "cpu_family_id": 6,
-    "cpu_model_id": 170,
-    "cpu_model_name": "Intel(R) Core(TM) Ultra 7 155H",
-    "cpu_logical_cores": 22,
-    "cpu_physical_cores": 16,
-    "cpu_cache_size": 24576,
-    "cpu_clock_frequency": 1746,
-    "os_name": "Linux",
-    "os_release": "6.14.6-300.fc42.x86_64",
-    "os_version": "#1 SMP PREEMPT_DYNAMIC Fri May  9 20:11:19 UTC 2025",
-    "os_platform": "x86_64",
+  "host": {
+    "site": "purplekarrot.net",
+    "name": "toolbx",
+    "cpu": {
+      "vendor": "GenuineIntel",
+      "vendor_id": "Intel Corporation",
+      "family_id": 6,
+      "model_id": 170,
+      "model_name": "Intel(R) Core(TM) Ultra 7 155H",
+      "logical_cores": 22,
+      "physical_cores": 16,
+      "cache_size": 24576,
+      "clock_frequency": 1746
+    },
+    "os": {
+      "name": "Linux",
+      "release": "6.14.6-300.fc42.x86_64",
+      "version": "#1 SMP PREEMPT_DYNAMIC Fri May  9 20:11:19 UTC 2025",
+      "platform": "x86_64"
+    },
     "physical_memory": 63777,
     "virtual_memory": 8191
   },
