@@ -36,10 +36,12 @@
       "role": "cmakeBuild",
       "start_time": "2025-02-26T22:30:19.677Z",
       "duration": 252,
-      "cpu_load_average_before": 1.04150390625,
-      "cpu_load_average_after": 1.04150390625,
-      "host_memory_used_before": 3212092,
-      "host_memory_used_after": 3187968
+      "measurements": {
+        "AfterCPULoadAverage": 1.04150390625,
+        "AfterHostMemoryUsed": 3187968,
+        "BeforeCPULoadAverage": 1.04150390625,
+        "BeforeHostMemoryUsed": 3212092
+      }
     },
     {
       "command_line": "/usr/bin/swiftc -j 22 -num-threads 22 -emit-executable -o Swift/hello_swift -emit-dependencies -output-file-map Swift/CMakeFiles/hello_swift.dir//output-file-map.json /home/daniel/Projects/Example/Swift/hello.swift",
@@ -50,10 +52,12 @@
       "start_time": "2025-02-26T22:30:19.687Z",
       "duration": 237,
       "language": "Swift",
-      "cpu_load_average_before": 1.04150390625,
-      "cpu_load_average_after": 1.04150390625,
-      "host_memory_used_before": 3241728,
-      "host_memory_used_after": 3194456
+      "measurements": {
+        "AfterCPULoadAverage": 1.04150390625,
+        "AfterHostMemoryUsed": 3194456,
+        "BeforeCPULoadAverage": 1.04150390625,
+        "BeforeHostMemoryUsed": 3241728
+      }
     },
     {
       "command_line": "/usr/bin/cc -Wl,--dependency-file=Hello/CMakeFiles/hello.dir/link.d Hello/CMakeFiles/hello.dir/hello.c.o -o Hello/hello",
@@ -64,10 +68,12 @@
       "start_time": "2025-02-26T22:30:19.718Z",
       "duration": 20,
       "language": "C",
-      "cpu_load_average_before": 1.04150390625,
-      "cpu_load_average_after": 1.04150390625,
-      "host_memory_used_before": 3216176,
-      "host_memory_used_after": 3231524
+      "measurements": {
+        "AfterCPULoadAverage": 1.04150390625,
+        "AfterHostMemoryUsed": 3231524,
+        "BeforeCPULoadAverage": 1.04150390625,
+        "BeforeHostMemoryUsed": 3216176
+      }
     },
     {
       "command_line": "/usr/bin/cc -MD -MT Hello/CMakeFiles/hello.dir/hello.c.o -MF Hello/CMakeFiles/hello.dir/hello.c.o.d -o Hello/CMakeFiles/hello.dir/hello.c.o -c /home/daniel/Projects/Example/Hello/hello.c",
@@ -79,10 +85,12 @@
       "duration": 20,
       "source": "/home/daniel/Projects/Example/Hello/hello.c",
       "language": "C",
-      "cpu_load_average_before": 1.04150390625,
-      "cpu_load_average_after": 1.04150390625,
-      "host_memory_used_before": 3248608,
-      "host_memory_used_after": 3236596
+      "measurements": {
+        "AfterCPULoadAverage": 1.04150390625,
+        "AfterHostMemoryUsed": 3236596,
+        "BeforeCPULoadAverage": 1.04150390625,
+        "BeforeHostMemoryUsed": 3248608
+      }
     },
     {
       "command_line": "/usr/bin/cc -Wl,--dependency-file=Failures/CMakeFiles/fpe.dir/link.d Failures/CMakeFiles/fpe.dir/fpe.c.o -o Failures/fpe",
@@ -93,10 +101,12 @@
       "start_time": "2025-02-26T22:30:19.723Z",
       "duration": 18,
       "language": "C",
-      "cpu_load_average_before": 1.04150390625,
-      "cpu_load_average_after": 1.04150390625,
-      "host_memory_used_before": 3227896,
-      "host_memory_used_after": 3210476
+      "measurements": {
+        "AfterCPULoadAverage": 1.04150390625,
+        "AfterHostMemoryUsed": 3210476,
+        "BeforeCPULoadAverage": 1.04150390625,
+        "BeforeHostMemoryUsed": 3227896
+      }
     },
     {
       "command_line": "/usr/bin/cc -Wall -Wextra -MD -MT Failures/CMakeFiles/fpe.dir/fpe.c.o -MF Failures/CMakeFiles/fpe.dir/fpe.c.o.d -o Failures/CMakeFiles/fpe.dir/fpe.c.o -c /home/daniel/Projects/Example/Failures/fpe.c",
@@ -109,10 +119,6 @@
       "source": "/home/daniel/Projects/Example/Failures/fpe.c",
       "language": "C",
       "stderr": "/home/daniel/Projects/Example/Failures/fpe.c: In function ‘main’:\n/home/daniel/Projects/Example/Failures/fpe.c:10:20: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘double’ [-Wformat=]\n   10 |   printf(\"Result: %d\\n\", result);\n      |                   ~^     ~~~~~~\n      |                    |     |\n      |                    int   double\n      |                   %f\n/home/daniel/Projects/Example/Failures/fpe.c:14:29: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘double’ [-Wformat=]\n   14 |     printf(\"Safe division: %d\\n\", result);\n      |                            ~^     ~~~~~~\n      |                             |     |\n      |                             int   double\n      |                            %f\n/home/daniel/Projects/Example/Failures/fpe.c:7:7: warning: unused variable ‘unusedVar’ [-Wunused-variable]\n    7 |   int unusedVar = 10;\n      |       ^~~~~~~~~",
-      "cpu_load_average_before": 1.04150390625,
-      "cpu_load_average_after": 1.04150390625,
-      "host_memory_used_before": 3261536,
-      "host_memory_used_after": 3230056,
       "diagnostics": [
         {
           "file_path": "Failures/fpe.c",
@@ -138,7 +144,13 @@
           "message": "unused variable ‘unusedVar’",
           "option": "-Wunused-variable"
         }
-      ]
+      ],
+      "measurements": {
+        "AfterCPULoadAverage": 1.04150390625,
+        "AfterHostMemoryUsed": 3230056,
+        "BeforeCPULoadAverage": 1.04150390625,
+        "BeforeHostMemoryUsed": 3261536
+      }
     },
     {
       "command_line": "/usr/bin/cc -MD -MT Sanitizers/CMakeFiles/sanitizers.dir/msan.c.o -MF Sanitizers/CMakeFiles/sanitizers.dir/msan.c.o.d -o Sanitizers/CMakeFiles/sanitizers.dir/msan.c.o -c /home/daniel/Projects/Example/Sanitizers/msan.c",
@@ -150,10 +162,12 @@
       "duration": 17,
       "source": "/home/daniel/Projects/Example/Sanitizers/msan.c",
       "language": "C",
-      "cpu_load_average_before": 1.04150390625,
-      "cpu_load_average_after": 1.04150390625,
-      "host_memory_used_before": 3261536,
-      "host_memory_used_after": 3288664
+      "measurements": {
+        "AfterCPULoadAverage": 1.04150390625,
+        "AfterHostMemoryUsed": 3288664,
+        "BeforeCPULoadAverage": 1.04150390625,
+        "BeforeHostMemoryUsed": 3261536
+      }
     },
     {
       "command_line": "/usr/bin/cc -MD -MT Sanitizers/CMakeFiles/sanitizers.dir/asan.c.o -MF Sanitizers/CMakeFiles/sanitizers.dir/asan.c.o.d -o Sanitizers/CMakeFiles/sanitizers.dir/asan.c.o -c /home/daniel/Projects/Example/Sanitizers/asan.c",
@@ -165,10 +179,12 @@
       "duration": 20,
       "source": "/home/daniel/Projects/Example/Sanitizers/asan.c",
       "language": "C",
-      "cpu_load_average_before": 1.04150390625,
-      "cpu_load_average_after": 1.04150390625,
-      "host_memory_used_before": 3261536,
-      "host_memory_used_after": 3241852
+      "measurements": {
+        "AfterCPULoadAverage": 1.04150390625,
+        "AfterHostMemoryUsed": 3241852,
+        "BeforeCPULoadAverage": 1.04150390625,
+        "BeforeHostMemoryUsed": 3261536
+      }
     },
     {
       "command_line": "/usr/bin/cc -MD -MT Sanitizers/CMakeFiles/sanitizers.dir/main.c.o -MF Sanitizers/CMakeFiles/sanitizers.dir/main.c.o.d -o Sanitizers/CMakeFiles/sanitizers.dir/main.c.o -c /home/daniel/Projects/Example/build/Sanitizers/main.c",
@@ -180,10 +196,12 @@
       "duration": 25,
       "source": "/home/daniel/Projects/Example/build/Sanitizers/main.c",
       "language": "C",
-      "cpu_load_average_before": 1.04150390625,
-      "cpu_load_average_after": 1.04150390625,
-      "host_memory_used_before": 3252648,
-      "host_memory_used_after": 3230464
+      "measurements": {
+        "AfterCPULoadAverage": 1.04150390625,
+        "AfterHostMemoryUsed": 3230464,
+        "BeforeCPULoadAverage": 1.04150390625,
+        "BeforeHostMemoryUsed": 3252648
+      }
     },
     {
       "command_line": "/usr/bin/cc -MD -MT Sanitizers/CMakeFiles/sanitizers.dir/tsan.c.o -MF Sanitizers/CMakeFiles/sanitizers.dir/tsan.c.o.d -o Sanitizers/CMakeFiles/sanitizers.dir/tsan.c.o -c /home/daniel/Projects/Example/Sanitizers/tsan.c",
@@ -195,10 +213,12 @@
       "duration": 18,
       "source": "/home/daniel/Projects/Example/Sanitizers/tsan.c",
       "language": "C",
-      "cpu_load_average_before": 1.04150390625,
-      "cpu_load_average_after": 1.04150390625,
-      "host_memory_used_before": 3261940,
-      "host_memory_used_after": 3264760
+      "measurements": {
+        "AfterCPULoadAverage": 1.04150390625,
+        "AfterHostMemoryUsed": 3264760,
+        "BeforeCPULoadAverage": 1.04150390625,
+        "BeforeHostMemoryUsed": 3261940
+      }
     },
     {
       "command_line": "/usr/bin/cc -Wl,--dependency-file=Sanitizers/CMakeFiles/sanitizers.dir/link.d Sanitizers/CMakeFiles/sanitizers.dir/main.c.o Sanitizers/CMakeFiles/sanitizers.dir/asan.c.o Sanitizers/CMakeFiles/sanitizers.dir/msan.c.o Sanitizers/CMakeFiles/sanitizers.dir/tsan.c.o -o Sanitizers/sanitizers",
@@ -209,10 +229,12 @@
       "start_time": "2025-02-26T22:30:19.722Z",
       "duration": 14,
       "language": "C",
-      "cpu_load_average_before": 1.04150390625,
-      "cpu_load_average_after": 1.04150390625,
-      "host_memory_used_before": 3223856,
-      "host_memory_used_after": 3231132
+      "measurements": {
+        "AfterCPULoadAverage": 1.04150390625,
+        "AfterHostMemoryUsed": 3231132,
+        "BeforeCPULoadAverage": 1.04150390625,
+        "BeforeHostMemoryUsed": 3223856
+      }
     }
   ]
 }

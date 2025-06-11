@@ -35,26 +35,6 @@ func transformMeasurement(m Measurement, cmd *model.Command) {
 		return
 	}
 
-	if m.Name == "AfterCPULoadAverage" {
-		cmd.CPULoadAverageAfter = parseFloat(string(m.Value))
-		return
-	}
-
-	if m.Name == "AfterHostMemoryUsed" {
-		cmd.HostMemoryUsedAfter = parseFloat(string(m.Value))
-		return
-	}
-
-	if m.Name == "BeforeCPULoadAverage" {
-		cmd.CPULoadAverageBefore = parseFloat(string(m.Value))
-		return
-	}
-
-	if m.Name == "BeforeHostMemoryUsed" {
-		cmd.HostMemoryUsedBefore = parseFloat(string(m.Value))
-		return
-	}
-
 	if m.Type == "file" {
 		cmd.AttachedFiles = append(cmd.AttachedFiles, model.AttachedFile{
 			Name:     m.Name,

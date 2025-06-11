@@ -59,31 +59,28 @@ type OS struct {
 }
 
 type Command struct {
-	CommandLine          string             `json:"command_line"`
-	WorkingDirectory     string             `json:"working_directory,omitempty"`
-	Result               int                `json:"result"`
-	Role                 string             `json:"role"`
-	Target               string             `json:"target,omitempty"`
-	TargetType           string             `json:"target_type,omitempty"`
-	TargetLabels         []string           `json:"target_labels,omitempty"`
-	StartTime            *time.Time         `json:"start_time,omitempty"`
-	Duration             int64              `json:"duration,omitempty"`
-	Source               string             `json:"source,omitempty"`
-	Language             string             `json:"language,omitempty"`
-	TestName             string             `json:"test_name,omitempty"`
-	TestStatus           string             `json:"test_status,omitempty"`
-	Config               string             `json:"config,omitempty"`
-	StdOut               string             `json:"stdout,omitempty"`
-	StdErr               string             `json:"stderr,omitempty"`
-	CPULoadAverageBefore *float64           `json:"cpu_load_average_before,omitempty"`
-	CPULoadAverageAfter  *float64           `json:"cpu_load_average_after,omitempty"`
-	HostMemoryUsedBefore *float64           `json:"host_memory_used_before,omitempty"`
-	HostMemoryUsedAfter  *float64           `json:"host_memory_used_after,omitempty"`
-	Diagnostics          []Diagnostic       `json:"diagnostics,omitempty"`
-	AttachedFiles        []AttachedFile     `json:"attached_files,omitempty"`
-	Attributes           map[string]string  `json:"attributes,omitempty"`
-	Measurements         map[string]float64 `json:"measurements,omitempty"`
-	// Outputs, OutputSizes
+	CommandLine      string             `json:"command_line"`
+	WorkingDirectory string             `json:"working_directory,omitempty"`
+	Result           int                `json:"result"`
+	Role             string             `json:"role"`
+	Target           string             `json:"target,omitempty"`
+	TargetType       string             `json:"target_type,omitempty"`
+	TargetLabels     []string           `json:"target_labels,omitempty"`
+	StartTime        *time.Time         `json:"start_time,omitempty"`
+	Duration         int64              `json:"duration,omitempty"`
+	Outputs          []string           `json:"outputs,omitempty"`
+	OutputSizes      []int64            `json:"output_sizes,omitempty"`
+	Source           string             `json:"source,omitempty"`
+	Language         string             `json:"language,omitempty"`
+	TestName         string             `json:"test_name,omitempty"`
+	TestStatus       string             `json:"test_status,omitempty"`
+	Config           string             `json:"config,omitempty"`
+	StdOut           string             `json:"stdout,omitempty"`
+	StdErr           string             `json:"stderr,omitempty"`
+	Diagnostics      []Diagnostic       `json:"diagnostics,omitempty"`
+	AttachedFiles    []AttachedFile     `json:"attached_files,omitempty"`
+	Attributes       map[string]string  `json:"attributes,omitempty"`
+	Measurements     map[string]float64 `json:"measurements,omitempty"`
 }
 
 type AttachedFile struct {
