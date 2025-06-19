@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Update mode="Client" Generator="ctest-4.0.3-dirty">
+	<Site>purplekarrot.net</Site>
+	<BuildName>experimental-checks</BuildName>
+	<BuildStamp>20250619-2010-Experimental</BuildStamp>
+	<StartDateTime>Jun 19 22:10 CEST</StartDateTime>
+	<StartTime>1750363819</StartTime>
+	<UpdateCommand>"/usr/bin/git" "fetch"</UpdateCommand>
+	<UpdateType>GIT</UpdateType>
+	<Revision>b9979c768271ba7ad6ecc2103535d015b17500ce</Revision>
+	<PriorRevision>7132eed8258d8a6e583ed3e81e36cbde231177ed</PriorRevision>
+	<EndDateTime>Jun 19 22:10 CEST</EndDateTime>
+	<EndTime>1750363821</EndTime>
+	<ElapsedMinutes>0</ElapsedMinutes>
+	<UpdateReturnStatus/>
+</Update>

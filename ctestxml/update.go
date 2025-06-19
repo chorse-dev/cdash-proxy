@@ -28,6 +28,7 @@ func parseUpdate(dec *xml.Decoder, elem *xml.StartElement, project string) (*mod
 	job := &model.Job{
 		JobID:           GenerateJobID(project, update.Site, update.BuildStamp, update.BuildName),
 		BuildName:       update.BuildName,
+		BuildGroup:      extractGroupFromBuildstamp(update.BuildStamp),
 		ChangeID:        update.Revision,
 		Project:         project,
 		StartUpdateTime: &startTime,
