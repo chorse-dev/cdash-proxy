@@ -14,8 +14,7 @@
       "model_name": "Intel(R) Core(TM) Ultra 7 155H",
       "logical_cores": 22,
       "physical_cores": 16,
-      "cache_size": 24576,
-      "clock_frequency": 1993
+      "cache_size": 24576
     },
     "os": {
       "name": "Linux",

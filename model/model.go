@@ -40,15 +40,14 @@ type Host struct {
 }
 
 type CPU struct {
-	Vendor         string `json:"vendor"`
-	VendorID       string `json:"vendor_id"`
-	FamilyID       int    `json:"family_id"`
-	ModelID        int    `json:"model_id"`
-	ModelName      string `json:"model_name"`
-	LogicalCores   int    `json:"logical_cores"`
-	PhysicalCores  int    `json:"physical_cores"`
-	CacheSize      int    `json:"cache_size"`
-	ClockFrequency int    `json:"clock_frequency"`
+	Vendor        string `json:"vendor"`
+	VendorID      string `json:"vendor_id"`
+	FamilyID      int    `json:"family_id"`
+	ModelID       int    `json:"model_id"`
+	ModelName     string `json:"model_name"`
+	LogicalCores  int    `json:"logical_cores"`
+	PhysicalCores int    `json:"physical_cores"`
+	CacheSize     int    `json:"cache_size"`
 }
 
 type OS struct {

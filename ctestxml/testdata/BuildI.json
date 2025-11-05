@@ -14,8 +14,7 @@
       "model_name": "Apple M4 Pro",
       "logical_cores": 12,
       "physical_cores": 12,
-      "cache_size": 131072,
-      "clock_frequency": 0
+      "cache_size": 131072
     },
     "os": {
       "name": "macOS",

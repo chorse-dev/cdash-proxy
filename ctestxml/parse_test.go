@@ -56,16 +56,16 @@ func readXML(filePath string) (any, error) {
 		return nil, err
 	}
 
-	jsonFile, err := os.Create(strings.TrimSuffix(filePath, ".xml") + ".json")
-	if err != nil {
-		return nil, err
-	}
-	defer jsonFile.Close()
-	encoder := json.NewEncoder(jsonFile)
-	encoder.SetIndent("", "  ")
-	if err := encoder.Encode(&job); err != nil {
-		return nil, err
-	}
+	// jsonFile, err := os.Create(strings.TrimSuffix(filePath, ".xml") + ".json")
+	// if err != nil {
+	// 	return nil, err
+	// }
+	// defer jsonFile.Close()
+	// encoder := json.NewEncoder(jsonFile)
+	// encoder.SetIndent("", "  ")
+	// if err := encoder.Encode(&job); err != nil {
+	// 	return nil, err
+	// }
 
 	jobJSON, err := json.Marshal(job)
 	if err != nil {
