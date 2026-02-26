@@ -5,6 +5,8 @@ package ctestxml
 
 import (
 	"bytes"
+	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/chorse-dev/cdash-proxy/algorithm"
@@ -50,6 +52,7 @@ func parseBuild(build *Build) TimedCommands {
 
 	for _, target := range build.Targets {
 		for _, command := range target.Commands.Commands {
+			source := stripSourcePath(command.Source, build.BinaryDirectory, build.SourceDirectory)
 			cmd := model.Command{
 				Role:             command.Role(),
 				Result:           command.Result,
@@ -59,7 +62,7 @@ func parseBuild(build *Build) TimedCommands {
 				Duration:         command.Duration,
 				Config:           command.Config,
 				Language:         command.Language,
-				Source:           command.Source,
+				Source:           source,
 				Target:           target.Name,
 				TargetType:       target.Type,
 				TargetLabels:     target.Labels,
@@ -141,4 +144,38 @@ func mapDiagnostics(messages []Diagnostic) []model.Diagnostic {
 		}
 		return diag
 	})
+}
+
+func stripSourcePath(file, build, root string) string {
+	if file == "" {
+		return file
+	}
+
+	if build != "" {
+		if rel, ok := relIfUnderDir(build, file); ok {
+			return "<build>/" + rel
+		}
+	}
+
+	if root != "" {
+		if rel, ok := relIfUnderDir(root, file); ok {
+			return rel
+		}
+	}
+
+	return file
+}
+
+func relIfUnderDir(baseDir, target string) (string, bool) {
+	rel, err := filepath.Rel(baseDir, target)
+	if err != nil {
+		return "", false
+	}
+
+	rel = filepath.Clean(rel)
+	if strings.HasPrefix(rel, ".."+string(filepath.Separator)) {
+		return "", false
+	}
+
+	return filepath.ToSlash(rel), true
 }

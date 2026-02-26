@@ -31,6 +31,8 @@
 	<Build>
 		<StartDateTime>Feb 26 23:30 CET</StartDateTime>
 		<StartBuildTime>1740609019</StartBuildTime>
+		<SourceDirectory>/home/daniel/Projects/Example</SourceDirectory>
+		<BinaryDirectory>/home/daniel/Projects/Example/build</BinaryDirectory>
 		<BuildCommand>/home/daniel/.local/bin/cmake --build . --config "Release" --parallel "22"</BuildCommand>
 		<Failure type="Warning">
 			<!-- Meta-information about the build action -->

@@ -91,13 +91,15 @@ type Configure struct {
 }
 
 type Build struct {
-	StartBuildTime int64        `xml:"StartBuildTime"`
-	EndBuildTime   int64        `xml:"EndBuildTime"`
-	BuildCommand   string       `xml:"BuildCommand"`
-	Diagnostics    []Diagnostic `xml:",any"`
-	Failures       []Failure    `xml:"Failure"`
-	Targets        []Target     `xml:"Targets>Target"`
-	Commands       Commands     `xml:"Commands"`
+	StartBuildTime  int64        `xml:"StartBuildTime"`
+	EndBuildTime    int64        `xml:"EndBuildTime"`
+	SourceDirectory string       `xml:"SourceDirectory"`
+	BinaryDirectory string       `xml:"BinaryDirectory"`
+	BuildCommand    string       `xml:"BuildCommand"`
+	Diagnostics     []Diagnostic `xml:",any"`
+	Failures        []Failure    `xml:"Failure"`
+	Targets         []Target     `xml:"Targets>Target"`
+	Commands        Commands     `xml:"Commands"`
 
 	// Make sure they do not get catched by ",any"
 	StartDateTime  struct{} `xml:"StartDateTime"`

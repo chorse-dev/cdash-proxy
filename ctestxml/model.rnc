@@ -95,6 +95,8 @@ build =
   element Build {
     element StartDateTime { xsd:string }?,
     element StartBuildTime { xsd:integer }?,
+    element SourceDirectory { xsd:string }?,
+    element BinaryDirectory { xsd:string }?,
     element BuildCommand { xsd:string }?,
     element Error { diagnostic }*,
     element Warning { diagnostic }*,
