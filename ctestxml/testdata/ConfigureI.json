@@ -3,6 +3,7 @@
   "project": "Example",
   "build_name": "Coverage",
   "build_group": "Experimental",
+  "generator": "ctest-4.0.20250216-gceacabc",
   "host": {
     "site": "NUC",
     "name": "NUC",
@@ -45,9 +46,6 @@
           "option": "cmake_minimum_required"
         }
       ],
-      "attributes": {
-        "Generator": "ctest-4.0.20250216-gceacabc"
-      },
       "measurements": {
         "AfterCPULoadAverage": 1.18505859375,
         "AfterHostMemoryUsed": 5883200,
@@ -62,9 +60,6 @@
       "start_time": "2025-02-16T22:04:56.417Z",
       "duration": 9,
       "stdout": "-- Generating done (0.0s)\n",
-      "attributes": {
-        "Generator": "ctest-4.0.20250216-gceacabc"
-      },
       "measurements": {
         "AfterCPULoadAverage": 1.18505859375,
         "AfterHostMemoryUsed": 5877932,

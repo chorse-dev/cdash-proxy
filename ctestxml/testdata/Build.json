@@ -3,6 +3,7 @@
   "project": "Example",
   "build_name": "Linux-cc",
   "build_group": "Experimental",
+  "generator": "ctest-3.31.20250131-gf0cc688",
   "host": {
     "site": "NUC",
     "name": "NUC",

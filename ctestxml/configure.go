@@ -25,7 +25,7 @@ var cfgSteps = []cfgStep{
 	{"generate", regexp.MustCompile(`-- Generating done \(([0-9.]+)s\)\n`)},
 }
 
-func parseConfigure(cfg *Configure, generator string) TimedCommands {
+func parseConfigure(cfg *Configure) TimedCommands {
 	input := cfg.Log
 	startTime := time.Unix(cfg.StartConfigureTime, 0)
 	endTime := time.Unix(cfg.EndConfigureTime, 0)
@@ -37,7 +37,6 @@ func parseConfigure(cfg *Configure, generator string) TimedCommands {
 			Role:         step.role,
 			CommandLine:  cmdFromString(cfg.ConfigureCommand),
 			StartTime:    algorithm.NewPointer(startTime.Add(duration)),
-			Attributes:   map[string]string{"Generator": generator},
 			Measurements: map[string]float64{},
 		}
 

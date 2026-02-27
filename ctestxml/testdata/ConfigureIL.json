@@ -4,6 +4,7 @@
   "build_name": "gcov",
   "build_group": "Experimental",
   "change_id": "600b83e07a93160cdf37cf3f93635d405ae47636",
+  "generator": "ctest-4.0.2-dirty",
   "host": {
     "site": "purplekarrot.net",
     "name": "toolbx",
@@ -47,9 +48,6 @@
           "option": "cmake_minimum_required"
         }
       ],
-      "attributes": {
-        "Generator": "ctest-4.0.2-dirty"
-      },
       "measurements": {
         "AfterCPULoadAverage": 0.48291015625,
         "AfterHostMemoryUsed": 12267364,
@@ -73,10 +71,7 @@
           "message": "CTEST_USE_LAUNCHERS is enabled, but the RULE_LAUNCH_COMPILE global property\nis not defined.\n\nDid you forget to include(CTest) in the toplevel CMakeLists.txt ?",
           "option": ""
         }
-      ],
-      "attributes": {
-        "Generator": "ctest-4.0.2-dirty"
-      }
+      ]
     }
   ]
 }

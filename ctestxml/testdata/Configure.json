@@ -3,6 +3,7 @@
   "project": "Example",
   "build_name": "Linux-cc",
   "build_group": "Experimental",
+  "generator": "ctest-3.31.20250131-gf0cc688",
   "host": {
     "site": "NUC",
     "name": "NUC",
@@ -43,20 +44,14 @@
           "message": "Compatibility with CMake \u003c 3.10 will be removed from a future version of\nCMake.\n\nUpdate the VERSION argument \u003cmin\u003e value.  Or, use the \u003cmin\u003e...\u003cmax\u003e syntax\nto tell CMake that the project requires at least \u003cmin\u003e but has been updated\nto work with policies introduced by \u003cmax\u003e or earlier.",
           "option": "cmake_minimum_required"
         }
-      ],
-      "attributes": {
-        "Generator": "ctest-3.31.20250131-gf0cc688"
-      }
+      ]
     },
     {
       "command_line": "/home/daniel/.local/bin/cmake /home/daniel/Projects/Example",
       "result": 0,
       "role": "generate",
       "start_time": "2025-02-11T11:37:49Z",
-      "stdout": "-- Generating done (0.0s)\n",
-      "attributes": {
-        "Generator": "ctest-3.31.20250131-gf0cc688"
-      }
+      "stdout": "-- Generating done (0.0s)\n"
     }
   ]
 }

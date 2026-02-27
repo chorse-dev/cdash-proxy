@@ -3,6 +3,7 @@
   "project": "Example",
   "build_name": "linux-ninja",
   "build_group": "Experimental",
+  "generator": "ctest-3.30.20240915-gb346afc-dirty",
   "attached_files": [
     {
       "name": "hello.txt",

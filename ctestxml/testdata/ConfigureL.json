@@ -4,6 +4,7 @@
   "build_name": "gcov",
   "build_group": "Experimental",
   "change_id": "600b83e07a93160cdf37cf3f93635d405ae47636",
+  "generator": "ctest-4.0.2-dirty",
   "host": {
     "site": "purplekarrot.net",
     "name": "toolbx",
@@ -45,10 +46,7 @@
           "message": "Compatibility with CMake \u003c 3.10 will be removed from a future version of\nCMake.\n\nUpdate the VERSION argument \u003cmin\u003e value.  Or, use the \u003cmin\u003e...\u003cmax\u003e syntax\nto tell CMake that the project requires at least \u003cmin\u003e but has been updated\nto work with policies introduced by \u003cmax\u003e or earlier.",
           "option": "cmake_minimum_required"
         }
-      ],
-      "attributes": {
-        "Generator": "ctest-4.0.2-dirty"
-      }
+      ]
     },
     {
       "command_line": "/usr/sbin/cmake -DCTEST_USE_LAUNCHERS:BOOL=TRUE -GNinja -S/home/dp/Projects/Example -B/home/dp/.cache/build/83ca88f9fab95a07d56582a37692a8af",
@@ -66,10 +64,7 @@
           "message": "CTEST_USE_LAUNCHERS is enabled, but the RULE_LAUNCH_COMPILE global property\nis not defined.\n\nDid you forget to include(CTest) in the toplevel CMakeLists.txt ?",
           "option": ""
         }
-      ],
-      "attributes": {
-        "Generator": "ctest-4.0.2-dirty"
-      }
+      ]
     }
   ]
 }

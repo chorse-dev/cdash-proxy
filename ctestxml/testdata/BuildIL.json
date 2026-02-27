@@ -4,6 +4,7 @@
   "build_name": "Experimental",
   "build_group": "Experimental",
   "change_id": "4a6dab240cac5a961a0e2de32efb69f2b942e6d9",
+  "generator": "ctest-4.0.20250225-gce1f842",
   "host": {
     "site": "NUC",
     "name": "toolbx",

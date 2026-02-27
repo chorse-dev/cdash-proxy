@@ -30,6 +30,7 @@ func parseUpdate(dec *xml.Decoder, elem *xml.StartElement, project string) (*mod
 		BuildName:       update.BuildName,
 		BuildGroup:      extractGroupFromBuildstamp(update.BuildStamp),
 		ChangeID:        update.Revision,
+		Generator:       update.Generator,
 		Project:         project,
 		StartUpdateTime: &startTime,
 		EndUpdateTime:   &endTime,

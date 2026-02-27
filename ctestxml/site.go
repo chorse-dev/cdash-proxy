@@ -44,6 +44,7 @@ func parseSite(dec *xml.Decoder, elem *xml.StartElement, project string) (*model
 		BuildName:  site.BuildName,
 		BuildGroup: extractGroupFromBuildstamp(site.BuildStamp),
 		ChangeID:   site.ChangeID,
+		Generator:  site.Generator,
 	}
 
 	if site.VendorString != "" {
@@ -72,7 +73,7 @@ func parseSite(dec *xml.Decoder, elem *xml.StartElement, project string) (*model
 	}
 
 	if site.Configure != nil {
-		ret := parseConfigure(site.Configure, site.Generator)
+		ret := parseConfigure(site.Configure)
 		job.Commands = ret.Commands
 		job.StartConfigureTime = &ret.StartTime
 		job.EndConfigureTime = &ret.EndTime
