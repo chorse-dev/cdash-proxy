@@ -2,10 +2,9 @@
 
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/chorse-dev/cdash-proxy)](https://pkg.go.dev/github.com/chorse-dev/cdash-proxy)
 [![Coverage Status](https://coveralls.io/repos/github/chorse-dev/cdash-proxy/badge.svg?branch=master)](https://coveralls.io/github/chorse-dev/cdash-proxy?branch=master)
-[![Go Report Card](https://goreportcard.com/badge/github.com/chorse-dev/cdash-proxy)](https://goreportcard.com/report/github.com/chorse-dev/cdash-proxy)
 
-This code is used on https://chorse.dev/ to perform additional processing of the
-data that is sent from CTest. The longterm goal of cdash-proxy is to become
+This code is used on https://ci.chorse.dev/ to perform additional processing of
+the data that is sent from CTest. The longterm goal of cdash-proxy is to become
 obsolete, because ideally, all processing should be performed by CTest itself.
 
 ## Difference to CDash
@@ -101,11 +100,11 @@ ctest_submit(
   )
 ```
 
-This derives from CTest's approach of doing processing on the client.
+This deviates from CTest's approach of doing processing on the client.
 
 **cdash-proxy** opens the uploaded tar ball and extracts the coverage
 information as if it was submitted as `Coverage.xml` and `CoverageLog.xml`.
 Uncovered branches are recorded as diagnostics.
 
-Ideally, CTest should not derive from the approach of doing processing on the
+Ideally, CTest should not deviate from the approach of doing processing on the
 client. The server should be kept dumb.
