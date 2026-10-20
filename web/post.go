@@ -11,12 +11,15 @@ import (
 )
 
 func Post(w http.ResponseWriter, r *http.Request) {
-	query := r.URL.Query()
+	if err := r.ParseForm(); err != nil {
+		http.Error(w, "Invalid upload form", http.StatusBadRequest)
+		return
+	}
 	jobID := ctestxml.GenerateJobID(
-		query.Get("project"),
-		query.Get("site"),
-		query.Get("stamp"),
-		query.Get("build"),
+		r.Form.Get("project"),
+		r.Form.Get("site"),
+		r.Form.Get("stamp"),
+		r.Form.Get("build"),
 	)
 
 	type uploadRequest struct {
