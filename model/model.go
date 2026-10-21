@@ -12,7 +12,7 @@ type Job struct {
 	BuildGroup         string         `json:"build_group,omitempty"`
 	ChangeID           string         `json:"change_id,omitempty"`
 	Generator          string         `json:"generator,omitempty"`
-	Host               *Host          `json:"host,omitempty"`
+	Site               *Site          `json:"site,omitempty"`
 	StartUpdateTime    *time.Time     `json:"start_update_time,omitempty"`
 	EndUpdateTime      *time.Time     `json:"end_update_time,omitempty"`
 	StartConfigureTime *time.Time     `json:"start_configure_time,omitempty"`
@@ -31,9 +31,9 @@ type Job struct {
 	Done               bool           `json:"done,omitempty"`
 }
 
-type Host struct {
-	Site           string `json:"site"`
+type Site struct {
 	Name           string `json:"name"`
+	Hostname       string `json:"hostname"`
 	CPU            CPU    `json:"cpu"`
 	OS             OS     `json:"os"`
 	PhysicalMemory int    `json:"physical_memory"`

@@ -4,9 +4,9 @@
   "build_name": "Coverage",
   "build_group": "Experimental",
   "generator": "ctest-4.0.20250216-gceacabc",
-  "host": {
-    "site": "NUC",
+  "site": {
     "name": "NUC",
+    "hostname": "NUC",
     "cpu": {
       "vendor": "GenuineIntel",
       "vendor_id": "Intel Corporation",

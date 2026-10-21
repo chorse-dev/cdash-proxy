@@ -48,13 +48,13 @@ func parseSite(dec *xml.Decoder, elem *xml.StartElement, project string) (*model
 	}
 
 	if site.VendorString != "" {
-		job.Host = &model.Host{
-			Site:           site.Name,
-			Name:           site.Hostname,
+		job.Site = &model.Site{
+			Name:           site.Name,
+			Hostname:       site.Hostname,
 			PhysicalMemory: site.TotalPhysicalMemory,
 			VirtualMemory:  site.TotalVirtualMemory,
 		}
-		job.Host.CPU = model.CPU{
+		job.Site.CPU = model.CPU{
 			Vendor:        site.VendorString,
 			VendorID:      site.VendorID,
 			FamilyID:      site.FamilyID,
@@ -64,7 +64,7 @@ func parseSite(dec *xml.Decoder, elem *xml.StartElement, project string) (*model
 			PhysicalCores: site.NumberOfPhysicalCPU,
 			CacheSize:     site.ProcessorCacheSize,
 		}
-		job.Host.OS = model.OS{
+		job.Site.OS = model.OS{
 			Name:     site.OSName,
 			Release:  site.OSRelease,
 			Version:  site.OSVersion,

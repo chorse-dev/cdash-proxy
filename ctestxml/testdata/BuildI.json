@@ -4,9 +4,9 @@
   "build_name": "Darwin-cc",
   "build_group": "Experimental",
   "generator": "ctest-4.0.20250218-gf643ca3",
-  "host": {
-    "site": "Mac.fritz.box",
+  "site": {
     "name": "Mac.fritz.box",
+    "hostname": "Mac.fritz.box",
     "cpu": {
       "vendor": "Apple",
       "vendor_id": "Apple",

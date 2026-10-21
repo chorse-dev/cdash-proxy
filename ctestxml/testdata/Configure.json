@@ -4,9 +4,9 @@
   "build_name": "Linux-cc",
   "build_group": "Experimental",
   "generator": "ctest-3.31.20250131-gf0cc688",
-  "host": {
-    "site": "NUC",
+  "site": {
     "name": "NUC",
+    "hostname": "NUC",
     "cpu": {
       "vendor": "GenuineIntel",
       "vendor_id": "Intel Corporation",

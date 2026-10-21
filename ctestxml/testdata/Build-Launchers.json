@@ -4,9 +4,9 @@
   "build_name": "Launchers",
   "build_group": "Experimental",
   "generator": "ctest-4.0.20250213-g7cd1750",
-  "host": {
-    "site": "NUC",
+  "site": {
     "name": "NUC",
+    "hostname": "NUC",
     "cpu": {
       "vendor": "GenuineIntel",
       "vendor_id": "Intel Corporation",
