@@ -6,11 +6,11 @@ package ctestxml
 import (
 	"crypto/md5"
 	"encoding/hex"
-	"fmt"
+	"encoding/json"
 )
 
 func GenerateJobID(project, site, stamp, build string) string {
 	hasher := md5.New()
-	fmt.Fprintf(hasher, "%s-%s-%s-%s", project, site, stamp, build)
+	json.NewEncoder(hasher).Encode([]string{project, site, stamp, build})
 	return hex.EncodeToString(hasher.Sum(nil))
 }

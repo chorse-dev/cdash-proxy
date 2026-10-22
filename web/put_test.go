@@ -66,7 +66,7 @@ func TestPutXmlOK(t *testing.T) {
 	if err != nil {
 		t.Errorf("expected error to be nil got %v", err)
 	}
-	if string(body) != `<cdash><status>OK</status><buildId>4e5a4b59fc4badd8ec47227aa4514ba1</buildId></cdash>` {
+	if string(body) != `<cdash><status>OK</status><buildId>5f90c39930c163a586523fcc079f4598</buildId></cdash>` {
 		t.Errorf("unexpected body: %s", string(body))
 	}
 }
