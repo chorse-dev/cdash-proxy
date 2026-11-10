@@ -15,11 +15,11 @@ import (
 	"github.com/chorse-dev/cdash-proxy/model"
 )
 
-var serveOK = Serve(func(ctx context.Context, job *model.Job) error {
+var serveOK = Serve(func(ctx context.Context, job *model.Job, header http.Header) error {
 	return nil
 })
 
-var serveError = Serve(func(ctx context.Context, job *model.Job) error {
+var serveError = Serve(func(ctx context.Context, job *model.Job, header http.Header) error {
 	return errors.New("test error")
 })
 

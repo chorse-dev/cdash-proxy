@@ -19,7 +19,7 @@ func Put(w http.ResponseWriter, r *http.Request, hf HandlerFunc) {
 		buildID := r.FormValue("buildid")
 		job, err := gcovtar.Parse(r.Body, buildID)
 		if err == nil {
-			err = hf(r.Context(), job)
+			err = hf(r.Context(), job, r.Header)
 		}
 		if err != nil {
 			fmt.Printf("ERROR: %s\n", err.Error())
@@ -46,7 +46,7 @@ func handleCTestXML(r *http.Request, hf HandlerFunc) (string, error) {
 		return "", err
 	}
 
-	if err := hf(r.Context(), job); err != nil {
+	if err := hf(r.Context(), job, r.Header); err != nil {
 		return "", err
 	}
 

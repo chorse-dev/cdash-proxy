@@ -10,7 +10,7 @@ import (
 	"github.com/chorse-dev/cdash-proxy/model"
 )
 
-type HandlerFunc func(ctx context.Context, job *model.Job) error
+type HandlerFunc func(ctx context.Context, job *model.Job, header http.Header) error
 
 func Serve(hf HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {

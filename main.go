@@ -14,7 +14,7 @@ import (
 	"github.com/chorse-dev/cdash-proxy/web"
 )
 
-func print(_ context.Context, job *model.Job) error {
+func print(_ context.Context, job *model.Job, _ http.Header) error {
 	jobJSON, err := json.MarshalIndent(job, "", "  ")
 	if err != nil {
 		return err
