@@ -11,6 +11,8 @@ type Job struct {
 	BuildName          string         `json:"build_name,omitempty"`
 	BuildGroup         string         `json:"build_group,omitempty"`
 	ChangeID           string         `json:"change_id,omitempty"`
+	Revision           string         `json:"revision,omitempty"`
+	PriorRevision      string         `json:"prior_revision,omitempty"`
 	Generator          string         `json:"generator,omitempty"`
 	Site               *Site          `json:"site,omitempty"`
 	StartUpdateTime    *time.Time     `json:"start_update_time,omitempty"`

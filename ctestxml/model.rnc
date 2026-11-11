@@ -18,10 +18,13 @@ update =
     element StartTime { xsd:integer },
     element UpdateCommand { xsd:string },
     element UpdateType { xsd:string },
-    element Revision { xsd:string },
+    element ChangeId { xsd:string }?,
+    element Revision { xsd:string }?,
+    element PriorRevision { xsd:string }?,
+    element SVNPath { xsd:string }?,
     element Directory {
       element Name { xsd:string },
-      element Updated {
+      element Updated | Modified | Conflicting {
         element File { xsd:string },
         element Directory { xsd:string },
         element FullName { xsd:string },

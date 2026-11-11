@@ -10,12 +10,7 @@ import (
 	"github.com/chorse-dev/cdash-proxy/model"
 )
 
-// The only relevant piece of information that we parse from Update.xml is the CommitID.
-// If there is a way to set CTEST_CHANGE_ID, then submitting Update.xml is not necessary.
-// This should be the case for builds that are triggered through github actions.
-// Updating requires Write Access to the source directory.
-// We may set up a CI server that updates, and then invokes CTest with the source directory mounted as Read-Only.
-
+// parseUpdate extracts repository revisions and change identity from Update.xml.
 func parseUpdate(dec *xml.Decoder, elem *xml.StartElement, project string) (*model.Job, error) {
 	var update Update
 	if err := dec.DecodeElement(&update, elem); err != nil {
@@ -29,7 +24,9 @@ func parseUpdate(dec *xml.Decoder, elem *xml.StartElement, project string) (*mod
 		JobID:           GenerateJobID(project, update.Site, update.BuildStamp, update.BuildName),
 		BuildName:       update.BuildName,
 		BuildGroup:      extractGroupFromBuildstamp(update.BuildStamp),
-		ChangeID:        update.Revision,
+		ChangeID:        update.ChangeID,
+		Revision:        update.Revision,
+		PriorRevision:   update.PriorRevision,
 		Generator:       update.Generator,
 		Project:         project,
 		StartUpdateTime: &startTime,

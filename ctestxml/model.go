@@ -17,21 +17,31 @@ type Done struct {
 }
 
 type Update struct {
-	Mode       string       `xml:"mode,attr"`
-	Generator  string       `xml:"Generator,attr"`
-	Site       string       `xml:"Site"`
-	BuildName  string       `xml:"BuildName"`
-	BuildStamp string       `xml:"BuildStamp"`
-	StartTime  int64        `xml:"StartTime"`
-	EndTime    int64        `xml:"EndTime"`
-	Command    string       `xml:"UpdateCommand"`
-	Type       string       `xml:"UpdateType"`
-	Revision   string       `xml:"Revision"`
-	Status     string       `xml:"UpdateReturnStatus"`
-	Files      []UpdateFile `xml:"Directory>Updated"`
+	Mode           string       `xml:"mode,attr"`
+	Generator      string       `xml:"Generator,attr"`
+	Site           string       `xml:"Site"`
+	BuildName      string       `xml:"BuildName"`
+	BuildStamp     string       `xml:"BuildStamp"`
+	StartTime      int64        `xml:"StartTime"`
+	StartDateTime  string       `xml:"StartDateTime"`
+	EndTime        int64        `xml:"EndTime"`
+	EndDateTime    string       `xml:"EndDateTime"`
+	ElapsedMinutes int64        `xml:"ElapsedMinutes"`
+	Command        string       `xml:"UpdateCommand"`
+	Type           string       `xml:"UpdateType"`
+	ChangeID       string       `xml:"ChangeId"`
+	Revision       string       `xml:"Revision"`
+	PriorRevision  string       `xml:"PriorRevision"`
+	SVNPath        string       `xml:"SVNPath"`
+	Status         string       `xml:"UpdateReturnStatus"`
+	Updated        []UpdateFile `xml:"Directory>Updated"`
+	Modified       []UpdateFile `xml:"Directory>Modified"`
+	Conflicting    []UpdateFile `xml:"Directory>Conflicting"`
 }
 
 type UpdateFile struct {
+	File           string `xml:"File"`
+	Directory      string `xml:"Directory"`
 	FullName       string `xml:"FullName"`
 	Author         string `xml:"Author"`
 	Email          string `xml:"Email"`
@@ -41,6 +51,7 @@ type UpdateFile struct {
 	CommitDate     string `xml:"CommitDate"`
 	Log            string `xml:"Log"`
 	Revision       string `xml:"Revision"`
+	PriorRevision  string `xml:"PriorRevision"`
 }
 
 type Site struct {
